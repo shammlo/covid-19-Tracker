@@ -1,0 +1,12 @@
+//* -------------- HEADER ------------- *\\
+
+.header {
+    color: var(--color-white);
+    background-color: #1a1d20;
+    // @include responsive(tablet-landscape) {
+    //     width: 100vw;
+    // }
+    // @media only screen and (max-width: $bp-xlarge) {
+    //     width: 100vw;
+    // }
+}

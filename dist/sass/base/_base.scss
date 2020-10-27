@@ -1,0 +1,49 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+
+    @media only screen and (max-width: $bp-1200) {
+        font-size: 50%;
+    }
+
+    // //? this is commented because it will be ENABLED on our laptop
+    // // @include responsive(big-desktop) {
+    // //     font-size: 75%; //- 1rem = 12px, 12/16= 0.75 = 75%
+    // // }
+
+    @include responsive(tablet-landscape) {
+        font-size: 56.25%; //- 1rem = 9px, 9/16= 0.56.25 = 56.25%
+    }
+
+    @include responsive(tablet-portrait) {
+        font-size: 50%; //- 1rem = 8px, 8/16= 0.5 = 50%
+    }
+}
+
+body {
+    font-family: var(--font-primary);
+    font-weight: 400;
+    line-height: 1.6;
+    font-size: 1.6rem;
+
+    color: var(--color-grey-light-1);
+    background-color: var(--dark-3);
+
+    // padding: 1.5rem 1.5rem 1rem 1.5rem;
+}
+
+html,
+body {
+    height: 100vh !important;
+    margin: 0;
+    padding: 0;
+}

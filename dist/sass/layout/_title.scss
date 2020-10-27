@@ -1,0 +1,24 @@
+.title {
+    display: flex;
+    justify-content: start;
+
+    &__image {
+        height: 5rem;
+        width: 5rem;
+        margin-right: 1.6rem;
+    }
+
+    &__text {
+        font-size: 3.5rem;
+        font-weight: 400;
+    }
+}
+
+.web-title {
+    height: 10rem;
+    width: 100%;
+
+    @media only screen and (max-width: $bp-450) {
+        margin-bottom: 2.2rem;
+    }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "covid-19",
+  "version": "1.0.0",
+  "description": "covid-19 tracker",
+  "main": "main.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
+  },
+  "author": "sham",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "datatables.net": "^1.10.22",
+    "datatables.net-dt": "^1.10.22",
+    "jquery": "^3.5.1",
+    "moment": "^2.29.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "babel-loader": "^8.1.0",
+    "expose-loader": "^1.0.1",
+    "html-webpack-plugin": "^4.5.0",
+    "source-map-loader": "^1.1.1",
+    "webpack": "^5.1.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}

@@ -1,0 +1,22 @@
+.dataTables_wrapper {
+    .dataTables_filter {
+        input {
+            border: 1px solid #aaa;
+            border-radius: 3px;
+            padding: 5px;
+            background-color: var(--color-white) !important;
+            margin-left: 3px;
+        }
+        color: var(--color-white) !important;
+    }
+}
+
+table {
+}
+.dataTables_wrapper .dataTables_filter input {
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: transparent;
+    margin-left: 3px;
+}

@@ -1,0 +1,121 @@
+//* ----------------- HEADING TEXT ---------------- *\\
+
+//- Place holder
+%heading {
+    font-family: var(--font-primary);
+    font-weight: 400;
+}
+
+.heading-1 {
+    @extend %heading;
+    font-size: 4rem;
+    color: var(--color-grey-light-1);
+    line-height: 1;
+    font-weight: 600;
+    // font-family: var(--font-secondary);
+
+    @media only screen and (max-width: $bp-1400) {
+        font-size: 3.1rem;
+    }
+    @media only screen and (max-width: $bp-800) {
+        font-size: 2.8rem;
+    }
+    @media only screen and (max-width: $bp-500) {
+        font-size: 2.4;
+    }
+    // @media only screen and (max-width: $bp-450) {
+    //     font-size: 2rem;
+    // }
+}
+
+.heading-2 {
+    @extend %heading;
+    font-size: 4rem;
+    line-height: 1;
+    font-weight: 700;
+    @media only screen and (max-width: $bp-735) {
+        font-size: 3rem;
+    }
+
+    &__light {
+        color: var(--color-white);
+    }
+
+    &__dark {
+        color: var(--color-grey-light-1);
+    }
+
+    &__success {
+        color: var(--success) !important;
+    }
+
+    &__danger {
+        color: var(--danger) !important;
+    }
+}
+
+.heading-3 {
+    @extend %heading;
+    font-size: 1.6rem;
+    color: var(--color-grey-light-2);
+    text-transform: uppercase;
+    @media only screen and (max-width: $bp-450) {
+        font-size: 1.2rem;
+    }
+}
+
+.heading-4 {
+    @extend %heading;
+    font-size: 1.9rem;
+
+    &__light {
+        color: var(--color-grey-light-1);
+    }
+
+    &__dark {
+        color: rgb(165, 163, 163);
+    }
+}
+
+.update {
+    border-top: 0.2rem solid rgba(155, 154, 154, 0.103);
+
+    &__text {
+        margin-top: 1rem;
+        width: 75%;
+        height: 100%;
+        border-style: none;
+        @media only screen and (max-width: $bp-450) {
+            width: 60%;
+        }
+
+        &--p {
+            color: var(--color-grey-light-1);
+            font-size: 2.25rem;
+            text-transform: uppercase;
+            font-style: var(--font-secondary);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            @media only screen and (max-width: $bp-450) {
+                font-size: 2rem;
+            }
+        }
+        #timestamp {
+            color: rgb(165, 163, 163);
+            font-size: 1.75rem;
+
+            #updatedTime {
+                font-size: 2.2rem;
+                color: var(--warning);
+            }
+        }
+
+        &--hr {
+            margin-top: 1.5rem;
+            border: 0.1rem double rgb(212, 212, 212);
+            width: 8vh;
+        }
+    }
+}
+.text-big {
+}

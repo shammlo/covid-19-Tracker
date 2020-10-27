@@ -1,0 +1,46 @@
+.center-text {
+    text-align: center !important;
+}
+
+.margin-bottom-small {
+    margin-bottom: 2rem !important;
+}
+
+.margin-bottom-medium {
+    margin-bottom: 3rem !important;
+
+    // @include responsive(tablet-portrait) {
+    //     margin-bottom: 3rem !important;
+    // }
+}
+
+.margin-bottom-large {
+    margin-bottom: 4rem !important;
+
+    // @include responsive(tablet-portrait) {
+    //     margin-bottom: 5rem !important;
+    // }
+}
+
+.margin-bottom-huge {
+    margin-bottom: 8rem !important;
+}
+
+.margin-top-small {
+    margin-top: 1.5rem !important;
+}
+.margin-top-medium {
+    margin-top: 3.5rem !important;
+}
+.margin-top-large {
+    margin-top: 4.5rem !important;
+}
+
+.margin-top-huge {
+    margin-top: 10rem !important;
+}
+
+.marg-left-right {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}

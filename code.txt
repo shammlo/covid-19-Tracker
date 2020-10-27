@@ -1,0 +1,31 @@
+ const res = await fetch("https://rapidapi.p.rapidapi.com/statistics", {
+        method: "GET",
+        headers: {
+            "x-rapidapi-host": "covid-193.p.rapidapi.com",
+            "x-rapidapi-key": "734ee7e1c6msh44d68191efdf3dap15c668jsn7abcbfc9f044",
+        },
+    });
+    const result = await res.json();
+    console.log(result);
+
+    const data = result.response;
+    console.log(data);
+
+    let confirmedCases = data.map((current) => {
+        return current.cases.total;
+    });
+    let death = data.map((current) => {
+        return current.deaths.total;
+    });
+    let add = (arr) => arr.reduce((a, b) => a + b, 0);
+    let totalCases = add(confirmedCases);
+    let totalDead = add(death);
+    console.log(totalCases);
+    console.log(totalDead);
+}
+//----------------------------------------------------------------
+post man all countries
+    const res = await fetch("https://corona.lmao.ninja/v2/countries?yesterday&sort", {
+        method: "GET",
+        redirect: "follow",
+    });

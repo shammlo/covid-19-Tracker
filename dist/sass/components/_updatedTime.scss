@@ -1,0 +1,10 @@
+.update {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .data__button {
+        overflow: hidden;
+    }
+}

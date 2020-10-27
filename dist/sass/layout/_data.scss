@@ -1,0 +1,36 @@
+.data {
+    margin-top: 3rem;
+    width: 100%;
+    height: 20rem;
+    font-size: 3rem;
+    color: var(--color-grey-light-1);
+    border-radius: 2rem;
+
+    &__top {
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(43rem, 1fr));
+
+        @media only screen and (max-width: $bp-735) {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+        }
+        @media only screen and (max-width: $bp-600) {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(25.8rem, 1fr));
+        }
+        @media only screen and (max-width: $bp-450) {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        }
+        @media only screen and (max-width: $bp-350) {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+        }
+    }
+
+    .active {
+        grid-column: 1 / span 3;
+        height: 2rem;
+    }
+}

@@ -1,0 +1,78 @@
+//* ----------------- CONTAINER ---------------- *\\
+
+.container {
+    max-width: 135rem;
+    margin: 0 auto;
+    box-shadow: var(--shadow-dark);
+
+    @media only screen and (max-width: $bp-1400) {
+        padding: 0 3rem;
+    }
+    @media only screen and (max-width: $bp-800) {
+        padding: 0 1.5rem;
+    }
+    @media only screen and (max-width: $bp-600) {
+        padding: 0 1rem;
+    }
+}
+
+//* -------------- MAIN NAVIGATION  ------------- *\\
+
+.main__navigation {
+    font-size: 2rem;
+    font-weight: 700;
+    height: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+//* ----------------- MAP SECTION ---------------- *\\
+.map-section {
+    min-height: calc(30vh - 6rem);
+    background-color: var(--dark-3);
+}
+.data-section {
+    height: 43rem;
+    max-width: 100%;
+    @media only screen and (max-width: $bp-1400) {
+        min-height: 60rem;
+    }
+    @media only screen and (max-width: $bp-735) {
+        min-height: 60rem;
+    }
+    @media only screen and (max-width: $bp-600) {
+        min-height: 55rem;
+    }
+    @media only screen and (max-width: $bp-600) {
+        min-height: 70rem;
+    }
+    @media only screen and (max-width: $bp-450) {
+        min-height: 70rem;
+    }
+    @media only screen and (max-width: $bp-350) {
+        min-height: 70rem;
+    }
+}
+
+//* ---------------- TABLE SECTION --------------- *\\
+.global-section {
+    // max-height: 75vh;
+    width: 100%;
+    height: 70rem;
+}
+
+//* ---------------- CHART SECTION --------------- *\\
+
+.chart-section {
+    padding-top: 5rem;
+    min-height: 60rem;
+}
+
+//* ---------------- FOOTER SECTION --------------- *\\
+
+.footer-section {
+    background-color: var(--color-secondary);
+    grid-column: full-start/full-end;
+    padding: 8rem;
+}
