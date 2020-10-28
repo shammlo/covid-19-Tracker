@@ -29,6 +29,7 @@ module.exports = {
         filename: "js/bundle.js",
     },
     devServer: {
+        port: 3000,
         contentBase: "./dist",
     },
     plugins: [

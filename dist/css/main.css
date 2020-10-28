@@ -1437,7 +1437,7 @@ div.dataTables_wrapper div.dataTables_filter label {
   border-radius: 1rem;
   padding: 2rem;
   padding-top: 0.5rem;
-  min-height: 50rem;
+  min-height: 85.1rem;
   margin-bottom: 24px;
 }
 
@@ -1494,6 +1494,14 @@ div.dataTables_wrapper div.dataTables_filter label {
   width: 3rem !important;
   border-radius: 2px;
   margin-right: 0.5rem;
+  padding-top: 4px;
+}
+
+.img-flag__main {
+  height: 3.5rem !important;
+  width: 3.7rem !important;
+  border-radius: 2px;
+  margin-right: 1rem;
   padding-top: 4px;
 }
 
@@ -1587,6 +1595,11 @@ div.dataTables_wrapper div.dataTables_filter label {
 
 .title__text .title__text--text {
   font-size: inherit;
+}
+
+.chartCase {
+  width: 100%;
+  max-height: 58.9rem;
 }
 
 .container {

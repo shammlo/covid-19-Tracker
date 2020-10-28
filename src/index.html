@@ -7,11 +7,8 @@
             href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
             rel="stylesheet"
         />
-        <!-- <link rel="stylesheet" href="css/bootstrap.min.css" /> -->
         <link rel="stylesheet" href="css/datatable.css" />
-        <!-- <link rel="stylesheet" href="css/datatables.min.css" /> -->
-        <!-- <link rel="stylesheet" href="css/datatables2.min.css" /> -->
-        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/main.min.css" />
 
         <link rel="icon" href="img/virus-1.svg" type="img" />
         <title>COVID-19 Tracker</title>
@@ -32,6 +29,10 @@
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
         <!-- <script src="cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> -->
         <!-- <script type="text/javascript" src="js/addons/datatables.min.js"> -->
+
+        <!--- Leaflet map -->
+        <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+        <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
     </head>
     <body>
         <!--* ---------- HEADER SECTION ----------*-->
@@ -72,12 +73,13 @@
                 <div class="web-title margin-top-small">
                     <div class="title">
                         <img class="title__image" src="img/coronavirus.svg" alt="Covid-19 image" />
-                        <h1 class="title__text">Covid-19 Tracker</h1>
+                        <h1 class="heading-1">Covid-19 Tracker</h1>
                     </div>
                     <h4 class="heading-4 heading-4__dark">
                         Track the spread of the Coronavirus Covid-19 outbreak.
                     </h4>
                 </div>
+                <div id="map" class="map" style="width: 100%; height: 45rem"></div>
                 <div class="update">
                     <div class="update__text">
                         <p class="update__text--p margin-top-small">LATEST DATA: World wide</p>
@@ -325,12 +327,15 @@
             <div class="container">
                 <div class="chart-wrapper">
                     <div class="filter">
-                        <select class="js-data-filter chart-filter" style="width: 25rem">
+                        <select
+                            class="js-data-filter chart-filter"
+                            style="width: 25rem; float: right"
+                        >
                             <option value="3620194" selected="selected">Country Search</option>
                         </select>
                     </div>
                     <div class="chart__title">
-                        <h1 class="heading-1 text-big">Cases</h1>
+                        <h1 id="ConImg" class="heading-1 text-big">Cases</h1>
                         <div class="title__text">
                             <h2 class="title__text--header heading-2__light">Total Cases</h2>
                             <p class="title__text--text">(Linear scale)</p>
@@ -342,10 +347,12 @@
                     </div>
 
                     <div id="casesContainer" class="chart-container">
-                        <canvas
-                            id="cases"
-                            style="display: block; width: 90rem; height: 45rem"
-                        ></canvas>
+                        <div class="chartCase">
+                            <canvas
+                                id="cases"
+                                style="display: block; width: 90rem; height: 45rem"
+                            ></canvas>
+                        </div>
                         <div class="chart_buttons">
                             <button id="button1" class="chart-button">Total Cases Chart</button>
                             <button id="button2" class="chart-button">Daily Cases Chart</button>
@@ -375,10 +382,10 @@
                     </div>
 
                     <div id="casesContainer" class="chart-container">
-                        <canvas
+                        <!-- <canvas
                             id="cases"
                             style="display: block; width: 90rem; height: 45rem"
-                        ></canvas>
+                        ></canvas> -->
                         <div class="chart_buttons">
                             <button id="button1" class="chart-button">Total Cases Chart</button>
                             <button id="button2" class="chart-button">Daily Cases Chart</button>
@@ -402,6 +409,8 @@
 
         <!-- <script src="cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> -->
         <script type="text/javascript" src="js/datatable.min.js"></script>
+        <script type="text/javascript" src="js/geojson.min.js"></script>
+
         <!-- <script type="text/javascript" src="js/addons/datatables.min.js"></script> -->
     </body>
 </html>

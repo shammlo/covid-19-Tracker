@@ -210,12 +210,23 @@ export const renderTodayRecovered = (recovered, yesterday) => {
 
 //- Rendering Updated time based on the current date
 export const renderUpdatedTime = (time) => {
+    // console.log(time);
     var date = new Date(time);
+    // console.log(date);
     var minutes = date.getMinutes();
+    // console.log(" minutes: " + minutes);
+    var hour = date.getHours();
+    let updated = hour + ":" + minutes;
+    // console.log(updated);
     const now = new Date();
+    // console.log(now);
     var min = now.getMinutes();
+    // console.log("min" + min);
+    var hou = now.getHours();
     const newM = min - minutes;
+    const newH = hou - hour;
     const ago = newM;
+    // console.log(ago);
     DOM.updatedTime.textContent = ago;
 };
 

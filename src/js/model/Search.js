@@ -20,8 +20,8 @@ export default class Search {
                 }
             );
 
-            this.result = await res.data;
-            console.log(res);
+            this.result = await res;
+            console.log(this.result);
 
             //----------------------------------------------------------------
         } catch (error) {

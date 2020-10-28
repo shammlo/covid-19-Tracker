@@ -14,6 +14,7 @@ export default class MainData {
                 method: "GET",
                 redirect: "follow",
             });
+
             this.data = await res.data;
             this.totalCases = await this.data.cases;
             this.totalDead = await this.data.deaths;

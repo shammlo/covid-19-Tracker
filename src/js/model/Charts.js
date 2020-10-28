@@ -18,7 +18,6 @@ export default class Charts {
                 }
             );
             this.result = await res.data;
-
             //----------------------------------------------------------------
         } catch (error) {
             console.log(error);

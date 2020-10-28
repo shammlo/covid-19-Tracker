@@ -1,16 +1,14 @@
 //*** ----------------- IMPORTS ----------------- ***\\
 import $ from "jquery";
-
-// import $ from "expose-loader?exposes[]=$&exposes[]=jQuery!jquery";
-
 import Search from "./model/Search";
 import MainData from "./model/MainData";
 import GlobalData from "./model/AllCountries";
 import Charts from "./model/Charts";
-import * as searchView from "./views/searchView";
+import * as searchView from "./views/countryChartView";
 import * as mainDataView from "./views/mainDataView";
 import * as allCountriesView from "./views/allCountriesView";
-import * as chartsView from "./views/chartsView";
+import * as globalChartView from "./views/globalChartView";
+import * as mapView from "./views/mapView";
 
 import { DOM, renderLoader, clearLoader } from "./views/base";
 
@@ -31,30 +29,29 @@ const state = {};
 
 //*** ------------ SEARCH CONTROLLER ------------ ***\\
 
-const controlSearch = async () => {
-    //-1- Get the query from the view
-    const query = searchView.getInput();
-    // const query = "Canada";
+// const controlSearch = async (data, imageUrl) => {
+//     //-1- Get the query from the view
+//     console.log(data);
+//     const query = data;
 
-    if (query) {
-        //-2- New search object and add it to the state
-        state.search = new Search(query);
+//     if (query) {
+//         //-2- New search object and add it to the state
+//         state.search = new Search(query);
 
-        //-3- Prepare the Ui for the results
-        // searchView.clearSearch();
+//         //-3- Prepare the Ui for the results
+//         // searchView.clearSearch();
+//         try {
+//             //-4- Search for country
+//             await state.search.getResults();
 
-        try {
-            //-4- Search for country
-            await state.search.getResults();
+//             //-5- Render Country info on the UI
 
-            //-5- Render Country info on the UI
-            // searchView.renderCountry(state.search);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-};
-
+//             searchView.renderCountry(state.search.result, await imageUrl);
+//         } catch (error) {
+//             console.log(error);
+//         }
+//     }
+// };
 //*************************************************************************************\\
 
 //*** ------------ MAIN DATA CONTROLLER ------------ ***\\
@@ -100,8 +97,9 @@ const controlMainData = async () => {
                 state.yesterday.yesterdayTodRecovered
             );
 
+            console.log(state.today.upDateDTime);
             //- Render time based on current time
-            mainDataView.renderUpdatedTime(state.today.upDateDTime, state.yesterday.yesterdayCases);
+            mainDataView.renderUpdatedTime(state.today.upDateDTime);
         } catch (error) {
             console.log(error);
         }
@@ -141,9 +139,11 @@ const controlChart = async () => {
     await state.casesByDay.getByDayCases();
     try {
         //- rendering the data for the charts
-        chartsView.allCountrySearch(state.chartsData.result);
+        globalChartView.allCountrySearch(state.chartsData.result);
         // chartsView.newFromCumulative(state.casesByDay.onlyCases);
-        chartsView.renderCasesCharts(state.casesByDay.onlyCases, state.casesByDay.onlyDates);
+        mapView.renderMapData(state.chartsData.result);
+
+        globalChartView.renderCasesCharts(state.casesByDay.onlyCases, state.casesByDay.onlyDates);
     } catch (error) {
         console.log(error);
     }
@@ -162,11 +162,17 @@ const controlChart = async () => {
 //     e.preventDefault();
 //     controlSearch();
 // });
+// $(".js-data-filter").on("select2:select", async function (e) {
+//     let query = e.params.data.country;
+//     var imageURL = e.params.data.flag;
+//     controlSearch(query, imageURL);
+// });
+
 window.onload = () => {
     controlMainData();
     globalDataController();
-    controlChart();
     // controlSearch();
+    controlChart();
 };
 
 // window.onload = globalDataController;
