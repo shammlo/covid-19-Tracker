@@ -84,6 +84,8 @@ $(".js-data-filter").on("select2:select", function (data) {
             const result = await data;
             const name = result.country;
             const cases = await Object.values(result.timeline.cases);
+            const deaths = await Object.values(result.timeline.deaths);
+            const recovered = await Object.values(result.timeline.recovered);
             const dates = await Object.keys(result.timeline.cases);
             const countryChart = document.querySelector("#country-cases").getContext("2d");
             Chart.defaults.global.defaultFontColor = "#fff";
@@ -96,15 +98,33 @@ $(".js-data-filter").on("select2:select", function (data) {
                     //- Labels
                     labels: dates,
 
+                    label: name,
                     //- Datasets
                     datasets: [
                         {
                             data: cases,
-                            label: name + " " + "Total Cases",
-                            backgroundColor: "rgba(54, 162, 235, 0.4)",
+                            label: "Cases",
+                            backgroundColor: "rgba(54, 162, 235, 0.2)",
                             pointBackgroundColor: "rgba(54, 162, 235, 1)",
                             borderColor: "rgba(54, 162, 235, 1)",
                             borderWidth: 1,
+                        },
+                        {
+                            data: deaths,
+                            label: "Deaths",
+                            backgroundColor: "rgba(214, 102, 121, 0.3)",
+                            borderColor: "rgba(214, 102, 121, 1)",
+                            borderWidth: 1,
+                            order: 2,
+                        },
+                        {
+                            data: recovered,
+                            label: "Recovered",
+
+                            backgroundColor: "rgba(113, 255, 47, 0.2)",
+                            borderColor: "rgba(113, 255, 47, 1)",
+                            borderWidth: 1,
+                            order: 3,
                         },
                     ],
                 },

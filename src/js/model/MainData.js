@@ -10,7 +10,7 @@ export default class MainData {
     async todayResults() {
         try {
             //- today data
-            const res = await axios("https://disease.sh/v3/covid-19/all?yesterday=false", {
+            const res = await axios("https://corona.lmao.ninja/v2/all", {
                 method: "GET",
                 redirect: "follow",
             });
@@ -25,6 +25,7 @@ export default class MainData {
             this.todayData = await this.data.updated;
             this.upDateDTime = await res.data.updated;
 
+            // https://disease.sh/v3/covid-19/all?yesterday=false
             //----------------------------------------------------------------
         } catch (error) {
             console.log(error);

@@ -12,6 +12,7 @@
     --color-secondary-rgb: 16, 29, 44;
 
     --color-grey-light-1: #f9f7f6;
+    --color-grey-light-3: #d8d8d8;
     --color-grey-light-2: #aaa;
 
     --color-grey-dark-1: #54483a;
@@ -20,7 +21,7 @@
 
     // FONT VARIABLES
     --font-primary: "Lato", sans-serif;
-    --font-secondary: "Roboto Mono", monospace;
+    --font-secondary: "Roboto Mono", monospace, sans-serif;
 
     --color-white: #fff;
     --color-black: #000;
@@ -35,8 +36,9 @@
     --pink: #e83e8c;
     --red: #dc3545;
     --red-light: #b93b47;
-    --orange: #fd7e14;
-    --yellow: #ffc107;
+    --orange: #ff9742;
+    --yellow: #fcbd00;
+    --yellow-2: #ffd24d;
     --green: #28a745;
     --teal: #20c997;
     --cyan: #17a2b8;

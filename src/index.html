@@ -30,7 +30,7 @@
         <!-- <script src="cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> -->
         <!-- <script type="text/javascript" src="js/addons/datatables.min.js"> -->
 
-        <!--- Leaflet map -->
+        <!--- Mapbox map -->
         <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
         <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
     </head>
@@ -66,7 +66,24 @@
             </div>
         </header>
 
+        <!--- Tests  -->
         <!--* ---- MAP & UPDATED TIME SECTION ----*-->
+        <!-- <div class="flexbox">
+            <div id="chartdiv"></div>
+            <div id="list">
+                <table id="areas" class="compact hover order-column row-border">
+                    <thead>
+                        <tr>
+                            <th>Country/State</th>
+                            <th>Confirmed</th>
+                            <th>Deaths</th>
+                            <th>Recovered</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div> -->
 
         <section class="map-section">
             <div class="container">
@@ -75,12 +92,22 @@
                         <img class="title__image" src="img/coronavirus.svg" alt="Covid-19 image" />
                         <h1 class="heading-1">Covid-19 Tracker</h1>
                     </div>
-                    <h4 class="heading-4 heading-4__dark">
+                    <h5 class="heading-5 heading-4__dark">
                         Track the spread of the Coronavirus Covid-19 outbreak.
-                    </h4>
+                    </h5>
                 </div>
-                <div id="map" class="map" style="width: 100%; height: 45rem"></div>
-                <div class="update">
+
+                <!--* Map -->
+                <div class="map-container">
+                    <!-- <div id="map" class="map" style="width: 100%; height: 48rem"></div> -->
+                </div>
+                <!-- <div class="custom-clustericon custom-clustericon-2" title="" style="z-index: 11; top: -31px; left: -33px; width: 40px; height: 40px; cursor: pointer; position: absolute; user-select: none;">
+                <div aria-label="" style="position:absolute;text-align:center;width:40px" tabindex="0">
+                <span aria-hidden="true">38</span>
+                </div>
+                </div> -->
+
+                <div class="update" id="updated">
                     <div class="update__text">
                         <p class="update__text--p margin-top-small">LATEST DATA: World wide</p>
                         <small id="timestamp">
@@ -89,15 +116,42 @@
                         <hr class="update__text--hr" />
                     </div>
                     <div class="data__button" style="margin-top: 2vh">
-                        <a class="btn-data btn-info" href="#aboutData" role="button">
+                        <a class="btn-data btn-info" id="aboutBtn" role="button">
                             About the data
+                            <img class="btn-info-img" src="img/information.svg" alt="information" />
                         </a>
                     </div>
+                </div>
+                <div class="about-data disabled" id="aboutData" style="color: whitesmoke">
+                    <h4 class="heading-4" style="margin-bottom: 0.5rem">About the data</h4>
+                    <p class="about-data-text">It changes rapidly</p>
+                    <p class="margin-bottom-small about-data-p">
+                        This data updates around every 10-20 minutes by Greenwich Mean Time (GMT),
+                        and might not reflect some cases that still being reported.
+                    </p>
+                    <p class="about-data-text">It only includes people tested</p>
+                    <p class="margin-bottom-small about-data-p">
+                        Numbers are based on official estimates, which may not account for
+                        unverified cases in countries lacking the proper infrastructure to diagnose
+                        patients.
+                    </p>
+                    <p class="about-data-text">There may be discrepancies from other sources</p>
+                    <p class="margin-bottom-small about-data-p">
+                        We aggregate coronavirus data from over 13 sources. When there is a
+                        discrepancy, we report the higher infected/recovered/deceased count. These
+                        sources update at different times and may have different ways of gathering
+                        data regarding of that some data of specific countries might be delayed.
+                    </p>
+                    <p class="about-data-text">The sources are not actively monitored</p>
+                    <p class="about-data-p">
+                        A change in a source may result in inaccurate/no data being reported for the
+                        associated region.
+                    </p>
                 </div>
             </div>
         </section>
 
-        <!--* ---------- DATA SECTION ----------*-->
+        <!--* ----------- DATA SECTION -----------*-->
 
         <section class="data-section">
             <div class="container">
@@ -122,7 +176,8 @@
                                         <span id="caseIncrease">0</span></span
                                     >
                                     <span class="info-text"
-                                        >from yesterday (<span id="totalYesterday">0</span>)</span
+                                        >from yesterday
+                                        <span id="totalYesterday" class="yel">0</span></span
                                     >
                                 </div>
                             </div>
@@ -151,7 +206,9 @@
                                         ><span id="deadIncrease">0</span></span
                                     >
                                     <span class="info-text"
-                                        >from yesterday (<span id="deadYesterday">0</span>)</span
+                                        >from yesterday (<span id="deadYesterday" class="yel"
+                                            >0</span
+                                        >)</span
                                     >
                                 </div>
                             </div>
@@ -180,7 +237,8 @@
                                         ><span id="recIncrease">0</span></span
                                     >
                                     <span class="info-text"
-                                        >from yesterday (<span id="recYesterday">0</span>)</span
+                                        >from yesterday (<span id="recYesterday" class="yel">0</span
+                                        >)</span
                                     >
                                 </div>
                             </div>
@@ -209,7 +267,9 @@
                                         ><span id="todayIncrease">0</span></span
                                     >
                                     <span class="info-text"
-                                        >from yesterday (<span id="todayYesterday">0</span>)</span
+                                        >from yesterday (<span id="todayYesterday" class="yel"
+                                            >0</span
+                                        >)</span
                                     >
                                 </div>
                             </div>
@@ -234,7 +294,9 @@
                                         ><span id="deathIncrease">0</span></span
                                     >
                                     <span class="info-text"
-                                        >from yesterday (<span id="deathYesterday">0</span>)</span
+                                        >from yesterday (<span id="deathYesterday" class="yel"
+                                            >0</span
+                                        >)</span
                                     >
                                 </div>
                             </div>
@@ -263,7 +325,9 @@
                                         ><span id="recoverIncrease">0</span></span
                                     >
                                     <span class="info-text"
-                                        >from yesterday (<span id="recoverYesterday">0</span>)</span
+                                        >from yesterday (<span id="recoverYesterday" class="yel"
+                                            >0</span
+                                        >)</span
                                     >
                                 </div>
                             </div>
@@ -323,6 +387,7 @@
             </div>
         </section>
 
+        <!--* ----------- CHART SECTION -----------*-->
         <section class="chart-section">
             <div class="container">
                 <div class="chart-wrapper">
@@ -361,51 +426,111 @@
                 </div>
             </div>
         </section>
-        <section class="chart-section" id="Deaths">
+
+        <!--* ----------- FOOTER SECTION -----------*-->
+        <footer class="footer-section">
             <div class="container">
-                <div class="chart-wrapper">
-                    <div class="filter">
-                        <select class="deaths-select chart-filter" style="width: 25rem">
-                            <option value="3620194" selected="selected">Country Search</option>
-                        </select>
-                    </div>
-                    <div class="chart__title">
-                        <h1 class="heading-1 text-big">Deaths</h1>
-                        <div class="title__text">
-                            <h2 class="title__text--header heading-2__light">Total Deaths</h2>
-                            <p class="title__text--text">(Linear scale)</p>
-                            <h2 class="title__text--header heading-2__light">
-                                &nbsp;& Daily New Deaths
-                            </h2>
-                            <p class="title__text--text">per day</p>
+                <div class="footer">
+                    <!--- Logo and text -->
+                    <div class="logo-text">
+                        <div class="footer__logo">
+                            <a href="index.html" class="footer__logo-link">
+                                <img class="footer__logo-img" src="img/virus-1.svg" />
+
+                                Covid-19 Tracker
+                            </a>
+                        </div>
+                        <div class="footer__text">
+                            <p class="footer__text-p">
+                                This Web app was created to track the new Pandemic Covid-19 virus
+                                outbreak live worldwide, with visualization of graph, table, and
+                                map. The data updates rapidly.
+                            </p>
                         </div>
                     </div>
 
-                    <div id="casesContainer" class="chart-container">
-                        <!-- <canvas
-                            id="cases"
-                            style="display: block; width: 90rem; height: 45rem"
-                        ></canvas> -->
-                        <div class="chart_buttons">
-                            <button id="button1" class="chart-button">Total Cases Chart</button>
-                            <button id="button2" class="chart-button">Daily Cases Chart</button>
+                    <!--- about api -->
+                    <div class="about__api">
+                        <div class="about__text">
+                            <h3 class="about__text-header">
+                                About Sources
+                                <img class="fot__img" src="img/data-driven.svg" alt="Resources" />
+                            </h3>
+                        </div>
+                        <div class="about__p">
+                            <p class="footer__text-p">
+                                The data is provided by NovelCOVID API disease.sh, that is collected
+                                from sources like
+                                <a href="https://coronavirus.data.gov.uk/">GOV.UK</a>,
+                                <a
+                                    href="https://www.canada.ca/en/public-health/services/diseases/2019-novel-coronavirus-infection.html"
+                                    >CanadaGOV</a
+                                >,
+                                <a href="https://www.worldometers.info/coronavirus/">Worldometer</a
+                                >, and 10 more, Get the data:
+                            </p>
+
+                            <a href="#" type="button" class="btn-data btn-info"
+                                >disease.sh <img src="img/api.svg" alt="API"
+                            /></a>
+                        </div>
+                    </div>
+
+                    <!--- useful links -->
+                    <div class="useful__links">
+                        <div class="about__text">
+                            <h3 class="about__text-header">
+                                Useful Links<img
+                                    class="fot__img"
+                                    src="img/domain.svg"
+                                    alt="Resources"
+                                />
+                            </h3>
+                        </div>
+                        <div class="link">
+                            <ul class="link__list">
+                                <li class="list-item">
+                                    <a href="#" class="list-link"> Home </a>
+                                </li>
+                                <li class="list-item">
+                                    <a href="#" class="list-link"> About the Api </a>
+                                </li>
+                                <li class="list-item">
+                                    <a href="#" class="list-link"> Data Recourses </a>
+                                </li>
+                                <li class="list-item">
+                                    <a href="#" class="list-link"> Report a problem </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!--- support -->
+                    <div class="support">
+                        <div class="about__text">
+                            <h3 class="about__text-header">
+                                Support
+                                <img class="fot__img" src="img/data-driven.svg" alt="Resources" />
+                            </h3>
+                        </div>
+                        <div class="support-text">
+                            <p>Created by Shammlo, all support appreciated.</p>
+                            <a href="#" type="button" class="btn-data btn-info"
+                                >disease.sh <img src="img/api.svg" alt="API"
+                            /></a>
+                            <!-- </div>
+                        <div class="contact"> -->
                         </div>
                     </div>
                 </div>
+                <div class="copyright">
+                    <h6 class="heading-6 heading-6__dark">
+                        © Designed by <a href="https://github.com/shammlo"> Shammlo</a>. All Rights
+                        Reserved
+                    </h6>
+                </div>
             </div>
-        </section>
-
-        <!--* Loader -->
-        <!-- <div class="loader">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div> -->
+        </footer>
 
         <!-- <script src="cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> -->
         <script type="text/javascript" src="js/datatable.min.js"></script>

@@ -34,7 +34,8 @@ export default class Charts {
             this.result = await res.data;
             this.onlyCases = await Object.values(this.result.cases);
             this.onlyDates = await Object.keys(this.result.cases);
-
+            this.onlyDeaths = await Object.values(this.result.deaths);
+            this.onlyRecovered = await Object.values(this.result.recovered);
             //----------------------------------------------------------------
         } catch (error) {
             console.log(error);

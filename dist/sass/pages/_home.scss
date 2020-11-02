@@ -66,13 +66,13 @@
 
 .chart-section {
     padding-top: 5rem;
-    min-height: 60rem;
+    min-height: 96rem;
 }
 
 //* ---------------- FOOTER SECTION --------------- *\\
 
 .footer-section {
-    background-color: var(--color-secondary);
-    grid-column: full-start/full-end;
-    padding: 8rem;
+    min-height: 28rem;
+    width: 100%;
+    background-color: var(--dark-4);
 }

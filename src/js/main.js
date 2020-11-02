@@ -60,11 +60,11 @@ const state = {};
 const controlMainData = async () => {
     state.today = new MainData();
     state.yesterday = new MainData();
-    await state.today.todayResults();
-    await state.yesterday.yesterdayResults();
 
     if (state.today && state.yesterday) {
         try {
+            await state.today.todayResults();
+            await state.yesterday.yesterdayResults();
             //* Total Cases
             //- Rendering total cases
             mainDataView.renderTotalCases(state.today.totalCases, state.yesterday.yesterdayCases);
@@ -97,7 +97,6 @@ const controlMainData = async () => {
                 state.yesterday.yesterdayTodRecovered
             );
 
-            console.log(state.today.upDateDTime);
             //- Render time based on current time
             mainDataView.renderUpdatedTime(state.today.upDateDTime);
         } catch (error) {
@@ -141,9 +140,14 @@ const controlChart = async () => {
         //- rendering the data for the charts
         globalChartView.allCountrySearch(state.chartsData.result);
         // chartsView.newFromCumulative(state.casesByDay.onlyCases);
-        mapView.renderMapData(state.chartsData.result);
+        // mapView.renderMapData(state.chartsData.result);
 
-        globalChartView.renderCasesCharts(state.casesByDay.onlyCases, state.casesByDay.onlyDates);
+        globalChartView.renderCharts(
+            state.casesByDay.onlyDates,
+            state.casesByDay.onlyCases,
+            state.casesByDay.onlyDeaths,
+            state.casesByDay.onlyRecovered
+        );
     } catch (error) {
         console.log(error);
     }
@@ -153,27 +157,26 @@ const controlChart = async () => {
 
 //*** -------------- EVEN LISTENER -------------- ***\\
 
-//* Search
-// DOM.searchForm.addEventListener("submit", (event) => {
-//     event.preventDefault();
-//     controlSearch();
-// });
-// $(".js-data-filter").on("select2:select", function (e) {
-//     e.preventDefault();
-//     controlSearch();
-// });
-// $(".js-data-filter").on("select2:select", async function (e) {
-//     let query = e.params.data.country;
-//     var imageURL = e.params.data.flag;
-//     controlSearch(query, imageURL);
-// });
-
 window.onload = () => {
     controlMainData();
     globalDataController();
     // controlSearch();
     controlChart();
 };
+
+// DOM.aboutBtn.addEventListener("click", () => {
+//     if (DOM.aboutData.style.display === "none") {
+//         DOM.aboutData.style.display = "block";
+//     } else {
+//         $(DOM.aboutData).hide("slow");
+//         // DOM.aboutData.style.display = "none";
+//     }
+// });
+
+// on document ready
+$(DOM.aboutBtn).on("click", function () {
+    $(".about-data").slideToggle("slow");
+});
 
 // window.onload = globalDataController;
 // window.addEventListener("load", controlMainData);

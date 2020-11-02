@@ -7,7 +7,7 @@
     padding: 2rem;
     padding-top: 0.5rem;
     min-height: 85.1rem;
-    margin-bottom: 24px;
+    // margin-bottom: 24px;
 
     // display: flex;
     // justify-content: space-between;
@@ -71,19 +71,47 @@
     padding-top: 4px;
 }
 .select2-results__options {
-    color: var(--color-black) !important;
+    color: var(--color-white) !important;
     // font-size: 1.6rem !important;
     font-weight: 700;
+
+    &::-webkit-scrollbar {
+        width: 1.2rem; /* width of the entire scrollbar */
+    }
+    &::-webkit-scrollbar-track {
+        background: rgb(27, 27, 27); /* color of the tracking area */
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: rgb(80, 80, 80); /* color of the scroll thumb */
+        border-radius: 0.1rem; /* roundness of the scroll thumb */
+        border: 3px solid rgb(80, 80, 80); /* creates padding around scroll thumb */
+    }
+
+    span {
+        padding-left: 0.6rem !important;
+    }
 }
+
 .select2-search--dropdown .select2-search__field {
     padding: 0.8rem !important;
     width: 100%;
     box-sizing: border-box;
+    background-color: rgb(51, 51, 51) !important;
+    color: var(--color-white) !important;
+}
+
+.select2-search--dropdown {
+    display: block;
+    padding: 0.8rem !important;
+    background-color: var(--dark-4) !important;
 }
 .select2-container--default .select2-selection--single {
     background-color: var(--dark-5) !important;
     border: 1px solid #aaa;
     border-radius: 4px;
+}
+.select2-container--default .select2-results__option--selected {
+    background-color: rgb(41, 40, 40) !important;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
@@ -108,10 +136,14 @@
     top: 50%;
     width: 0;
 }
+.select2-results__option--selectable {
+    cursor: pointer;
+}
 
 .select2-results {
     display: block;
-    background-color: var(--color-grey-light-1) !important;
+    // background-color: var(--color-grey-light-1) !important;
+    background-color: var(--dark-4) !important;
 }
 .select2-container {
     float: right !important;

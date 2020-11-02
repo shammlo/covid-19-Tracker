@@ -16,11 +16,12 @@
             letter-spacing: 0.13rem;
             text-decoration: none;
             text-transform: uppercase;
-            padding: 1.7rem;
+            padding: 1.5rem;
             font-family: var(--font-display);
             text-align: center;
             display: block;
             transition: all 0.2s;
+            border: 3px solid transparent;
             @media only screen and (max-width: $bp-735) {
                 padding: 1.6rem 0 1.6rem 1.6rem;
             }
@@ -30,11 +31,12 @@
         &__link:active {
             background-color: rgba(rgb(255, 255, 255), 0.06);
             transform: translateY(-3px);
+            border-bottom: 3px solid var(--danger);
         }
     }
     .logo {
         text-align: center;
-        padding-left: 1rem;
+        // padding-left: 1rem;
         @media only screen and (max-width: $bp-735) {
             padding: 0;
         }
@@ -67,4 +69,3 @@
         }
     }
 }
-

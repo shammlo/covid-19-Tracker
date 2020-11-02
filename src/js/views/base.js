@@ -51,6 +51,9 @@ export const DOM = {
     dailyCases: document.querySelector("#daily-cases"),
     button1: document.querySelector("#button1"),
     button2: document.querySelector("#button2"),
+
+    aboutBtn: document.querySelector(".btn-info"),
+    aboutData: document.querySelector(".about-data"),
 };
 
 //*************************************************************************************\\

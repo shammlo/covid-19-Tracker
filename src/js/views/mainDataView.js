@@ -66,7 +66,7 @@ export const renderTotalCases = (cases, yesterday) => {
 
     //- Yesterday
     const yesterdayData = yesterdayCalc();
-    DOM.yesterdayCase.textContent = yesterdayData.FormattingNumber(yesterday);
+    DOM.yesterdayCase.textContent = "(" + yesterdayData.FormattingNumber(yesterday) + ")";
 
     const data = yesterdayData.yesterdayPercent(cases, yesterday);
 
@@ -157,6 +157,9 @@ export const renderTodayCases = (cases, yesterday) => {
         document
             .querySelector(".data__cases .card__box--info .info-increase")
             .classList.add("danger");
+        // document
+        //     .querySelector(".data__cases .card__box .heading-2")
+        //     .classList.add("heading-2__warning");
     }
 };
 
@@ -209,25 +212,30 @@ export const renderTodayRecovered = (recovered, yesterday) => {
 };
 
 //- Rendering Updated time based on the current date
-export const renderUpdatedTime = (time) => {
-    // console.log(time);
-    var date = new Date(time);
-    // console.log(date);
-    var minutes = date.getMinutes();
-    // console.log(" minutes: " + minutes);
+export const renderUpdatedTime = (updated) => {
+    var date = new Date(updated);
+    var minutes = date.getMinutes() % 60;
     var hour = date.getHours();
-    let updated = hour + ":" + minutes;
-    // console.log(updated);
-    const now = new Date();
-    // console.log(now);
-    var min = now.getMinutes();
-    // console.log("min" + min);
-    var hou = now.getHours();
-    const newM = min - minutes;
-    const newH = hou - hour;
-    const ago = newM;
-    // console.log(ago);
-    DOM.updatedTime.textContent = ago;
+
+    //? current time
+    // const now = new Date();
+    // var min = now.getMinutes();
+    // var hou = now.getHours();
+    // const newH = hou - hour;
+    // const newM = minutes - min;
+    // const ago = newH + ":" + newM;
+    const current = Math.abs(new Date() - date);
+    const timesAgo = Math.round(current / 60000);
+    // console.log("new" + " " + timesAgo);
+    if (timesAgo > 60) {
+    }
+
+    let time = hour >= 12 ? "pm" : "am";
+    minutes < 10 ? (minutes = `0${minutes}`) : minutes;
+    hour > 12 ? (hour -= 12) : hour < 10 ? `0${hour}` : hour;
+    console.log(`${hour}:${minutes}${time}`);
+    // DOM.updatedTime.innerHTML = `${hour}:${minutes}${time}`;
+    DOM.updatedTime.innerHTML = `${timesAgo}`;
 };
 
 //* yesterday Data UI

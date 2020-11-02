@@ -72,17 +72,19 @@ const newFromCumulative = (data) => {
 //* Rendering charts
 
 //- Render Cases Chart
-export const renderCasesCharts = async (onlyCases, onlyDate) => {
+export const renderCharts = async (onlyDate, onlyCases, onlyDeaths, onlyRecovered) => {
     //- Rendering Cases Chart
     Chart.defaults.global.defaultFontColor = "#fff";
 
     let dailyCases = newFromCumulative(onlyCases);
+
     //var ctx = document.getElementById("cases").getContext("2d");
 
     //- Daily Cases
-    let casecharting = new Chart(DOM.caseChart, {
+    let charts = new Chart(DOM.caseChart, {
         type: "line",
         responsive: true,
+        // maintainAspectRatio: false,
 
         //- Data layer start
         data: {
@@ -93,19 +95,36 @@ export const renderCasesCharts = async (onlyCases, onlyDate) => {
             datasets: [
                 {
                     data: onlyCases,
-                    label: "Total Cases",
-                    backgroundColor: "rgba(54, 162, 235, 0.4)",
-                    pointBackgroundColor: "rgba(54, 162, 235, 1)",
+                    label: "Cases",
+                    backgroundColor: "rgba(54, 162, 235, 0.2)",
                     borderColor: "rgba(54, 162, 235, 1)",
                     borderWidth: 1,
+                    order: 1,
                 },
                 {
-                    label: "Daily Cases",
-                    backgroundColor: "rgba(54, 162, 235, 0.4)",
-                    pointBackgroundColor: "rgba(54, 162, 235, 1)",
-                    borderColor: "rgba(54, 162, 235, 1)",
+                    data: onlyDeaths,
+                    label: "Deaths",
+                    backgroundColor: "rgba(214, 102, 121, 0.3)",
+                    borderColor: "rgba(214, 102, 121, 1)",
                     borderWidth: 1,
+                    order: 3,
                 },
+                {
+                    data: onlyRecovered,
+                    label: "Recovered",
+
+                    backgroundColor: "rgba(113, 255, 47, 0.2)",
+                    borderColor: "rgba(113, 255, 47, 1)",
+                    borderWidth: 1,
+                    order: 2,
+                },
+                // {
+                //     label: "Daily Cases",
+                //     backgroundColor: "rgba(54, 162, 235, 0.4)",
+                //     pointBackgroundColor: "rgba(54, 162, 235, 1)",
+                //     borderColor: "rgba(54, 162, 235, 1)",
+                //     borderWidth: 1,
+                // },
             ],
         },
         //- Data layer end
@@ -173,173 +192,80 @@ export const renderCasesCharts = async (onlyCases, onlyDate) => {
     });
 
     DOM.button1.addEventListener("click", () => {
-        casecharting.data.datasets = [];
+        charts.data.datasets = [];
 
-        casecharting.config.type = "line";
-        casecharting.config.label = "Total Cases";
+        charts.config.type = "line";
+        charts.config.label = "Total Cases";
 
-        casecharting.data.datasets.push({
-            label: "Total Cases",
-            backgroundColor: "rgba(54, 162, 235, 0.4)",
-            pointBackgroundColor: "rgba(54, 162, 235, 1)",
-            borderColor: "rgba(54, 162, 235, 1)",
-            borderWidth: 1,
-            data: onlyCases,
-        });
-        casecharting.update();
+        charts.data.datasets.push(
+            {
+                data: onlyCases,
+                label: "Cases",
+                backgroundColor: "rgba(54, 162, 235, 0.2)",
+                borderColor: "rgba(54, 162, 235, 1)",
+                borderWidth: 1,
+                order: 1,
+            },
+            {
+                data: onlyDeaths,
+                label: "Deaths",
+                backgroundColor: "rgba(214, 102, 121, 0.3)",
+                borderColor: "rgba(214, 102, 121, 1)",
+                borderWidth: 1,
+                order: 3,
+            },
+            {
+                data: onlyRecovered,
+                label: "Recovered",
+
+                backgroundColor: "rgba(113, 255, 47, 0.2)",
+                borderColor: "rgba(113, 255, 47, 1)",
+                borderWidth: 1,
+                order: 2,
+            }
+        );
+        charts.update();
     });
 
+    //- Button 2
     DOM.button2.addEventListener("click", () => {
-        casecharting.data.datasets = [];
-        casecharting.type = "";
-        casecharting.config.type = "bar";
-        casecharting.data.datasets.push({
-            label: "Daily Cases",
-            data: dailyCases,
-            backgroundColor: "rgba(54, 162, 235, 0.4)",
-            pointBackgroundColor: "rgba(54, 162, 235, 1)",
-            borderColor: "rgba(54, 162, 235, 1)",
-            borderWidth: 1,
-        });
+        charts.data.datasets = [];
+        // charts.data.datasets.data[1] = [];
+        // charts.data.datasets.data[2] = [];
 
-        casecharting.update();
+        charts.type = "";
+        charts.config.type = "doughnut";
+        charts.data.datasets.push(
+            {
+                label: "Daily Cases",
+                data: dailyCases,
+                backgroundColor: "rgba(54, 162, 235, 0.2)",
+                pointBackgroundColor: "rgba(54, 162, 235, 1)",
+                borderColor: "rgba(54, 162, 235, 1)",
+                borderWidth: 1,
+                order: 1,
+            },
+            {
+                data: onlyDeaths,
+                label: "Deaths",
+                backgroundColor: "rgba(214, 102, 121, 0.2)",
+                borderColor: "rgba(214, 102, 121, 1)",
+                borderWidth: 1,
+                order: 2,
+            },
+            {
+                data: onlyRecovered,
+                label: "Recovered",
+                backgroundColor: "rgba(113, 255, 47, 0.2)",
+                borderColor: "rgba(113, 255, 47, 1)",
+                borderWidth: 1,
+                order: 3,
+            }
+        );
+
+        charts.update();
     });
 };
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
-
-//* Render Deaths
-export const renderDeathsCharts = async (onlyCases, onlyDate) => {
-    //- Rendering Cases Chart
-    Chart.defaults.global.defaultFontColor = "#fff";
-
-    let dailyCases = newFromCumulative(onlyCases);
-    //var ctx = document.getElementById("cases").getContext("2d");
-
-    //- Daily Cases
-    let casecharting = new Chart(DOM.caseChart, {
-        type: "line",
-        responsive: true,
-
-        //- Data layer start
-        data: {
-            //- Labels
-            labels: onlyDate,
-
-            //- Datasets
-            datasets: [
-                {
-                    data: onlyCases,
-                    label: "Total Cases",
-                    backgroundColor: "rgba(54, 162, 235, 0.4)",
-                    pointBackgroundColor: "rgba(54, 162, 235, 1)",
-                    borderColor: "rgba(54, 162, 235, 1)",
-                    borderWidth: 1,
-                },
-                {
-                    label: "Daily Cases",
-                    backgroundColor: "rgba(54, 162, 235, 0.4)",
-                    pointBackgroundColor: "rgba(54, 162, 235, 1)",
-                    borderColor: "rgba(54, 162, 235, 1)",
-                    borderWidth: 1,
-                },
-            ],
-        },
-        //- Data layer end
-
-        //- Options Start
-        options: {
-            legend: {
-                display: true,
-                labels: {
-                    fontSize: 14,
-                    padding: 20,
-                },
-
-                onClick: function (e, legendItem) {
-                    var index = legendItem.datasetIndex;
-                    var ci = this.chart;
-                    var alreadyHidden =
-                        ci.getDatasetMeta(index).hidden === null
-                            ? false
-                            : ci.getDatasetMeta(index).hidden;
-
-                    ci.data.datasets.forEach(function (e, i) {
-                        var meta = ci.getDatasetMeta(i);
-
-                        if (i !== index) {
-                            if (!alreadyHidden) {
-                                meta.hidden = meta.hidden === null ? !meta.hidden : null;
-                            } else if (meta.hidden === null) {
-                                meta.hidden = true;
-                            }
-                        } else if (i === index) {
-                            meta.hidden = null;
-                        }
-                    });
-
-                    ci.update();
-                },
-            },
-
-            scales: {
-                xAxes: [
-                    {
-                        gridLines: {
-                            color: "rgba(0, 0, 0, 0)",
-                        },
-                    },
-                ],
-                yAxes: [
-                    {
-                        ticks: {
-                            beginAtZero: true,
-                            callback: function (value) {
-                                if (value >= 0 && value < 1000) return value;
-                                if (value >= 1000 && value < 1000000) return value / 1000 + "k";
-                                if (value >= 1000000 && value < 1000000000)
-                                    return value / 1000000 + "m";
-                                return value;
-                            },
-                        },
-                    },
-                ],
-            },
-        },
-        //- Options end
-    });
-
-    DOM.button1.addEventListener("click", () => {
-        casecharting.data.datasets = [];
-
-        casecharting.config.type = "line";
-        casecharting.config.label = "Total Cases";
-
-        casecharting.data.datasets.push({
-            label: "Total Cases",
-            backgroundColor: "rgba(54, 162, 235, 0.4)",
-            pointBackgroundColor: "rgba(54, 162, 235, 1)",
-            borderColor: "rgba(54, 162, 235, 1)",
-            borderWidth: 1,
-            data: onlyCases,
-        });
-        casecharting.update();
-    });
-
-    DOM.button2.addEventListener("click", () => {
-        casecharting.data.datasets = [];
-        casecharting.type = "";
-        casecharting.config.type = "bar";
-        casecharting.data.datasets.push({
-            label: "Daily Cases",
-            data: dailyCases,
-            backgroundColor: "rgba(54, 162, 235, 0.4)",
-            pointBackgroundColor: "rgba(54, 162, 235, 1)",
-            borderColor: "rgba(54, 162, 235, 1)",
-            borderWidth: 1,
-        });
-
-        casecharting.update();
-    });
-};
