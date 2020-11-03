@@ -1,3 +1,34 @@
+.social__fixed {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 4rem;
+    padding-right: 7px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+
+    &-links:link,
+    &-links:visited {
+        i {
+            margin-top: 1rem;
+            color: white;
+            font-size: 2rem;
+            padding: 1rem;
+            fill: white;
+            transition: all 0.2s;
+        }
+        i:hover,
+        i:active {
+            background-color: rgba(rgb(255, 255, 255), 0.06);
+            transform: translateX(-4px);
+            border-right: 3px solid var(--danger);
+        }
+    }
+}
+
 .ct-socials {
     position: fixed;
     height: 100%;

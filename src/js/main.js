@@ -9,7 +9,6 @@ import * as mainDataView from "./views/mainDataView";
 import * as allCountriesView from "./views/allCountriesView";
 import * as globalChartView from "./views/globalChartView";
 import * as mapView from "./views/mapView";
-
 import { DOM, renderLoader, clearLoader } from "./views/base";
 
 //*************************************************************************************\\
@@ -113,14 +112,14 @@ const globalDataController = async () => {
     state.allCountries = new GlobalData();
 
     await state.allCountries.getResults();
-    renderLoader(DOM.tableMain);
     try {
+        renderLoader(DOM.tableMain);
         await state.today.todayResults();
 
         //- getting the data
         clearLoader();
         allCountriesView.renderAllData(state.today.data);
-        allCountriesView.renderResults(state.allCountries.data);
+
         $.countryData(state.allCountries.data);
     } catch (error) {
         console.log(error);
@@ -164,13 +163,10 @@ window.onload = () => {
     controlChart();
 };
 
-// DOM.aboutBtn.addEventListener("click", () => {
-//     if (DOM.aboutData.style.display === "none") {
-//         DOM.aboutData.style.display = "block";
-//     } else {
-//         $(DOM.aboutData).hide("slow");
-//         // DOM.aboutData.style.display = "none";
-//     }
+// NAVIGATION ON SCROLL
+// window.addEventListener("scroll", function () {
+//     var navHeader = document.querySelector(".freeze");
+//     navHeader.classList.toggle("sticky", window.scrollX > 0);
 // });
 
 // on document ready
@@ -178,5 +174,4 @@ $(DOM.aboutBtn).on("click", function () {
     $(".about-data").slideToggle("slow");
 });
 
-// window.onload = globalDataController;
-// window.addEventListener("load", controlMainData);
+//*************************************************************************************\\

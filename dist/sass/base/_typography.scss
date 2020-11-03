@@ -108,6 +108,8 @@
 .update {
     // margin-top: 2rem;
     // border-top: 0.2rem solid rgba(155, 154, 154, 0.103);
+    background-color: var(--dark-3);
+    padding-top: 7rem;
 
     &__text {
         margin-top: 1rem;
@@ -140,6 +142,8 @@
         }
 
         &--hr {
+            background-color: var(--dark-3);
+
             margin-top: 1.5rem;
             margin-bottom: 1rem;
             border: 0.1rem double rgb(212, 212, 212);
@@ -156,6 +160,8 @@
     border: 1px solid #dee2e6 !important;
     padding: 1rem 2rem 1rem 0 !important;
     border-radius: 0.25rem !important;
+    background-color: var(--dark-3);
+
     // height: 38.3rem;
     display: none;
     h4 {

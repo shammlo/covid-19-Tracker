@@ -9,6 +9,10 @@
         />
         <link rel="stylesheet" href="css/datatable.css" />
         <link rel="stylesheet" href="css/main.min.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        />
 
         <link rel="icon" href="img/virus-1.svg" type="img" />
         <title>COVID-19 Tracker</title>
@@ -21,6 +25,8 @@
             integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
             crossorigin="anonymous"
         ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
         <link
             href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css"
@@ -37,28 +43,28 @@
     <body>
         <!--* ---------- HEADER SECTION ----------*-->
 
-        <header class="header">
+        <header class="header" id="header">
             <div class="container">
                 <nav class="main__navigation">
                     <div class="logo">
                         <a href="index.html" class="logo__link">
                             <img class="logo__image" src="img/virus-1.svg" />
-                            Covid-19
+                            Covid-19 Tracker
                         </a>
                     </div>
-                    <div class="navigation">
+                    <div class="navigation d-none">
                         <ul class="navigation__list">
                             <li class="navigation__item">
-                                <a href="#" class="navigation__link"> Home </a>
+                                <a href="#" class="navigation__link">Home </a>
                             </li>
                             <li class="navigation__item">
-                                <a href="#" class="navigation__link"> About </a>
+                                <a href="#GlobalData" class="navigation__link">Global Data </a>
                             </li>
                             <li class="navigation__item">
-                                <a href="#" class="navigation__link"> Data </a>
+                                <a href="#CountryTable" class="navigation__link">Countries Data </a>
                             </li>
                             <li class="navigation__item">
-                                <a href="#" class="navigation__link"> Contact </a>
+                                <a href="#Charts" class="navigation__link">Charts </a>
                             </li>
                         </ul>
                     </div>
@@ -87,7 +93,7 @@
 
         <section class="map-section">
             <div class="container">
-                <div class="web-title margin-top-small">
+                <div class="web-title">
                     <div class="title">
                         <img class="title__image" src="img/coronavirus.svg" alt="Covid-19 image" />
                         <h1 class="heading-1">Covid-19 Tracker</h1>
@@ -153,7 +159,7 @@
 
         <!--* ----------- DATA SECTION -----------*-->
 
-        <section class="data-section">
+        <section class="data-section" id="GlobalData">
             <div class="container">
                 <div class="data">
                     <article class="data__top">
@@ -168,6 +174,7 @@
                                     class="heading-2 margin-top-small"
                                     id="totalCases"
                                     data-plugin="counterup"
+                                    data-toggle="counter-up"
                                 >
                                     0
                                 </h2>
@@ -198,6 +205,7 @@
                                     class="heading-2 heading-2__danger margin-top-small"
                                     id="totalDeath"
                                     data-plugin="counterup"
+                                    data-toggle="counter-up"
                                 >
                                     0
                                 </h2>
@@ -206,9 +214,8 @@
                                         ><span id="deadIncrease">0</span></span
                                     >
                                     <span class="info-text"
-                                        >from yesterday (<span id="deadYesterday" class="yel"
-                                            >0</span
-                                        >)</span
+                                        >from yesterday
+                                        <span id="deadYesterday" class="yel">0</span></span
                                     >
                                 </div>
                             </div>
@@ -229,6 +236,7 @@
                                     class="heading-2 heading-2__success margin-top-small"
                                     id="totalRecovered"
                                     data-plugin="counterup"
+                                    data-toggle="counter-up"
                                 >
                                     0
                                 </h2>
@@ -237,8 +245,8 @@
                                         ><span id="recIncrease">0</span></span
                                     >
                                     <span class="info-text"
-                                        >from yesterday (<span id="recYesterday" class="yel">0</span
-                                        >)</span
+                                        >from yesterday
+                                        <span id="recYesterday" class="yel">0</span></span
                                     >
                                 </div>
                             </div>
@@ -256,9 +264,10 @@
                                 </span>
                                 <h3 class="heading-3">Today's Cases</h3>
                                 <h2
-                                    class="heading-2 margin-top-small"
+                                    class="heading-2 margin-top-small counter"
                                     id="todayCases"
                                     data-plugin="counterup"
+                                    data-toggle="counter-up"
                                 >
                                     0
                                 </h2>
@@ -267,9 +276,8 @@
                                         ><span id="todayIncrease">0</span></span
                                     >
                                     <span class="info-text"
-                                        >from yesterday (<span id="todayYesterday" class="yel"
-                                            >0</span
-                                        >)</span
+                                        >from yesterday
+                                        <span id="todayYesterday" class="yel">0</span></span
                                     >
                                 </div>
                             </div>
@@ -286,6 +294,7 @@
                                     class="heading-2 heading-2__danger margin-top-small"
                                     id="todayDeaths"
                                     data-plugin="counterup"
+                                    data-toggle="counter-up"
                                 >
                                     0
                                 </h2>
@@ -294,9 +303,8 @@
                                         ><span id="deathIncrease">0</span></span
                                     >
                                     <span class="info-text"
-                                        >from yesterday (<span id="deathYesterday" class="yel"
-                                            >0</span
-                                        >)</span
+                                        >from yesterday
+                                        <span id="deathYesterday" class="yel">0</span></span
                                     >
                                 </div>
                             </div>
@@ -317,6 +325,7 @@
                                     class="heading-2 heading-2__success margin-top-small"
                                     id="todayRecovered"
                                     data-plugin="counterup"
+                                    data-toggle="counter-up"
                                 >
                                     0
                                 </h2>
@@ -325,9 +334,8 @@
                                         ><span id="recoverIncrease">0</span></span
                                     >
                                     <span class="info-text"
-                                        >from yesterday (<span id="recoverYesterday" class="yel"
-                                            >0</span
-                                        >)</span
+                                        >from yesterday
+                                        <span id="recoverYesterday" class="yel">0</span></span
                                     >
                                 </div>
                             </div>
@@ -339,10 +347,10 @@
 
         <!--* -------- GLOBAL DATA SECTION --------*-->
 
-        <section class="global-section">
+        <section class="global-section" id="CountryTable">
             <div class="container">
                 <div class="table_responsive">
-                    <h1 class="heading-1 margin-bottom-medium">🌎 Country Breakdown:</h1>
+                    <h1 class="heading-1" style="padding-bottom: 1.5rem">🌎 Country Breakdown:</h1>
 
                     <div class="main__table dataTables_wrapper">
                         <table
@@ -353,9 +361,11 @@
                         >
                             <thead class="table__header">
                                 <tr class="table__header--row">
-                                    <th class="table__header--items" style="width: 0.5rem">Rank</th>
+                                    <th class="table__header--items freeze" style="width: 0.5rem">
+                                        Rank
+                                    </th>
                                     <th
-                                        class="table__header--items"
+                                        class="table__header--items freeze"
                                         style="width: 25rem; text-align: left"
                                     >
                                         Country
@@ -390,7 +400,7 @@
         <!--* ----------- CHART SECTION -----------*-->
         <section class="chart-section">
             <div class="container">
-                <div class="chart-wrapper">
+                <div class="chart-wrapper" id="Charts">
                     <div class="filter">
                         <select
                             class="js-data-filter chart-filter"
@@ -427,7 +437,14 @@
             </div>
         </section>
 
-        <!--* ----------- FOOTER SECTION -----------*-->
+        <!--* -------- SOCIAL FIXED SECTION -------*-->
+        <div class="social__fixed">
+            <a class="social__fixed-links" href="#"><i class="fab fa-github-square"></i></a>
+            <a class="social__fixed-links" href="#"><i class="fab fa-facebook-square"></i></a>
+            <a class="social__fixed-links" href="#"><i class="fab fa-twitter-square"></i></a>
+        </div>
+
+        <!--* ---------- FOOTER SECTION ----------*-->
         <footer class="footer-section">
             <div class="container">
                 <div class="footer">
@@ -506,27 +523,42 @@
                     </div>
 
                     <!--- support -->
-                    <div class="support">
+                    <div class="contact">
                         <div class="about__text">
                             <h3 class="about__text-header">
-                                Support
-                                <img class="fot__img" src="img/data-driven.svg" alt="Resources" />
+                                Contact & Socials
+                                <img class="fot__img" src="img/message.svg" alt="Resources" />
                             </h3>
                         </div>
-                        <div class="support-text">
-                            <p>Created by Shammlo, all support appreciated.</p>
-                            <a href="#" type="button" class="btn-data btn-info"
+                        <div class="contact-text">
+                            <p class="contact-text--p">
+                                Developed by <a href="https://github.com/shammlo"> Shammlo</a>, all
+                                support appreciated.
+                            </p>
+                            <!-- <a href="#" type="button" class="btn-data btn-info"
                                 >disease.sh <img src="img/api.svg" alt="API"
-                            /></a>
-                            <!-- </div>
-                        <div class="contact"> -->
+                            /></a> -->
+                        </div>
+                        <div class="footer__socials">
+                            <a class="footer__socials-links" href="#"
+                                ><i class="fab fa-github-square"></i
+                            ></a>
+                            <a class="footer__socials-links" href="#"
+                                ><i class="fab fa-facebook-square"></i
+                            ></a>
+                            <a class="footer__socials-links" href="#"
+                                ><i class="fab fa-twitter-square"></i
+                            ></a>
+                            <a class="footer__socials-links" href="#"
+                                ><i class="fab fa-linkedin"></i
+                            ></a>
                         </div>
                     </div>
                 </div>
                 <div class="copyright">
                     <h6 class="heading-6 heading-6__dark">
-                        © Designed by <a href="https://github.com/shammlo"> Shammlo</a>. All Rights
-                        Reserved
+                        © Developed by <a href="https://github.com/shammlo"> Shammlo</a>. All Rights
+                        Reserved.
                     </h6>
                 </div>
             </div>
@@ -535,7 +567,8 @@
         <!-- <script src="cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> -->
         <script type="text/javascript" src="js/datatable.min.js"></script>
         <script type="text/javascript" src="js/geojson.min.js"></script>
-
+        <!--- Mobile Nab -->
+        <script type="text/javascript" src="js/mobile-nav.js"></script>
         <!-- <script type="text/javascript" src="js/addons/datatables.min.js"></script> -->
     </body>
 </html>

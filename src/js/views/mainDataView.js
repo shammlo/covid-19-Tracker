@@ -92,7 +92,7 @@ export const renderTotalDead = (dead, yesterday) => {
     //- Yesterday
     const yesterdayData = yesterdayCalc();
 
-    DOM.yesterdayDead.textContent = yesterdayData.FormattingNumber(yesterday);
+    DOM.yesterdayDead.textContent = "(" + yesterdayData.FormattingNumber(yesterday) + ")";
 
     const data = yesterdayData.yesterdayPercent(dead, yesterday);
 
@@ -117,7 +117,7 @@ export const renderTotalRecovered = (recovered, yesterday) => {
 
     //- Yesterday
     const yesterdayData = yesterdayCalc();
-    DOM.yesterdayRec.textContent = yesterdayData.FormattingNumber(yesterday);
+    DOM.yesterdayRec.textContent = "(" + yesterdayData.FormattingNumber(yesterday) + ")";
 
     const data = yesterdayData.yesterdayPercent(recovered, yesterday);
 
@@ -144,7 +144,7 @@ export const renderTodayCases = (cases, yesterday) => {
 
     //- Yesterday
     const yesterdayData = yesterdayCalc();
-    DOM.totalYesCases.textContent = yesterdayData.FormattingNumber(yesterday);
+    DOM.totalYesCases.textContent = "(" + yesterdayData.FormattingNumber(yesterday) + ")";
     const data = yesterdayData.yesterdayPercent(cases, yesterday);
 
     if (data < 0) {
@@ -171,7 +171,7 @@ export const renderTodayDeaths = (deaths, yesterday) => {
 
     //- Yesterday
     const yesterdayData = yesterdayCalc();
-    DOM.totalYesDead.textContent = yesterdayData.FormattingNumber(yesterday);
+    DOM.totalYesDead.textContent = "(" + yesterdayData.FormattingNumber(yesterday) + ")";
 
     const data = yesterdayData.yesterdayPercent(deaths, yesterday);
     if (data < 0) {
@@ -189,13 +189,13 @@ export const renderTodayDeaths = (deaths, yesterday) => {
 
 //* Today Recovered
 //- Rendering today's Recovered
-export const renderTodayRecovered = (recovered, yesterday) => {
-    const todayRecovered = recovered.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+export const renderTodayRecovered = async (recovered, yesterday) => {
+    const todayRecovered = await recovered.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     DOM.todayRecovered.textContent = "+ " + todayRecovered;
 
     //- Yesterday
     const yesterdayData = yesterdayCalc();
-    DOM.totalYesRec.textContent = yesterdayData.FormattingNumber(yesterday);
+    DOM.totalYesRec.textContent = "(" + yesterdayData.FormattingNumber(yesterday) + ")";
 
     const data = yesterdayData.yesterdayPercent(recovered, yesterday);
     if (data < 0) {

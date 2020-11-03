@@ -35,6 +35,7 @@
 .data-section {
     height: 43rem;
     max-width: 100%;
+    background-color: var(--dark-3);
     @media only screen and (max-width: $bp-1400) {
         min-height: 60rem;
     }
@@ -60,6 +61,7 @@
     // max-height: 75vh;
     width: 100%;
     height: 70rem;
+    background-color: var(--dark-3);
 }
 
 //* ---------------- CHART SECTION --------------- *\\
@@ -67,6 +69,7 @@
 .chart-section {
     padding-top: 5rem;
     min-height: 96rem;
+    background-color: var(--dark-3);
 }
 
 //* ---------------- FOOTER SECTION --------------- *\\

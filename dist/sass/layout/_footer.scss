@@ -5,16 +5,65 @@
     padding-top: 1rem;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    // justify-content: space-between;
+    @media only screen and (max-width: $bp-800) {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        // justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
 
     //-logo text
     .logo-text {
         width: 30rem;
         margin-right: 10rem;
 
+        @media only screen and (max-width: $bp-1400) {
+            margin-right: 5rem;
+            width: 28rem;
+        }
+
+        @media only screen and (max-width: $bp-1200) {
+            margin-right: 3rem;
+            width: 25rem;
+        }
+        @media only screen and (max-width: $bp-large) {
+            margin-right: 3rem;
+            width: 24rem;
+        }
+        @media only screen and (max-width: 56.25em) {
+            margin-right: 3rem;
+            padding-right: 2rem;
+            width: 23.5rem;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        @media only screen and (max-width: 50.9375em) {
+            margin-right: 2rem;
+            padding-right: 0.5rem;
+            width: 23.5rem;
+        }
+        @media only screen and (max-width: $bp-800) {
+            margin-right: 0;
+            margin-left: 1rem;
+            width: 65rem;
+            padding-bottom: 4rem;
+        }
+        @media only screen and (max-width: $bp-600) {
+            width: 55rem;
+        }
+        @media only screen and (max-width: $bp-500) {
+            width: 45rem;
+        }
+        @media only screen and (max-width: $bp-400) {
+            width: 35rem;
+        }
+
         .footer__logo {
             // display: inline-block;
             // padding: 1rem;
+
             padding-left: 0;
             border-bottom: 1px solid var(--color-grey-light-1);
             &-link:link,
@@ -28,6 +77,9 @@
                 display: flex;
                 align-items: center;
                 padding: 1rem 0rem;
+                @media only screen and (max-width: $bp-800) {
+                    display: block;
+                }
             }
 
             &-link:hover,
@@ -60,9 +112,45 @@
         padding: 1rem 0rem;
         margin-right: 7rem;
 
+        @media only screen and (max-width: $bp-1400) {
+            margin-right: 3rem;
+            width: 28rem;
+        }
+        @media only screen and (max-width: $bp-1200) {
+            margin-right: 3rem;
+            width: 25rem;
+        }
+        @media only screen and (max-width: $bp-large) {
+            margin-right: 1.5rem;
+            width: 24rem;
+        }
+        @media only screen and (max-width: $bp-800) {
+            width: 65rem;
+            margin-right: 0;
+            padding-bottom: 4rem;
+        }
+        @media only screen and (max-width: $bp-600) {
+            width: 55rem;
+        }
+        @media only screen and (max-width: $bp-500) {
+            width: 45rem;
+        }
+        @media only screen and (max-width: $bp-400) {
+            width: 35rem;
+        }
+
         .about__p {
-            margin-left: 1rem;
             text-align: justify;
+            @media only screen and (max-width: $bp-1200) {
+                text-align: start;
+            }
+            @media only screen and (max-width: $bp-800) {
+                text-align: justify;
+            }
+
+            .footer__text-p {
+                margin-left: 1rem;
+            }
             a:link,
             a:visited {
                 font-size: 1.6rem;
@@ -87,6 +175,10 @@
             padding: 0 0.75rem;
             display: flex;
             align-self: center;
+            @media only screen and (max-width: $bp-800) {
+                margin-right: auto;
+                margin-left: auto;
+            }
 
             img {
                 margin-left: 1rem;
@@ -104,16 +196,60 @@
         padding: 1rem 0rem;
         margin-right: 2rem;
 
+        @media only screen and (max-width: $bp-1400) {
+            // margin-right: 5rem;
+            width: 28rem;
+        }
+        @media only screen and (max-width: $bp-1200) {
+            width: 25rem;
+        }
+        @media only screen and (max-width: $bp-large) {
+            margin-right: 0;
+            width: 22rem;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        @media only screen and (max-width: 57.125em) {
+            width: 20rem;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        @media only screen and (max-width: $bp-800) {
+            width: 65rem;
+            padding-bottom: 4rem;
+        }
+        @media only screen and (max-width: $bp-600) {
+            width: 55rem;
+        }
+        @media only screen and (max-width: $bp-500) {
+            width: 45rem;
+        }
+        @media only screen and (max-width: $bp-400) {
+            width: 35rem;
+        }
+
         .link {
             margin-left: 1rem;
             color: var(--color-grey-light-1);
 
             &__list {
                 color: inherit;
+                @media only screen and (max-width: $bp-800) {
+                    display: flex;
+                }
+                @media only screen and (max-width: $bp-500) {
+                    display: block;
+                }
 
                 .list-item {
                     color: inherit;
                     padding: 0.5rem 0;
+                    @media only screen and (max-width: $bp-800) {
+                        padding: 0.5rem 1rem;
+                    }
+                    @media only screen and (max-width: $bp-500) {
+                        padding: 0.8rem 0.5rem;
+                    }
 
                     .list-link:link,
                     .list-link:visited {
@@ -125,6 +261,13 @@
                         transition: all 0.2s;
                         border: 2.5px solid transparent;
                         padding: 1rem 1rem;
+                        @media only screen and (max-width: $bp-800) {
+                            padding: 0.8rem 0.2rem;
+                            border-bottom: 1px solid var(--danger);
+                        }
+                        @media only screen and (max-width: $bp-500) {
+                            padding: 0.4rem 0.2rem;
+                        }
                     }
 
                     .list-link:hover,
@@ -143,13 +286,48 @@
 
     //----------------------------------------------------------------
 
-    .support {
+    .contact {
         color: var(--color-grey-light-1);
         width: 23rem;
         padding: 1rem 0rem;
 
+        @media only screen and (max-width: $bp-large) {
+            margin-right: 0;
+            width: 21rem;
+        }
+        @media only screen and (max-width: $bp-800) {
+            width: 65rem;
+        }
+        @media only screen and (max-width: $bp-600) {
+            width: 55rem;
+        }
+        @media only screen and (max-width: $bp-500) {
+            width: 45rem;
+        }
+        @media only screen and (max-width: $bp-400) {
+            width: 35rem;
+        }
+
         &-text {
             padding-left: 1rem;
+
+            &--p {
+                color: var(--color-grey-light-1);
+                @media only screen and (max-width: $bp-800) {
+                    margin-left: 1rem;
+                }
+
+                a:link,
+                a:visited {
+                    color: inherit;
+                    font-weight: 700;
+                    transition: all 0.2s;
+                }
+                a:hover,
+                a:active {
+                    color: var(--yellow);
+                }
+            }
         }
 
         .btn-data,
@@ -165,6 +343,31 @@
                 margin-left: 1rem;
                 width: 3rem;
                 height: 3rem;
+            }
+        }
+
+        .footer__socials {
+            padding-left: 0.5rem;
+
+            &-links:link,
+            &-links:visited {
+                i {
+                    margin-top: 1rem;
+                    color: white;
+                    font-size: 3rem;
+                    padding: 1rem;
+                    fill: white;
+                    transition: all 0.2s;
+                    @media only screen and (max-width: $bp-800) {
+                        margin-left: 1rem;
+                    }
+                }
+                i:hover,
+                i:active {
+                    background-color: rgba(rgb(255, 255, 255), 0.06);
+                    transform: translateY(-3px);
+                    border-bottom: 3px solid var(--danger);
+                }
             }
         }
     }
@@ -195,12 +398,20 @@
 .about__text {
     padding-top: 0.5rem;
     border-left: 1px solid var(--danger);
+    display: block;
 
+    @media only screen and (max-width: $bp-800) {
+        border-left: 2px solid var(--danger);
+    }
     margin-bottom: 0.5rem;
     &-header {
         display: flex;
         align-items: center;
         margin-left: 1rem;
+        @media only screen and (max-width: $bp-800) {
+            margin-left: 0;
+            justify-content: center;
+        }
 
         .fot__img {
             width: 3.3rem;

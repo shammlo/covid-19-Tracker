@@ -1,5 +1,7 @@
 .main__navigation {
     width: 100%;
+    transition: all 0.1s;
+
     .navigation {
         &__list {
             list-style: none;
@@ -32,6 +34,10 @@
             background-color: rgba(rgb(255, 255, 255), 0.06);
             transform: translateY(-3px);
             border-bottom: 3px solid var(--danger);
+        }
+
+        @media only screen and (max-width: $bp-999) {
+            display: none;
         }
     }
     .logo {
@@ -68,4 +74,17 @@
             margin-right: 0.6rem;
         }
     }
+    @media only screen and (max-width: $bp-999) {
+        .d-none {
+            display: none !important;
+        }
+    }
+}
+
+.main__navigation.sticky {
+    // position: fixed;
+
+    padding: 4rem;
+    transition: 0.3s;
+    background-color: #1a1d20;
 }
