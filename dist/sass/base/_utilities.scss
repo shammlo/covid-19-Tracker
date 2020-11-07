@@ -44,3 +44,23 @@
     margin-left: 1.5rem;
     margin-right: 1.5rem;
 }
+
+.pad-top-small {
+    padding-top: 1rem !important;
+}
+
+.pad-bot-small {
+    padding-bottom: 1rem !important;
+}
+
+.separator {
+    padding-top: 2rem;
+    text-align: center;
+    width: 75%;
+    margin: 0 auto !important;
+    .line-separator {
+        display: inline-block;
+        width: 100%;
+        border-top: 0.1px solid rgba(255, 255, 255, 0.1);
+    }
+}

@@ -38,8 +38,6 @@ export const clearSearch = () => {
 $(".js-data-filter").on("select2:select", function (data) {
     $("#flag").remove();
 
-    $("#country-cases-daily").remove();
-
     $("#country-cases").remove();
 
     var imageUrl = data.params.data.flag;
@@ -78,7 +76,7 @@ $(".js-data-filter").on("select2:select", function (data) {
 
             // casecharting.destroy();
             $("#cases").remove();
-            $(".chartCase").prepend(
+            $("#lineChart").prepend(
                 '<canvas id="country-cases" style="display: block; width: 90rem; height: 45rem"><canvas>'
             );
             const result = await data;
@@ -240,3 +238,173 @@ $(".js-data-filter").on("select2:select", function (data) {
         },
     });
 });
+
+//----------------------------------------------------------------
+// $(".pieChart-filler").on("select2:select", function (data) {
+//     $("#flag2").remove();
+
+//     $("#country-cases-daily").remove();
+
+//     $("#country-cases").remove();
+
+//     var imageUrl = data.params.data.flag;
+//     $(".select2-selection__rendered")
+//         .eq(1)
+//         .prepend("<img class='img-flag' src=" + imageUrl + ">");
+
+//     // if (typeof imageUrl === "undefined") {
+//     //     return $(".text-big")
+//     //         .first()
+//     //         .prepend("<img  id='flag' class='img-flag__main' src='img/worldwide-2.svg'>");
+//     // }
+//     $(".text-big")
+//         .eq(1)
+//         .prepend("<img  id='flag2' class='img-flag__main' src=" + imageUrl + ">");
+//     const query = data.params.data.country;
+//     //var url = "https://disease.sh/v3/covid-19/historical/" + query + "?lastdays=all";
+//     $.ajax({
+//         url:
+//             "https://disease.sh/v3/covid-19/countries/" +
+//             query +
+//             "?yesterday=true&twoDaysAgo=false",
+//         type: "GET",
+//         dataType: "json",
+//         // data: { url: url },
+//         "X-Requested-With": "XMLHttpRequest",
+//         success: async (data) => {
+//             // chart.dispose();
+
+//             const cases = await data.cases;
+//             const active = await data.active;
+//             const tests = await data.tests;
+//             const critical = await data.critical;
+//             const recovered = await data.recovered;
+//             const deaths = await data.deaths;
+
+//             console.log(data);
+
+//             //----------------------------------------------------------------
+
+//             //* Chart
+//             //- chart section
+
+//             // $("#chartdiv").remove();
+//             // $("#pieCharting").prepend(
+//             //     '<div id="chartdiv" style="background-color: var(--dark-4)"></div>'
+//             // );
+//             am4core.ready(function () {
+//                 // Themes begin
+//                 am4core.useTheme(am4themes_dark);
+//                 am4core.useTheme(am4themes_animated);
+//                 // Themes end
+
+//                 // Create chart instance
+//                 var chart2 = am4core.create("chartdiv", am4charts.PieChart);
+//                 chart2.background.fill = "rgb(36, 35, 35)";
+
+//                 // Add data
+//                 chart2.data = [
+//                     {
+//                         title: "Cases",
+//                         value: cases,
+//                         color: am4core.color("#67B7DC"),
+//                     },
+//                     {
+//                         title: "Active",
+//                         value: active,
+//                         color: am4core.color("#6794DC"),
+//                     },
+//                     {
+//                         title: "Recovered",
+//                         value: recovered,
+//                         color: am4core.color("#4CB27F"),
+//                     },
+//                     {
+//                         title: "Deaths",
+//                         value: deaths,
+//                         color: am4core.color("#902C2D"),
+//                     },
+//                 ];
+
+//                 // Add and configure Series
+//                 var pieSeries = chart2.series.push(new am4charts.PieSeries());
+//                 pieSeries.dataFields.value = "value";
+//                 pieSeries.dataFields.category = "title";
+//                 pieSeries.labels.template.text = "{category}: {value}";
+//                 pieSeries.slices.template.tooltipText = "{category}: {value}";
+//                 pieSeries.labels.template.maxWidth = 110;
+//                 pieSeries.labels.template.wrap = true;
+//                 chart2.responsive.enabled = true;
+//                 chart2.radius = am4core.percent(75);
+//                 chart2.responsive.rules.push({
+//                     relevant: function (target) {
+//                         if (target.pixelWidth <= 500) {
+//                             return true;
+//                         }
+//                         return false;
+//                     },
+//                     state: function (target, stateId) {
+//                         if (
+//                             target instanceof am4charts.Chart ||
+//                             target instanceof am4charts.PieSeries ||
+//                             target instanceof am4charts.Legend
+//                         ) {
+//                             let state = target.states.create(stateId);
+//                             state.properties.radius = am4core.percent(80);
+//                             state.properties.alignLabels = false;
+
+//                             return state;
+//                         }
+//                         return null;
+//                     },
+//                 });
+//                 chart2.responsive.rules.push({
+//                     relevant: function (target) {
+//                         if (target.pixelWidth <= 375) {
+//                             return true;
+//                         }
+//                         return false;
+//                     },
+//                     state: function (target, stateId) {
+//                         if (
+//                             target instanceof am4charts.Chart ||
+//                             target instanceof am4charts.PieSeries
+//                         ) {
+//                             let state = target.states.create(stateId);
+//                             state.properties.radius = am4core.percent(70);
+//                             return state;
+//                         }
+//                         if (target instanceof am4charts.Legend) {
+//                             let state = target.states.create(stateId);
+//                             state.properties.maxWidth = 200;
+//                             return state;
+//                         }
+//                         return null;
+//                     },
+//                 });
+//                 // pieSeries.labels.template.fontSize = 11;
+//                 pieSeries.alignLabels = true;
+
+//                 pieSeries.slices.template.stroke = am4core.color("#fff");
+//                 pieSeries.slices.template.strokeOpacity = 1;
+//                 pieSeries.slices.template.propertyFields.fill = "color";
+//                 chart2.legend = new am4charts.Legend();
+
+//                 // This creates initial animation
+//                 pieSeries.hiddenState.properties.opacity = 1;
+//                 pieSeries.hiddenState.properties.endAngle = -90;
+//                 pieSeries.hiddenState.properties.startAngle = -90;
+
+//                 chart2.hiddenState.properties.radius = am4core.percent(0);
+//                 chart2.hiddenState.transitionDuration = 500;
+
+//                 // $(".pieChart-filler").on("select2:select", function (data) {
+//                 //     chart2.dispose();
+//                 // });
+//             }); // end am4core.ready()
+//         },
+//         error: (error) => {
+//             console.log(error);
+//         },
+//     });
+// });

@@ -6,11 +6,6 @@
     -webkit-overflow-scrolling: touch;
     position: relative;
 
-    // @media only screen and (max-width: $bp-large) {
-    //     overflow-x: scroll;
-    //     overflow-y: hidden;
-    //     white-space: nowrap;
-    // }
     @media only screen and (max-width: $bp-450) {
         display: inline;
         text-align: center;
@@ -278,6 +273,9 @@
         margin-left: 0.3rem;
         width: 25rem;
         margin-left: 1rem !important;
+        color: var(--color-white) !important;
+    }
+    .dataTables_filter input::placeholder {
         color: var(--color-white) !important;
     }
     label {

@@ -39,6 +39,13 @@
         <!--- Mapbox map -->
         <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
         <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+
+        <script
+            type="text/javascript"
+            src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js
+"
+        ></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     </head>
     <body>
         <!--* ---------- HEADER SECTION ----------*-->
@@ -104,9 +111,9 @@
                 </div>
 
                 <!--* Map -->
-                <div class="map-container">
-                    <!-- <div id="map" class="map" style="width: 100%; height: 48rem"></div> -->
-                </div>
+                <!-- <div class="map-container">
+                    <div id="map" class="map" style="width: 100%; height: 48rem"></div>
+                </div> -->
                 <!-- <div class="custom-clustericon custom-clustericon-2" title="" style="z-index: 11; top: -31px; left: -33px; width: 40px; height: 40px; cursor: pointer; position: absolute; user-select: none;">
                 <div aria-label="" style="position:absolute;text-align:center;width:40px" tabindex="0">
                 <span aria-hidden="true">38</span>
@@ -176,15 +183,15 @@
                                     data-plugin="counterup"
                                     data-toggle="counter-up"
                                 >
-                                    0
+                                    Loading
                                 </h2>
                                 <div class="card__box--info">
                                     <span class="info-increase">
-                                        <span id="caseIncrease">0</span></span
+                                        <span id="caseIncrease">Loading</span></span
                                     >
                                     <span class="info-text"
                                         >from yesterday
-                                        <span id="totalYesterday" class="yel">0</span></span
+                                        <span id="totalYesterday" class="yel">Loading</span></span
                                     >
                                 </div>
                             </div>
@@ -207,15 +214,15 @@
                                     data-plugin="counterup"
                                     data-toggle="counter-up"
                                 >
-                                    0
+                                    Loading
                                 </h2>
                                 <div class="card__box--info">
                                     <span class="info-increase"
-                                        ><span id="deadIncrease">0</span></span
+                                        ><span id="deadIncrease">Loading</span></span
                                     >
                                     <span class="info-text"
                                         >from yesterday
-                                        <span id="deadYesterday" class="yel">0</span></span
+                                        <span id="deadYesterday" class="yel">Loading</span></span
                                     >
                                 </div>
                             </div>
@@ -238,15 +245,15 @@
                                     data-plugin="counterup"
                                     data-toggle="counter-up"
                                 >
-                                    0
+                                    Loading
                                 </h2>
                                 <div class="card__box--info">
                                     <span class="info-increase"
-                                        ><span id="recIncrease">0</span></span
+                                        ><span id="recIncrease">Loading</span></span
                                     >
                                     <span class="info-text"
                                         >from yesterday
-                                        <span id="recYesterday" class="yel">0</span></span
+                                        <span id="recYesterday" class="yel">Loading</span></span
                                     >
                                 </div>
                             </div>
@@ -269,15 +276,15 @@
                                     data-plugin="counterup"
                                     data-toggle="counter-up"
                                 >
-                                    0
+                                    Loading
                                 </h2>
                                 <div class="card__box--info">
                                     <span class="info-increase"
-                                        ><span id="todayIncrease">0</span></span
+                                        ><span id="todayIncrease">Loading</span></span
                                     >
                                     <span class="info-text"
                                         >from yesterday
-                                        <span id="todayYesterday" class="yel">0</span></span
+                                        <span id="todayYesterday" class="yel">Loading</span></span
                                     >
                                 </div>
                             </div>
@@ -296,15 +303,15 @@
                                     data-plugin="counterup"
                                     data-toggle="counter-up"
                                 >
-                                    0
+                                    Loading
                                 </h2>
                                 <div class="card__box--info">
                                     <span class="info-increase"
-                                        ><span id="deathIncrease">0</span></span
+                                        ><span id="deathIncrease">Loading</span></span
                                     >
                                     <span class="info-text"
                                         >from yesterday
-                                        <span id="deathYesterday" class="yel">0</span></span
+                                        <span id="deathYesterday" class="yel">Loading</span></span
                                     >
                                 </div>
                             </div>
@@ -327,15 +334,15 @@
                                     data-plugin="counterup"
                                     data-toggle="counter-up"
                                 >
-                                    0
+                                    Loading
                                 </h2>
                                 <div class="card__box--info">
                                     <span class="info-increase" id="success-rate"
-                                        ><span id="recoverIncrease">0</span></span
+                                        ><span id="recoverIncrease">Loading</span></span
                                     >
                                     <span class="info-text"
                                         >from yesterday
-                                        <span id="recoverYesterday" class="yel">0</span></span
+                                        <span id="recoverYesterday" class="yel">Loading</span></span
                                     >
                                 </div>
                             </div>
@@ -410,27 +417,76 @@
                         </select>
                     </div>
                     <div class="chart__title">
-                        <h1 id="ConImg" class="heading-1 text-big">Cases</h1>
+                        <h1 id="ConImg" class="heading-1 text-big">Total Data</h1>
                         <div class="title__text">
-                            <h2 class="title__text--header heading-2__light">Total Cases</h2>
-                            <p class="title__text--text">(Linear scale)</p>
                             <h2 class="title__text--header heading-2__light">
-                                &nbsp;& Daily New Cases
+                                Total Cases, Deaths, Recovered
                             </h2>
-                            <p class="title__text--text">per day</p>
+                            <p class="title__text--text">(Linear scale)</p>
                         </div>
                     </div>
 
                     <div id="casesContainer" class="chart-container">
-                        <div class="chartCase">
+                        <div id="lineChart" class="chartCase">
                             <canvas
                                 id="cases"
+                                width="500"
+                                height="250"
                                 style="display: block; width: 90rem; height: 45rem"
                             ></canvas>
                         </div>
                         <div class="chart_buttons">
                             <button id="button1" class="chart-button">Total Cases Chart</button>
                             <button id="button2" class="chart-button">Daily Cases Chart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--- pie chart -->
+        <section class="chart-section">
+            <div class="container">
+                <div class="chart-wrapper" id="Charts">
+                    <div class="filter">
+                        <select
+                            class="pieChart-filler chart-filter"
+                            style="width: 25rem; float: right"
+                        >
+                            <option value="3620194" selected="selected">Country Search</option>
+                        </select>
+                    </div>
+                    <div class="chart__title">
+                        <h1 id="ConImg" class="heading-1 text-big">Total Data</h1>
+                        <div class="title__text">
+                            <h2 class="title__text--header heading-2__light">
+                                Total Cases, Deaths, Recovered
+                            </h2>
+                            <p class="title__text--text">(Pie Chart)</p>
+                        </div>
+                    </div>
+
+                    <div id="casesContainer" class="chart-container">
+                        <div id="pieCharting" class="chartCase">
+                            <div id="chartdiv" style="background-color: var(--dark-4)"></div>
+                        </div>
+                    </div>
+                    <div class="separator">
+                        <span class="line-separator"></span>
+                    </div>
+                    <div class="chart__title pad-top-small">
+                        <h1 id="ConImg" class="heading-1 text-big">Today's Data</h1>
+                        <div class="title__text">
+                            <h2 class="title__text--header heading-2__light">
+                                Total Cases, Deaths, Recovered
+                            </h2>
+                            <p class="title__text--text">(Pie Chart)</p>
+                        </div>
+                    </div>
+
+                    <div id="casesContainer" class="chart-container pad-bot-small">
+                        <div id="pieCharting" class="chartCase">
+                            <div id="chartdiv2" style="background-color: var(--dark-4)"></div>
                         </div>
                     </div>
                 </div>
@@ -564,11 +620,13 @@
             </div>
         </footer>
 
-        <!-- <script src="cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> -->
         <script type="text/javascript" src="js/datatable.min.js"></script>
         <script type="text/javascript" src="js/geojson.min.js"></script>
+        <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+        <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+        <script src="https://cdn.amcharts.com/lib/4/themes/dark.js"></script>
+        <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
         <!--- Mobile Nab -->
         <script type="text/javascript" src="js/mobile-nav.js"></script>
-        <!-- <script type="text/javascript" src="js/addons/datatables.min.js"></script> -->
     </body>
 </html>

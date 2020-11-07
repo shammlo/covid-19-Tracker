@@ -4,7 +4,7 @@ import Search from "./model/Search";
 import MainData from "./model/MainData";
 import GlobalData from "./model/AllCountries";
 import Charts from "./model/Charts";
-import * as searchView from "./views/countryChartView";
+import * as searchView from "./views/lineChartView";
 import * as mainDataView from "./views/mainDataView";
 import * as allCountriesView from "./views/allCountriesView";
 import * as globalChartView from "./views/globalChartView";
@@ -64,6 +64,10 @@ const controlMainData = async () => {
         try {
             await state.today.todayResults();
             await state.yesterday.yesterdayResults();
+
+            //- Chart data
+            globalChartView.globalPieChart(state.today.data);
+
             //* Total Cases
             //- Rendering total cases
             mainDataView.renderTotalCases(state.today.totalCases, state.yesterday.yesterdayCases);
