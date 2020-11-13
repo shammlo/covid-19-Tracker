@@ -31,6 +31,7 @@
 .map-section {
     min-height: calc(30vh - 6rem);
     background-color: var(--dark-3);
+    padding-top: 6rem;
 }
 .data-section {
     height: 43rem;
@@ -57,11 +58,12 @@
 }
 
 //* ---------------- TABLE SECTION --------------- *\\
-.global-section {
+.table-section {
     // max-height: 75vh;
     width: 100%;
     min-height: 60rem;
     background-color: var(--dark-3);
+    padding-top: 2rem;
 }
 
 //* ---------------- CHART SECTION --------------- *\\

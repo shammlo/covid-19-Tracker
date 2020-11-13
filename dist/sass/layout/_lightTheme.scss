@@ -1,0 +1,295 @@
+.theme-container {
+    float: right;
+    .theme-icon {
+        height: 24px;
+        filter: invert(1);
+        display: inline-flex;
+        margin-right: 1rem;
+        fill: white;
+    }
+}
+.theme-switch {
+    color: black;
+    width: 60px;
+    height: 30px;
+    background: rgb(41, 40, 40);
+    border-radius: 50px;
+    position: relative;
+    border: 4px solid rgb(41, 40, 40);
+    display: inline-flex;
+    cursor: pointer;
+    position: fixed;
+
+    .switch {
+        background: white;
+        width: 16px;
+        height: 16px;
+        background: white;
+        border-radius: 100%;
+        position: absolute;
+        top: 3px;
+        left: 4px;
+        transition: 0.5s all ease;
+    }
+}
+
+.light-theme {
+    .theme-switch .switch {
+        transform: translateX(28px);
+        background: white;
+    }
+    .theme-icon {
+        filter: invert(0);
+    }
+}
+
+//- Body theme
+.light-theme {
+    color: var(--color-black);
+    background-color: var(--color-grey-light-1) !important;
+}
+
+.light-theme .map-section {
+    background-color: var(--color-grey-light-1) !important;
+}
+
+.light-theme {
+    color: var(--color-black);
+    background-color: var(--color-grey-light-1) !important;
+
+    //- Map section
+    .title {
+        color: inherit;
+        background-color: inherit;
+        h1 {
+            color: inherit;
+            font-weight: 700;
+        }
+    }
+    .web-title {
+        .heading-4__dark {
+            color: rgb(128, 127, 127) !important;
+        }
+    }
+    .separator {
+        .line-separator {
+            border-top: 0.1px solid rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    .update {
+        background-color: inherit;
+        &__text {
+            p {
+                color: inherit;
+            }
+            #timestamp {
+                color: rgb(66, 66, 66) !important;
+                #updatedTime {
+                    color: #ffbf00;
+                    font-weight: 700;
+                    box-shadow: 0 0 35px 0 rgba(255, 208, 0, 0.18);
+                    border-bottom: 0.2px solid #ffbf00;
+                }
+            }
+
+            &--hr {
+                background-color: var(--color-black);
+            }
+        }
+    }
+
+    .about-data {
+        color: var(--color-black);
+        background-color: inherit;
+        border: 1px solid rgb(71, 71, 71) !important;
+        .heading-4 {
+            color: var(--color-black) !important;
+        }
+        &-text {
+            color: var(--color-black) !important;
+        }
+        &-p {
+            color: rgb(51, 51, 51) !important;
+        }
+    }
+
+    //----------------------------------------------------------------
+    //- Data section
+    .data-section {
+        background-color: inherit;
+
+        .data {
+            color: var(--color-black);
+        }
+        .card__box {
+            background-color: #fff;
+            border: 0.3rem solid var(--color-white);
+            box-shadow: 0 0 35px 0 rgba(59, 62, 66, 0.18);
+
+            .heading-3 {
+                color: rgb(92, 92, 92) !important;
+                font-weight: 700;
+            }
+            &--info {
+                .info-text {
+                    color: rgb(128, 127, 127) !important;
+
+                    .yel {
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+    }
+
+    //----------------------------------------------------------------
+    //- Table section
+    .table-section {
+        background-color: inherit;
+        color: var(--color-black);
+
+        .table_responsive {
+            .heading-1 {
+                color: inherit !important;
+            }
+        }
+        .dataTables_wrapper {
+            color: var(--color-black);
+
+            .dataTables_filter {
+                label {
+                    color: var(--color-black);
+                }
+                .input {
+                    color: var(--color-black) !important;
+                }
+            }
+            .dataTables_filter input::placeholder {
+                color: var(--color-black) !important;
+            }
+
+            .dataTables_filter {
+                label {
+                    color: var(--color-black);
+                }
+                input {
+                    color: var(--color-black) !important;
+                }
+            }
+            .dataTables_filter input {
+                color: var(--color-black) !important;
+            }
+            .dataTables_info {
+                color: var(--color-black) !important;
+            }
+
+            .dataTables_paginate .paginate_button {
+                color: var(--color-black) !important;
+                border: 0.5px solid rgba(0, 0, 0, 0.3) !important;
+
+                background-color: var(--color-grey-light-1) !important;
+                border-radius: 0 !important;
+            }
+            .dataTables_paginate .ellipsis {
+                color: var(--color-black) !important;
+                border: 0.5px solid rgba(0, 0, 0, 0.3);
+                border-radius: 0 !important;
+                background-color: var(--color-grey-light-1) !important;
+            }
+        }
+
+        .main__table .table__main {
+            border: var(--border-primary);
+            color: var(--color-black);
+        }
+
+        .table__main {
+            background-color: inherit;
+            .table__header {
+                color: var(--color-black);
+                .table__header--row {
+                    border-bottom: var(--color-grey-light-2) !important;
+                }
+            }
+
+            .table__body {
+                &--row {
+                    color: var(--color-black) !important;
+                }
+
+                &--row:nth-of-type(odd) {
+                    background-color: #e2e2e2;
+                }
+                &--row:nth-of-type(even) {
+                    background-color: var(--color-grey-light-1);
+                }
+            }
+        }
+
+        table.dataTable thead th,
+        table.dataTable thead td {
+            border-bottom: 1px solid #ffffff;
+        }
+        .main__table .table__header--row {
+            border-bottom: var(--color-grey-light-2) !important;
+        }
+        .main__table .table__body--row td:not(:first-child) {
+            border-top: 0.05rem solid rgb(161, 161, 161);
+        }
+        .main__table .table__body--row td {
+            border-top: 0.05rem solid rgb(161, 161, 161);
+        }
+        .main__table .table__main th:not(:last-child),
+        .main__table .table__main td:not(:last-child) {
+            border-right: 0.05rem solid rgb(161, 161, 161);
+        }
+
+        .dataTables_wrapper .dataTables_length,
+        .dataTables_wrapper .dataTables_filter,
+        .dataTables_wrapper .dataTables_info,
+        .dataTables_wrapper .dataTables_processing,
+        .dataTables_wrapper .dataTables_paginate {
+            color: var(--color-black) !important;
+        }
+    }
+
+    //----------------------------------------------------------------
+    //- Chart section
+    .chart-section {
+        background-color: inherit;
+        color: var(--color-black);
+
+        .chart-wrapper {
+            background-color: white;
+
+            .chart__title {
+                .heading-1 {
+                    color: var(--color-black) !important;
+                }
+
+                .title__text {
+                    &--header {
+                        color: rgb(51, 51, 51) !important;
+                    }
+                }
+            }
+
+            .chart-container {
+                .chartCase {
+                    #chartdiv,
+                    #chartdiv2 {
+                        background-color: white !important;
+
+                        tspan {
+                            color: var(--color-black) !important;
+                        }
+                    }
+                }
+                #pieCharting {
+                    background-color: white !important;
+                }
+            }
+        }
+    }
+}

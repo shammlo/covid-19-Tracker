@@ -167,12 +167,6 @@ window.onload = () => {
     controlChart();
 };
 
-// NAVIGATION ON SCROLL
-// window.addEventListener("scroll", function () {
-//     var navHeader = document.querySelector(".freeze");
-//     navHeader.classList.toggle("sticky", window.scrollX > 0);
-// });
-
 // on document ready
 $(DOM.aboutBtn).on("click", function () {
     $(".about-data").slideToggle("slow");

@@ -40,6 +40,13 @@
         <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
         <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
 
+        <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css"
+            type="text/css"
+        />
+
         <script
             type="text/javascript"
             src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js
@@ -79,25 +86,6 @@
             </div>
         </header>
 
-        <!--- Tests  -->
-        <!--* ---- MAP & UPDATED TIME SECTION ----*-->
-        <!-- <div class="flexbox">
-            <div id="chartdiv"></div>
-            <div id="list">
-                <table id="areas" class="compact hover order-column row-border">
-                    <thead>
-                        <tr>
-                            <th>Country/State</th>
-                            <th>Confirmed</th>
-                            <th>Deaths</th>
-                            <th>Recovered</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-        </div> -->
-
         <section class="map-section">
             <div class="container">
                 <div class="web-title">
@@ -108,18 +96,43 @@
                     <h5 class="heading-5 heading-4__dark">
                         Track the spread of the Coronavirus Covid-19 outbreak.
                     </h5>
+                    <div class="theme-container">
+                        <img class="theme-icon" src="img/moon.svg" />
+                        <div class="theme-switch">
+                            <div class="switch"></div>
+                        </div>
+                    </div>
                 </div>
 
                 <!--* Map -->
-                <!-- <div class="map-container">
-                    <div id="map" class="map" style="width: 100%; height: 48rem"></div>
-                </div> -->
+                <div class="map-container" style="position: relative">
+                    <!-- <div
+                        id="map"
+                        class="map"
+                        style="width: 100%; height: 48rem; position: relative"
+                    ></div> -->
+                    <!-- <div class="map-overlay" id="legend"></div> -->
+
+                    <!-- <div id="state-legend" class="legend">
+                        <h4>Total Cases</h4>
+                        <div><span style="background-color: #fc3f41"></span>more than 5M</div>
+                        <div><span style="background-color: #fc9c19"></span>Between 1M to 5M</div>
+                        <div><span style="background-color: #fed976"></span>Between 500K to 1M</div>
+                        <div>
+                            <span style="background-color: #51bbd6"></span>Between 100K to 500K
+                        </div>
+                        <div><span style="background-color: #52e374"></span>Less than 100K</div>
+                    </div> -->
+                </div>
+
                 <!-- <div class="custom-clustericon custom-clustericon-2" title="" style="z-index: 11; top: -31px; left: -33px; width: 40px; height: 40px; cursor: pointer; position: absolute; user-select: none;">
                 <div aria-label="" style="position:absolute;text-align:center;width:40px" tabindex="0">
                 <span aria-hidden="true">38</span>
                 </div>
                 </div> -->
-
+                <div class="separator">
+                    <span class="line-separator"></span>
+                </div>
                 <div class="update" id="updated">
                     <div class="update__text">
                         <p class="update__text--p margin-top-small">LATEST DATA: World wide</p>
@@ -354,7 +367,7 @@
 
         <!--* -------- GLOBAL DATA SECTION --------*-->
 
-        <section class="global-section" id="CountryTable">
+        <section class="table-section" id="CountryTable">
             <div class="container">
                 <div class="table_responsive">
                     <h1 class="heading-1" style="padding-bottom: 1.5rem">🌎 Country Breakdown:</h1>
@@ -413,7 +426,8 @@
                             class="js-data-filter chart-filter"
                             style="width: 25rem; float: right"
                         >
-                            <option value="3620194" selected="selected">Country Search</option>
+                            <option></option>
+                            <option id="global">Global</option>
                         </select>
                     </div>
                     <div class="chart__title">
@@ -428,26 +442,24 @@
 
                     <div id="casesContainer" class="chart-container">
                         <div id="lineChart" class="chartCase">
+                            <div id="lineChart"></div>
+
                             <canvas
                                 id="cases"
-                                width="500"
-                                height="250"
+                                width="700"
+                                height="350"
                                 style="display: block; width: 90rem; height: 45rem"
                             ></canvas>
                         </div>
-                        <div class="chart_buttons">
+                        <!-- <div class="chart_buttons">
                             <button id="button1" class="chart-button">Total Cases Chart</button>
                             <button id="button2" class="chart-button">Daily Cases Chart</button>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!--- pie chart -->
-        <section class="chart-section">
-            <div class="container">
-                <div class="chart-wrapper" id="Charts">
+                <!-------------------------------------------- -->
+                <!--- pie chart -->
+                <div class="chart-wrapper margin-top-large" id="Charts">
                     <div class="filter">
                         <select
                             class="pieChart-filler chart-filter"
@@ -492,6 +504,10 @@
                 </div>
             </div>
         </section>
+
+        <!-- <section class="chart-section">
+            <div class="container"></div>
+        </section> -->
 
         <!--* -------- SOCIAL FIXED SECTION -------*-->
         <div class="social__fixed">
@@ -628,5 +644,10 @@
         <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
         <!--- Mobile Nab -->
         <script type="text/javascript" src="js/mobile-nav.js"></script>
+        <script>
+            $(".theme-switch").on("click", () => {
+                $("body").toggleClass("light-theme");
+            });
+        </script>
     </body>
 </html>

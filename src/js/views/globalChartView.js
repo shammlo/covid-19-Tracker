@@ -22,12 +22,23 @@ export const allCountrySearch = (data) => {
         templateResult: formatCountry,
         placeholder: "Country Search",
         allowClear: true,
+        tags: true,
     });
+
+    // $(".js-data-filter")
+    //     .select2()
+    //     .on("select2:open", () => {
+    //         $(".select2-results").append(
+    //             '<span><img src="img/worldwide-2.svg" class="img-flag" /> Global</span>'
+    //         );
+    //     });
+
     $(".pieChart-filler").select2({
         data: result,
         templateResult: formatCountry,
         placeholder: "Country Search",
         allowClear: true,
+        tags: true,
     });
 };
 
@@ -74,9 +85,15 @@ const newFromCumulative = (data) => {
 //- Render Cases Chart
 export const renderCharts = async (onlyDate, onlyCases, onlyDeaths, onlyRecovered) => {
     //- Rendering Cases Chart
-    Chart.defaults.global.defaultFontColor = "#fff";
 
+    Chart.defaults.global.defaultFontColor = "#737373";
     let dailyCases = newFromCumulative(onlyCases);
+    // $(".theme-switch").on("click", () => {
+    //     if ($("body").hasClass("light-theme")) {
+    //     } else {
+    //         Chart.defaults.global.defaultFontColor = "#fff";
+    //     }
+    // });
 
     //var ctx = document.getElementById("cases").getContext("2d");
 
@@ -118,13 +135,6 @@ export const renderCharts = async (onlyDate, onlyCases, onlyDeaths, onlyRecovere
                     borderWidth: 1,
                     order: 2,
                 },
-                // {
-                //     label: "Daily Cases",
-                //     backgroundColor: "rgba(54, 162, 235, 0.4)",
-                //     pointBackgroundColor: "rgba(54, 162, 235, 1)",
-                //     borderColor: "rgba(54, 162, 235, 1)",
-                //     borderWidth: 1,
-                // },
             ],
         },
         //- Data layer end
@@ -143,11 +153,11 @@ export const renderCharts = async (onlyDate, onlyCases, onlyDeaths, onlyRecovere
                 },
             },
             legend: {
-                display: false,
-                position: "bottom",
+                display: true,
+                position: "top",
                 labels: {
                     fontSize: 14,
-                    padding: 20,
+                    padding: 4,
                 },
 
                 onClick: function (e, legendItem) {
@@ -203,80 +213,80 @@ export const renderCharts = async (onlyDate, onlyCases, onlyDeaths, onlyRecovere
         //- Options end
     });
 
-    DOM.button1.addEventListener("click", () => {
-        charts.data.datasets = [];
+    // DOM.button1.addEventListener("click", () => {
+    //     charts.data.datasets = [];
 
-        charts.config.type = "line";
-        charts.config.label = "Total Cases";
+    //     charts.config.type = "line";
+    //     charts.config.label = "Total Cases";
 
-        charts.data.datasets.push(
-            {
-                data: onlyCases,
-                label: "Cases",
-                backgroundColor: "rgba(54, 162, 235, 0.2)",
-                borderColor: "rgba(54, 162, 235, 1)",
-                borderWidth: 1,
-                order: 1,
-            },
-            {
-                data: onlyDeaths,
-                label: "Deaths",
-                backgroundColor: "rgba(214, 102, 121, 0.3)",
-                borderColor: "rgba(214, 102, 121, 1)",
-                borderWidth: 1,
-                order: 3,
-            },
-            {
-                data: onlyRecovered,
-                label: "Recovered",
+    //     charts.data.datasets.push(
+    //         {
+    //             data: onlyCases,
+    //             label: "Cases",
+    //             backgroundColor: "rgba(54, 162, 235, 0.2)",
+    //             borderColor: "rgba(54, 162, 235, 1)",
+    //             borderWidth: 1,
+    //             order: 1,
+    //         },
+    //         {
+    //             data: onlyDeaths,
+    //             label: "Deaths",
+    //             backgroundColor: "rgba(214, 102, 121, 0.3)",
+    //             borderColor: "rgba(214, 102, 121, 1)",
+    //             borderWidth: 1,
+    //             order: 3,
+    //         },
+    //         {
+    //             data: onlyRecovered,
+    //             label: "Recovered",
 
-                backgroundColor: "rgba(113, 255, 47, 0.2)",
-                borderColor: "rgba(113, 255, 47, 1)",
-                borderWidth: 1,
-                order: 2,
-            }
-        );
-        charts.update();
-    });
+    //             backgroundColor: "rgba(113, 255, 47, 0.2)",
+    //             borderColor: "rgba(113, 255, 47, 1)",
+    //             borderWidth: 1,
+    //             order: 2,
+    //         }
+    //     );
+    //     charts.update();
+    // });
 
-    //- Button 2
-    DOM.button2.addEventListener("click", () => {
-        charts.data.datasets = [];
-        // charts.data.datasets.data[1] = [];
-        // charts.data.datasets.data[2] = [];
+    // //- Button 2
+    // DOM.button2.addEventListener("click", () => {
+    //     charts.data.datasets = [];
+    //     // charts.data.datasets.data[1] = [];
+    //     // charts.data.datasets.data[2] = [];
 
-        charts.type = "";
-        charts.config.type = "doughnut";
-        charts.data.datasets.push(
-            {
-                label: "Daily Cases",
-                data: dailyCases,
-                backgroundColor: "rgba(54, 162, 235, 0.2)",
-                pointBackgroundColor: "rgba(54, 162, 235, 1)",
-                borderColor: "rgba(54, 162, 235, 1)",
-                borderWidth: 1,
-                order: 1,
-            },
-            {
-                data: onlyDeaths,
-                label: "Deaths",
-                backgroundColor: "rgba(214, 102, 121, 0.2)",
-                borderColor: "rgba(214, 102, 121, 1)",
-                borderWidth: 1,
-                order: 2,
-            },
-            {
-                data: onlyRecovered,
-                label: "Recovered",
-                backgroundColor: "rgba(113, 255, 47, 0.2)",
-                borderColor: "rgba(113, 255, 47, 1)",
-                borderWidth: 1,
-                order: 3,
-            }
-        );
+    //     charts.type = "";
+    //     charts.config.type = "doughnut";
+    //     charts.data.datasets.push(
+    //         {
+    //             label: "Daily Cases",
+    //             data: dailyCases,
+    //             backgroundColor: "rgba(54, 162, 235, 0.2)",
+    //             pointBackgroundColor: "rgba(54, 162, 235, 1)",
+    //             borderColor: "rgba(54, 162, 235, 1)",
+    //             borderWidth: 1,
+    //             order: 1,
+    //         },
+    //         {
+    //             data: onlyDeaths,
+    //             label: "Deaths",
+    //             backgroundColor: "rgba(214, 102, 121, 0.2)",
+    //             borderColor: "rgba(214, 102, 121, 1)",
+    //             borderWidth: 1,
+    //             order: 2,
+    //         },
+    //         {
+    //             data: onlyRecovered,
+    //             label: "Recovered",
+    //             backgroundColor: "rgba(113, 255, 47, 0.2)",
+    //             borderColor: "rgba(113, 255, 47, 1)",
+    //             borderWidth: 1,
+    //             order: 3,
+    //         }
+    //     );
 
-        charts.update();
-    });
+    //     charts.update();
+    // });
 
     //--------------------------------------------------------------------------
 };
@@ -310,8 +320,8 @@ export const globalPieChart = async (data) => {
         // Create chart instance
         var chart = am4core.create("chartdiv", am4charts.PieChart);
         var chart2 = am4core.create("chartdiv2", am4charts.PieChart);
-        chart.background.fill = "rgb(36, 35, 35)";
-        chart2.background.fill = "rgb(36, 35, 35)";
+        // chart.background.fill = "rgb(36, 35, 35)";
+        // chart2.background.fill = "rgb(36, 35, 35)";
 
         // Add data
         chart.data = [
@@ -323,7 +333,7 @@ export const globalPieChart = async (data) => {
             {
                 title: "Active",
                 value: active,
-                color: am4core.color("#6794DC"),
+                color: am4core.color("#C767DC"),
             },
             {
                 title: "Recovered",
@@ -357,6 +367,8 @@ export const globalPieChart = async (data) => {
 
         // Add and configure Series
         var pieSeries = chart.series.push(new am4charts.PieSeries());
+        // pieSeries.tooltip.label.fill = am4core.color("#696969");
+
         pieSeries.dataFields.value = "value";
         pieSeries.dataFields.category = "title";
         pieSeries.labels.template.text = "{category}: {value}";
@@ -365,6 +377,7 @@ export const globalPieChart = async (data) => {
         pieSeries.labels.template.wrap = true;
         chart.responsive.enabled = true;
         chart.radius = am4core.percent(75);
+
         chart.responsive.rules.push({
             relevant: function (target) {
                 if (target.pixelWidth <= 500) {
@@ -517,6 +530,23 @@ export const globalPieChart = async (data) => {
         chart2.hiddenState.transitionDuration = 500;
         chart2.preloader.disabled = false;
 
+        $(".theme-switch").on("click", () => {
+            if ($("body").hasClass("light-theme")) {
+                pieSeries.labels.template.fill = am4core.color("#696969");
+                pieSeries2.labels.template.fill = am4core.color("#696969");
+                chart.legend.valueLabels.template.fill = am4core.color("#696969");
+                chart2.legend.valueLabels.template.fill = am4core.color("#696969");
+                chart.legend.labels.template.fill = am4core.color("#696969");
+                chart2.legend.labels.template.fill = am4core.color("#696969");
+            } else {
+                pieSeries.labels.template.fill = am4core.color("white");
+                pieSeries2.labels.template.fill = am4core.color("white");
+                chart.legend.valueLabels.template.fill = am4core.color("white");
+                chart2.legend.valueLabels.template.fill = am4core.color("white");
+                chart.legend.labels.template.fill = am4core.color("white");
+                chart2.legend.labels.template.fill = am4core.color("white");
+            }
+        });
         //---------------------------------------------------------------------
 
         $(".pieChart-filler").on("select2:select", function (data) {
@@ -592,7 +622,7 @@ export const globalPieChart = async (data) => {
                         {
                             title: "Active",
                             value: active,
-                            color: am4core.color("#6794DC"),
+                            color: am4core.color("#C767DC"),
                         },
                         {
                             title: "Recovered",
@@ -611,11 +641,11 @@ export const globalPieChart = async (data) => {
                             value: cases,
                             color: am4core.color("#67B7DC"),
                         },
-                        {
-                            title: "Today",
-                            value: active,
-                            color: am4core.color("#6794DC"),
-                        },
+                        // {
+                        //     title: "Critical",
+                        //     value: critical,
+                        //     color: am4core.color("#6794DC"),
+                        // },
                         {
                             title: "Today Recovered",
                             value: recovered,

@@ -233,7 +233,7 @@ export const renderUpdatedTime = (updated) => {
     let time = hour >= 12 ? "pm" : "am";
     minutes < 10 ? (minutes = `0${minutes}`) : minutes;
     hour > 12 ? (hour -= 12) : hour < 10 ? `0${hour}` : hour;
-    console.log(`${hour}:${minutes}${time}`);
+    // console.log(`${hour}:${minutes}${time}`);
     // DOM.updatedTime.innerHTML = `${hour}:${minutes}${time}`;
     DOM.updatedTime.innerHTML = `${timesAgo}`;
 };
