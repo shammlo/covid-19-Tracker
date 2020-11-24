@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="css/datatable.css" />
+        <link rel="stylesheet" href="css/main.min.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        />
+
+        <link rel="icon" href="img/virus-1.svg" type="img" />
+        <title>COVID-19 Tracker</title>
+
+        <!-- - Scripts -->
+        <!-- jQuery -->
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous"
+        ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <link
+            href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css"
+            rel="stylesheet"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+        <!-- <script src="cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> -->
+        <!-- <script type="text/javascript" src="js/addons/datatables.min.js"> -->
+
+        <!--- Mapbox map -->
+        <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+        <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+
+        <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css"
+            type="text/css"
+        />
+
+        <script
+            type="text/javascript"
+            src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js
+"
+        ></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    </head>
+    <body>
+        <!--* ---------- HEADER SECTION ----------*-->
+
+        <header class="header" id="header">
+            <div class="container">
+                <nav class="main__navigation">
+                    <div class="logo">
+                        <a href="index.html" class="logo__link">
+                            <img class="logo__image" src="img/virus-1.svg" />
+                            Covid-19 Tracker
+                        </a>
+                    </div>
+                    <div class="navigation d-none">
+                        <ul class="navigation__list">
+                            <li class="navigation__item">
+                                <a href="kurdish.html" class="navigation__link">Home </a>
+                            </li>
+                            <li class="navigation__item">
+                                <a href="#GlobalData" class="navigation__link">Global Data </a>
+                            </li>
+                            <li class="navigation__item">
+                                <a href="#CountryTable" class="navigation__link"
+                                    >Countries Table
+                                </a>
+                            </li>
+                            <li class="navigation__item">
+                                <a href="#Charts" class="navigation__link">Charts </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <section class="map-section">
+            <div class="container">
+                <div class="web-title">
+                    <div class="title">
+                        <img class="title__image" src="img/coronavirus.svg" alt="Covid-19 image" />
+                        <h1 class="heading-1">Covid-19 Tracker</h1>
+                    </div>
+                    <h5 class="heading-5 heading-4__dark">
+                        Track the spread of the Coronavirus Covid-19 outbreak.
+                    </h5>
+                    <div class="theme-container">
+                        <img class="theme-icon" src="img/moon.svg" />
+                        <div class="theme-switch">
+                            <div class="switch"></div>
+                        </div>
+                    </div>
+                    <div class="language">
+                        <select
+                            class="language-data chart-filter"
+                            style="width: 25rem; float: right"
+                        >
+                            <option></option>
+                            <!-- <option selected disabled>Select your language</option> -->
+                            <!--
+                            <option selected="selected" value="1">English(default)</option>
+                            <option value="2">Kurdish</option>
+                            <option value="3">Arabic</option> -->
+                        </select>
+                    </div>
+                </div>
+
+                <!--* Map -->
+                <div class="map-container" style="position: relative">
+                    <!-- <div
+                        id="map"
+                        class="map"
+                        style="width: 100%; height: 48rem; position: relative"
+                    ></div> -->
+                    <!-- <div class="map-overlay" id="legend"></div> -->
+
+                    <!-- <div id="state-legend" class="legend">
+                        <h4>Total Cases</h4>
+                        <div><span style="background-color: #fc3f41"></span>more than 5M</div>
+                        <div><span style="background-color: #fc9c19"></span>Between 1M to 5M</div>
+                        <div><span style="background-color: #fed976"></span>Between 500K to 1M</div>
+                        <div>
+                            <span style="background-color: #51bbd6"></span>Between 100K to 500K
+                        </div>
+                        <div><span style="background-color: #52e374"></span>Less than 100K</div>
+                    </div> -->
+                </div>
+
+                <!-- <div class="custom-clustericon custom-clustericon-2" title="" style="z-index: 11; top: -31px; left: -33px; width: 40px; height: 40px; cursor: pointer; position: absolute; user-select: none;">
+                <div aria-label="" style="position:absolute;text-align:center;width:40px" tabindex="0">
+                <span aria-hidden="true">38</span>
+                </div>
+                </div> -->
+                <div class="separator">
+                    <span class="line-separator"></span>
+                </div>
+                <div class="update" id="updated">
+                    <div class="update__text">
+                        <p class="update__text--p margin-top-small">LATEST DATA: World wide</p>
+                        <small id="timestamp">
+                            Updated &nbsp<span id="updatedTime">0</span>&nbsp minutes ago
+                        </small>
+                        <hr class="update__text--hr" />
+                    </div>
+                    <div class="data__button" style="margin-top: 2vh">
+                        <a class="btn-data btn-info" id="aboutBtn" role="button">
+                            About the data
+                            <img class="btn-info-img" src="img/information.svg" alt="information" />
+                        </a>
+                    </div>
+                </div>
+                <div class="about-data disabled" id="aboutData" style="color: whitesmoke">
+                    <h4 class="heading-4" style="margin-bottom: 0.5rem">About the data</h4>
+                    <p class="about-data-text">It changes rapidly</p>
+                    <p class="margin-bottom-small about-data-p">
+                        This data updates around every 10-20 minutes by Greenwich Mean Time (GMT),
+                        and might not reflect some cases that still being reported.
+                    </p>
+                    <p class="about-data-text">It only includes people tested</p>
+                    <p class="margin-bottom-small about-data-p">
+                        Numbers are based on official estimates, which may not account for
+                        unverified cases in countries lacking the proper infrastructure to diagnose
+                        patients.
+                    </p>
+                    <p class="about-data-text">There may be discrepancies from other sources</p>
+                    <p class="margin-bottom-small about-data-p">
+                        The data is taken from an api source, which aggregates coronavirus data from
+                        over 13 sources. When there is a discrepancy, they report the higher
+                        infected/recovered/deceased count. These sources update at different times
+                        and may have different ways of gathering data regarding of that some data of
+                        specific countries might be delayed.
+                    </p>
+                    <p class="about-data-text">The sources are not actively monitored</p>
+                    <p class="about-data-p">
+                        A change in a source may result in inaccurate/no data being reported for the
+                        associated region.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!--* ----------- DATA SECTION -----------*-->
+
+        <section class="data-section" id="GlobalData">
+            <div class="container">
+                <div class="data">
+                    <article class="data__top">
+                        <!--- ---------- CONFIRMED ----------*-->
+                        <div class="data__confirmed">
+                            <div class="card__box box-one">
+                                <span class="card__box--icon">
+                                    <img class="icon" src="img/health.svg" alt="Confirmed Icon" />
+                                </span>
+                                <h3 class="heading-3">Total Cases</h3>
+                                <h2
+                                    class="heading-2 margin-top-small"
+                                    id="totalCases"
+                                    data-plugin="counterup"
+                                    data-toggle="counter-up"
+                                >
+                                    Loading
+                                </h2>
+                                <div class="card__box--info">
+                                    <span class="info-increase">
+                                        <span id="caseIncrease">Loading</span></span
+                                    >
+                                    <span class="info-text"
+                                        >from yesterday
+                                        <span id="totalYesterday" class="yel">Loading</span></span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--- ---------- DEAD ----------*-->
+                        <div class="data__Dead">
+                            <div class="card__box box-one">
+                                <span class="card__box--icon">
+                                    <img
+                                        class="icon"
+                                        src="img/headstone.svg"
+                                        alt="Confirmed Icon"
+                                    />
+                                </span>
+                                <h3 class="heading-3">Total Death</h3>
+                                <h2
+                                    class="heading-2 heading-2__danger margin-top-small"
+                                    id="totalDeath"
+                                    data-plugin="counterup"
+                                    data-toggle="counter-up"
+                                >
+                                    Loading
+                                </h2>
+                                <div class="card__box--info">
+                                    <span class="info-increase"
+                                        ><span id="deadIncrease">Loading</span></span
+                                    >
+                                    <span class="info-text"
+                                        >from yesterday
+                                        <span id="deadYesterday" class="yel">Loading</span></span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--- ---------- RECOVERED ----------*-->
+                        <div class="data__recovered">
+                            <div class="card__box box-one">
+                                <span class="card__box--icon">
+                                    <img
+                                        class="icon"
+                                        src="img/heart-rate.svg"
+                                        alt="Confirmed Icon"
+                                    />
+                                </span>
+                                <h3 class="heading-3">Total Recovered</h3>
+                                <h2
+                                    class="heading-2 heading-2__success margin-top-small"
+                                    id="totalRecovered"
+                                    data-plugin="counterup"
+                                    data-toggle="counter-up"
+                                >
+                                    Loading
+                                </h2>
+                                <div class="card__box--info">
+                                    <span class="info-increase"
+                                        ><span id="recIncrease">Loading</span></span
+                                    >
+                                    <span class="info-text"
+                                        >from yesterday
+                                        <span id="recYesterday" class="yel">Loading</span></span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--- ---------- TODAY CASES----------*-->
+                        <div class="data__cases">
+                            <div class="card__box box-two">
+                                <span class="card__box--icon">
+                                    <img
+                                        class="icon"
+                                        src="img/icons8-health-book-96.png"
+                                        alt="Confirmed Icon"
+                                    />
+                                </span>
+                                <h3 class="heading-3">Today's Cases</h3>
+                                <h2
+                                    class="heading-2 margin-top-small counter"
+                                    id="todayCases"
+                                    data-plugin="counterup"
+                                    data-toggle="counter-up"
+                                >
+                                    Loading
+                                </h2>
+                                <div class="card__box--info">
+                                    <span class="info-increase"
+                                        ><span id="todayIncrease">Loading</span></span
+                                    >
+                                    <span class="info-text"
+                                        >from yesterday
+                                        <span id="todayYesterday" class="yel">Loading</span></span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--- -------- TODAY DEATH --------*-->
+                        <div class="data__death">
+                            <div class="card__box box-two">
+                                <span class="card__box--icon">
+                                    <img class="icon" src="img/Death.svg" alt="Confirmed Icon" />
+                                </span>
+                                <h3 class="heading-3">Today's Death</h3>
+                                <h2
+                                    class="heading-2 heading-2__danger margin-top-small"
+                                    id="todayDeaths"
+                                    data-plugin="counterup"
+                                    data-toggle="counter-up"
+                                >
+                                    Loading
+                                </h2>
+                                <div class="card__box--info">
+                                    <span class="info-increase"
+                                        ><span id="deathIncrease">Loading</span></span
+                                    >
+                                    <span class="info-text"
+                                        >from yesterday
+                                        <span id="deathYesterday" class="yel">Loading</span></span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--- ------- TODAY RECOVERED -------*-->
+                        <div class="data__TodRecovered">
+                            <div class="card__box box-two">
+                                <span class="card__box--icon">
+                                    <img
+                                        class="icon"
+                                        src="img/life-insurance.svg"
+                                        alt="Confirmed Icon"
+                                    />
+                                </span>
+                                <h3 class="heading-3">Today's Recovered</h3>
+                                <h2
+                                    class="heading-2 heading-2__success margin-top-small"
+                                    id="todayRecovered"
+                                    data-plugin="counterup"
+                                    data-toggle="counter-up"
+                                >
+                                    Loading
+                                </h2>
+                                <div class="card__box--info">
+                                    <span class="info-increase" id="success-rate"
+                                        ><span id="recoverIncrease">Loading</span></span
+                                    >
+                                    <span class="info-text"
+                                        >from yesterday
+                                        <span id="recoverYesterday" class="yel">Loading</span></span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!--* -------- GLOBAL DATA SECTION --------*-->
+
+        <section class="table-section" id="CountryTable">
+            <div class="container">
+                <div class="table_responsive">
+                    <h1 class="heading-1" style="padding-bottom: 1.5rem">🌎 Country Breakdown:</h1>
+
+                    <div class="main__table dataTables_wrapper">
+                        <table
+                            id="dtBasicExample"
+                            class="table table-striped table-bordered table-sm table__main"
+                            cellspacing="0"
+                            width="100%"
+                        >
+                            <thead class="table__header">
+                                <tr class="table__header--row">
+                                    <th class="table__header--items freeze" style="width: 0.5rem">
+                                        Rank
+                                    </th>
+                                    <th
+                                        class="table__header--items freeze"
+                                        style="width: 25rem; text-align: left"
+                                    >
+                                        Country
+                                    </th>
+                                    <th class="table__header--items">Cases</th>
+                                    <th class="table__header--items">Deaths</th>
+                                    <th class="table__header--items">Critical</th>
+                                    <th class="table__header--items" id="loading">Recovered</th>
+                                    <th class="table__header--items warn">Today's Cases</th>
+                                    <th class="table__header--items dang">Today's Deaths</th>
+                                    <th class="table__header--items go">Today's Recovered</th>
+                                    <th class="table__header--items">Active Cases</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table__body" id="tableBody"></tbody>
+                            <!-- <tfoot>
+                            <tr>
+                                <th>Name</th>
+                                <th>Position</th>
+                                <th>Office</th>
+                                <th>Age</th>
+                                <th>Start date</th>
+                                <th>Salary</th>
+                            </tr>
+                        </tfoot>  -->
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--* ----------- CHART SECTION -----------*-->
+        <section class="chart-section">
+            <div class="container">
+                <div class="chart-wrapper" id="Charts">
+                    <div class="filter">
+                        <select
+                            class="js-data-filter chart-filter"
+                            style="width: 25rem; float: right"
+                        >
+                            <option></option>
+                            <option id="global">Global</option>
+                        </select>
+                    </div>
+                    <div class="chart__title">
+                        <h1 id="ConImg" class="heading-1 text-big">Total Data</h1>
+                        <div class="title__text">
+                            <h2 class="title__text--header heading-2__light">
+                                Total Cases, Deaths, Recovered
+                            </h2>
+                            <p class="title__text--text">(Linear scale)</p>
+                        </div>
+                    </div>
+
+                    <div id="casesContainer" class="chart-container">
+                        <div id="lineChart" class="chartCase">
+                            <div id="lineChart"></div>
+
+                            <canvas
+                                id="cases"
+                                width="700"
+                                height="350"
+                                style="display: block; width: 90rem; height: 45rem"
+                            ></canvas>
+                        </div>
+                        <!-- <div class="chart_buttons">
+                            <button id="button1" class="chart-button">Total Cases Chart</button>
+                            <button id="button2" class="chart-button">Daily Cases Chart</button>
+                        </div> -->
+                    </div>
+                </div>
+                <!-------------------------------------------- -->
+                <!--- pie chart -->
+                <div class="chart-wrapper margin-top-large" id="Charts">
+                    <div class="filter">
+                        <select
+                            class="pieChart-filler chart-filter"
+                            style="width: 25rem; float: right"
+                        >
+                            <option value="3620194" selected="selected">Country Search</option>
+                        </select>
+                    </div>
+                    <div class="chart__title">
+                        <h1 id="ConImg" class="heading-1 text-big">Total Data</h1>
+                        <div class="title__text">
+                            <h2 class="title__text--header heading-2__light">
+                                Total Cases, Deaths, Recovered
+                            </h2>
+                            <p class="title__text--text">(Pie Chart)</p>
+                        </div>
+                    </div>
+
+                    <div id="casesContainer" class="chart-container">
+                        <div id="pieCharting" class="chartCase">
+                            <div id="chartdiv" style="background-color: var(--dark-4)"></div>
+                        </div>
+                    </div>
+                    <div class="separator">
+                        <span class="line-separator"></span>
+                    </div>
+                    <div class="chart__title pad-top-small">
+                        <h1 id="ConImg" class="heading-1 text-big">Today's Data</h1>
+                        <div class="title__text">
+                            <h2 class="title__text--header heading-2__light">
+                                Total Cases, Deaths, Recovered
+                            </h2>
+                            <p class="title__text--text">(Pie Chart)</p>
+                        </div>
+                    </div>
+
+                    <div id="casesContainer" class="chart-container pad-bot-small">
+                        <div id="pieCharting" class="chartCase">
+                            <div id="chartdiv2" style="background-color: var(--dark-4)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- <section class="chart-section">
+            <div class="container"></div>
+        </section> -->
+
+        <!--* -------- SOCIAL FIXED SECTION -------*-->
+        <div class="social__fixed">
+            <a class="social__fixed-links" href="#"><i class="fab fa-github-square"></i></a>
+            <a class="social__fixed-links" href="#"><i class="fab fa-facebook-square"></i></a>
+            <a class="social__fixed-links" href="#"><i class="fab fa-twitter-square"></i></a>
+        </div>
+
+        <!--* ---------- FOOTER SECTION ----------*-->
+        <footer class="footer-section">
+            <div class="container">
+                <div class="footer">
+                    <!--- Logo and text -->
+                    <div class="logo-text">
+                        <div class="footer__logo">
+                            <a href="index.html" class="footer__logo-link">
+                                <img class="footer__logo-img" src="img/virus-1.svg" />
+
+                                Covid-19 Tracker
+                            </a>
+                        </div>
+                        <div class="footer__text">
+                            <p class="footer__text-p">
+                                This Web app was created to track the new Pandemic Covid-19 virus
+                                outbreak live worldwide, with visualization of graph, table, and
+                                map. The data updates rapidly.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!--- about api -->
+                    <div class="about__api">
+                        <div class="about__text">
+                            <h3 class="about__text-header">
+                                About Sources
+                                <img class="fot__img" src="img/data-driven.svg" alt="Resources" />
+                            </h3>
+                        </div>
+                        <div class="about__p">
+                            <p class="footer__text-p">
+                                The data is provided by NovelCOVID API disease.sh, that is collected
+                                from sources like
+                                <a href="https://coronavirus.data.gov.uk/">GOV.UK</a>,
+                                <a
+                                    href="https://www.canada.ca/en/public-health/services/diseases/2019-novel-coronavirus-infection.html"
+                                    >CanadaGOV</a
+                                >,
+                                <a href="https://www.worldometers.info/coronavirus/">Worldometer</a
+                                >, and 10 more, Get the data:
+                            </p>
+
+                            <a href="#" type="button" class="btn-data btn-info"
+                                >disease.sh <img src="img/api.svg" alt="API"
+                            /></a>
+                        </div>
+                    </div>
+
+                    <!--- useful links -->
+                    <div class="useful__links">
+                        <div class="about__text">
+                            <h3 class="about__text-header">
+                                Useful Links<img
+                                    class="fot__img"
+                                    src="img/domain.svg"
+                                    alt="Resources"
+                                />
+                            </h3>
+                        </div>
+                        <div class="link">
+                            <ul class="link__list">
+                                <li class="list-item">
+                                    <a href="#" class="list-link"> Home </a>
+                                </li>
+                                <li class="list-item">
+                                    <a href="#" class="list-link"> About the Api </a>
+                                </li>
+                                <li class="list-item">
+                                    <a href="#" class="list-link"> Data Recourses </a>
+                                </li>
+                                <li class="list-item">
+                                    <a href="#" class="list-link"> Report a problem </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!--- support -->
+                    <div class="contact">
+                        <div class="about__text">
+                            <h3 class="about__text-header">
+                                Contact & Socials
+                                <img class="fot__img" src="img/message.svg" alt="Resources" />
+                            </h3>
+                        </div>
+                        <div class="contact-text">
+                            <p class="contact-text--p">
+                                Developed by <a href="https://github.com/shammlo"> Shammlo</a>, all
+                                support appreciated.
+                            </p>
+                            <!-- <a href="#" type="button" class="btn-data btn-info"
+                                >disease.sh <img src="img/api.svg" alt="API"
+                            /></a> -->
+                        </div>
+                        <div class="footer__socials">
+                            <a class="footer__socials-links" href="#"
+                                ><i class="fab fa-github-square"></i
+                            ></a>
+                            <a class="footer__socials-links" href="#"
+                                ><i class="fab fa-facebook-square"></i
+                            ></a>
+                            <a class="footer__socials-links" href="#"
+                                ><i class="fab fa-twitter-square"></i
+                            ></a>
+                            <a class="footer__socials-links" href="#"
+                                ><i class="fab fa-linkedin"></i
+                            ></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <h6 class="heading-6 heading-6__dark">
+                        © Developed by <a href="https://github.com/shammlo"> Shammlo</a>. All Rights
+                        Reserved.
+                    </h6>
+                </div>
+            </div>
+        </footer>
+
+        <script type="text/javascript" src="js/datatable.min.js"></script>
+        <script type="text/javascript" src="js/geojson.min.js"></script>
+        <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+        <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+        <script src="https://cdn.amcharts.com/lib/4/themes/dark.js"></script>
+        <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+        <!--- Mobile Nab -->
+        <script type="text/javascript" src="js/mobile-nav.js"></script>
+        <script>
+            $(".theme-switch").on("click", () => {
+                $("body").toggleClass("light-theme");
+            });
+        </script>
+    </body>
+</html>
