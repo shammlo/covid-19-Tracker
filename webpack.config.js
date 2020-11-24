@@ -38,6 +38,14 @@ module.exports = {
             filename: "index.html",
             template: "./src/index.html",
         }),
+        new HtmlWebpackPlugin({
+            filename: "kurdish.html",
+            template: "./src/kurdish.html",
+        }),
+        new HtmlWebpackPlugin({
+            filename: "arabic.html",
+            template: "./src/arabic.html",
+        }),
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery",

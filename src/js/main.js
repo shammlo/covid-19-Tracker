@@ -172,4 +172,7 @@ $(DOM.aboutBtn).on("click", function () {
     $(".about-data").slideToggle("slow");
 });
 
+$(".theme-switch").on("click", () => {
+    $("body").toggleClass("light-theme");
+});
 //*************************************************************************************\\

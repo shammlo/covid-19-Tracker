@@ -10,17 +10,7 @@ const yesterdayCalc = () => {
         yesterdayPercent: (cases, yesterday) => {
             const yesterdayCase = cases - yesterday;
             const yesterdayPercent = parseFloat(((yesterdayCase / cases) * 100).toFixed(2));
-            // DOM.infoIncrease.classList.toggle("active");
-            //console.log(yesterdayPercent);
-            // if (yesterdayPercent < 0) {
-            //     DOM.increase.textContent = "hi";
-            //     DOM.infoIncrease.classList.toggle("active");
-            // } else if (yesterdayPercent >= 0) {
-            //     const increase = document.querySelectorAll(".increase");
-            //     increase.forEach((element) => {
-            //         element.textContent = "% increase";
-            //     });
-            // }
+
             return yesterdayPercent;
             // return Math.abs(yesterdayPercent);
         },
@@ -32,7 +22,7 @@ const yesterdayCalc = () => {
             }
 
             if (number < 1000000) {
-                return Math.round(number / 1000) + "K";
+                return (number / 1000).toFixed(1) + "K";
             }
             if (number < 10000000) {
                 return (number / 1000000).toFixed(1) + "M";
@@ -48,7 +38,20 @@ const yesterdayCalc = () => {
 
             return "1T+";
         },
+        SignRemove: (data) => {
+            return {
+                posAr: Math.abs(parseFloat(data)).toString().toArabicDigits(),
+                pos: Math.abs(parseFloat(data)).toString(),
+            };
+        },
     };
+};
+
+String.prototype.toArabicDigits = function () {
+    var id = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"];
+    return this.replace(/[0-9]/g, function (w) {
+        return id[+w];
+    });
 };
 
 //*************************************************************************************\\
@@ -57,7 +60,7 @@ const yesterdayCalc = () => {
 
 //*** ------------- PUBLIC FUNCTIONS ------------- ***\\
 
-//* total
+//* total cases
 //- rendering the total number of confirmed cases for today and yesterday
 export const renderTotalCases = (cases, yesterday) => {
     //- Today
@@ -67,19 +70,35 @@ export const renderTotalCases = (cases, yesterday) => {
     //- Yesterday
     const yesterdayData = yesterdayCalc();
     DOM.yesterdayCase.textContent = "(" + yesterdayData.FormattingNumber(yesterday) + ")";
+    const data = yesterdayData.yesterdayPercent(cases, yesterday).toString();
 
-    const data = yesterdayData.yesterdayPercent(cases, yesterday);
+    //- For Arabic language
+    if (document.location.pathname == "/arabic.html") {
+        DOM.totalCases.textContent = totalCases.toArabicDigits();
+        DOM.yesterdayCase.textContent =
+            "(" + yesterdayData.FormattingNumber(yesterday).toArabicDigits() + ")";
+    }
+    const pos = yesterdayData.SignRemove(data);
 
     if (data < 0) {
-        DOM.totalCaseInc.textContent = data + "% decreased";
         document
             .querySelector(".data__confirmed .card__box--info .info-increase")
             .classList.add("success");
+
+        if (document.location.pathname == "/arabic.html") {
+            DOM.totalCaseInc.textContent = "% " + pos.posAr + " انخفضت";
+        } else {
+            DOM.totalCaseInc.textContent = pos.pos + "% decreased";
+        }
     } else if (data > 0) {
-        DOM.totalCaseInc.textContent = data + "% increased";
         document
             .querySelector(".data__confirmed .card__box--info .info-increase")
             .classList.add("danger");
+        if (document.location.pathname == "/arabic.html") {
+            DOM.totalCaseInc.textContent = "% " + pos.posAr + " زاد";
+        } else {
+            DOM.totalCaseInc.textContent = pos.pos + "% increased";
+        }
     }
 };
 
@@ -91,21 +110,37 @@ export const renderTotalDead = (dead, yesterday) => {
 
     //- Yesterday
     const yesterdayData = yesterdayCalc();
-
     DOM.yesterdayDead.textContent = "(" + yesterdayData.FormattingNumber(yesterday) + ")";
+    const data = yesterdayData.yesterdayPercent(dead, yesterday).toString();
 
-    const data = yesterdayData.yesterdayPercent(dead, yesterday);
+    //- For Arabic language
+    if (document.location.pathname == "/arabic.html") {
+        DOM.totalDead.textContent = totalDead.toArabicDigits();
+        DOM.yesterdayDead.textContent =
+            "(" + yesterdayData.FormattingNumber(yesterday).toArabicDigits() + ")";
+    }
+    const pos = yesterdayData.SignRemove(data);
 
     if (data < 0) {
-        DOM.totalDeadInc.textContent = data + "% decreased";
         document
             .querySelector(".data__Dead .card__box--info .info-increase")
             .classList.add("success");
+
+        if (document.location.pathname == "/arabic.html") {
+            DOM.totalDeadInc.textContent = "% " + pos.posAr + " انخفضت";
+        } else {
+            DOM.totalDeadInc.textContent = pos.pos + "% decreased";
+        }
     } else if (data > 0) {
-        DOM.totalDeadInc.textContent = data + "% increased";
         document
             .querySelector(".data__Dead .card__box--info .info-increase")
             .classList.add("danger");
+
+        if (document.location.pathname == "/arabic.html") {
+            DOM.totalDeadInc.textContent = "% " + pos.posAr + " زاد";
+        } else {
+            DOM.totalDeadInc.textContent = pos.pos + "% increased";
+        }
     }
 };
 
@@ -118,19 +153,36 @@ export const renderTotalRecovered = (recovered, yesterday) => {
     //- Yesterday
     const yesterdayData = yesterdayCalc();
     DOM.yesterdayRec.textContent = "(" + yesterdayData.FormattingNumber(yesterday) + ")";
+    const data = yesterdayData.yesterdayPercent(recovered, yesterday).toString();
 
-    const data = yesterdayData.yesterdayPercent(recovered, yesterday);
+    //- For Arabic language
+    if (document.location.pathname == "/arabic.html") {
+        DOM.totalRecovered.textContent = totalRecovered.toArabicDigits();
+        DOM.yesterdayRec.textContent =
+            "(" + yesterdayData.FormattingNumber(yesterday).toArabicDigits() + ")";
+    }
+    const pos = yesterdayData.SignRemove(data);
 
     if (data < 0) {
-        DOM.totalRecoveredInc.textContent = data + "% decreased";
         document
             .querySelector(".data__recovered .card__box--info .info-increase")
             .classList.add("danger");
+
+        if (document.location.pathname == "/arabic.html") {
+            DOM.totalRecoveredInc.textContent = "% " + pos.posAr + " انخفضت";
+        } else {
+            DOM.totalRecoveredInc.textContent = pos.pos + "% decreased";
+        }
     } else if (data > 0) {
-        DOM.totalRecoveredInc.textContent = data + "% increased";
         document
             .querySelector(".data__recovered .card__box--info .info-increase")
             .classList.add("success");
+
+        if (document.location.pathname == "/arabic.html") {
+            DOM.totalRecoveredInc.textContent = "% " + pos.posAr + " زاد";
+        } else {
+            DOM.totalRecoveredInc.textContent = pos.pos + "% increased";
+        }
     }
 };
 
@@ -145,21 +197,35 @@ export const renderTodayCases = (cases, yesterday) => {
     //- Yesterday
     const yesterdayData = yesterdayCalc();
     DOM.totalYesCases.textContent = "(" + yesterdayData.FormattingNumber(yesterday) + ")";
-    const data = yesterdayData.yesterdayPercent(cases, yesterday);
+    const data = yesterdayData.yesterdayPercent(cases, yesterday).toString();
+
+    //- For Arabic language
+    if (document.location.pathname == "/arabic.html") {
+        DOM.todayCases.textContent = todayCases.toArabicDigits();
+        DOM.totalYesCases.textContent =
+            "(" + yesterdayData.FormattingNumber(yesterday).toArabicDigits() + ")";
+    }
+    const pos = yesterdayData.SignRemove(data);
 
     if (data < 0) {
-        DOM.todayCaseInc.textContent = data + "% decreased";
         document
             .querySelector(".data__cases .card__box--info .info-increase")
             .classList.add("success");
+
+        if (document.location.pathname == "/arabic.html") {
+            DOM.todayCaseInc.textContent = "% " + pos.posAr + " انخفضت";
+        } else {
+            DOM.todayCaseInc.textContent = pos.pos + "% decreased";
+        }
     } else if (data > 0) {
-        DOM.todayCaseInc.textContent = data + "% increased";
         document
             .querySelector(".data__cases .card__box--info .info-increase")
             .classList.add("danger");
-        // document
-        //     .querySelector(".data__cases .card__box .heading-2")
-        //     .classList.add("heading-2__warning");
+        if (document.location.pathname == "/arabic.html") {
+            DOM.todayCaseInc.textContent = "% " + pos.posAr + " زاد";
+        } else {
+            DOM.todayCaseInc.textContent = pos.pos + "% increased";
+        }
     }
 };
 
@@ -172,18 +238,34 @@ export const renderTodayDeaths = (deaths, yesterday) => {
     //- Yesterday
     const yesterdayData = yesterdayCalc();
     DOM.totalYesDead.textContent = "(" + yesterdayData.FormattingNumber(yesterday) + ")";
+    const data = yesterdayData.yesterdayPercent(deaths, yesterday).toString();
 
-    const data = yesterdayData.yesterdayPercent(deaths, yesterday);
+    //- For Arabic language
+    if (document.location.pathname == "/arabic.html") {
+        DOM.todayDeaths.textContent = todayDeaths.toArabicDigits();
+        DOM.totalYesDead.textContent =
+            "(" + yesterdayData.FormattingNumber(yesterday).toArabicDigits() + ")";
+    }
+    const pos = yesterdayData.SignRemove(data);
+
     if (data < 0) {
-        DOM.todayDeadInc.textContent = data + "% decreased";
         document
             .querySelector(".data__death .card__box--info .info-increase")
             .classList.add("success");
+        if (document.location.pathname == "/arabic.html") {
+            DOM.todayDeadInc.textContent = "% " + pos.posAr + " انخفضت";
+        } else {
+            DOM.todayDeadInc.textContent = pos.pos + "% decreased";
+        }
     } else if (data > 0) {
-        DOM.todayDeadInc.textContent = data + "% increased";
         document
             .querySelector(".data__death .card__box--info .info-increase")
             .classList.add("danger");
+        if (document.location.pathname == "/arabic.html") {
+            DOM.todayDeadInc.textContent = "% " + pos.posAr + "  زاد";
+        } else {
+            DOM.todayDeadInc.textContent = pos.pos + "% increased";
+        }
     }
 };
 
@@ -196,18 +278,35 @@ export const renderTodayRecovered = async (recovered, yesterday) => {
     //- Yesterday
     const yesterdayData = yesterdayCalc();
     DOM.totalYesRec.textContent = "(" + yesterdayData.FormattingNumber(yesterday) + ")";
+    const data = yesterdayData.yesterdayPercent(recovered, yesterday).toString();
 
-    const data = yesterdayData.yesterdayPercent(recovered, yesterday);
+    //- For Arabic language
+    if (document.location.pathname == "/arabic.html") {
+        DOM.todayRecovered.textContent = todayRecovered.toArabicDigits();
+        DOM.totalYesRec.textContent =
+            "(" + yesterdayData.FormattingNumber(yesterday).toArabicDigits() + ")";
+    }
+    const pos = yesterdayData.SignRemove(data);
+
     if (data < 0) {
-        DOM.todayRecoveredInc.textContent = data + "% decreased";
         document
             .querySelector(".data__TodRecovered .card__box--info .info-increase")
             .classList.add("danger");
+
+        if (document.location.pathname == "/arabic.html") {
+            DOM.todayRecoveredInc.textContent = "% " + pos.posAr + " انخفضت";
+        } else {
+            DOM.todayRecoveredInc.textContent = pos.pos + "% decreased";
+        }
     } else if (data > 0) {
-        DOM.todayRecoveredInc.textContent = data + "% increased";
         document
             .querySelector(".data__TodRecovered .card__box--info .info-increase")
             .classList.add("success");
+        if (document.location.pathname == "/arabic.html") {
+            DOM.todayRecoveredInc.textContent = "% " + pos.posAr + " زاد";
+        } else {
+            DOM.todayRecoveredInc.textContent = pos.pos + "% increased";
+        }
     }
 };
 

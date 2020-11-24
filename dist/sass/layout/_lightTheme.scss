@@ -8,34 +8,78 @@
         fill: white;
     }
 }
-.theme-switch {
-    color: black;
-    width: 60px;
-    height: 30px;
-    background: rgb(41, 40, 40);
-    border-radius: 50px;
-    position: relative;
-    border: 4px solid rgb(41, 40, 40);
-    display: inline-flex;
-    cursor: pointer;
-    position: fixed;
 
-    .switch {
-        background: white;
-        width: 16px;
-        height: 16px;
-        background: white;
-        border-radius: 100%;
-        position: absolute;
-        top: 3px;
-        left: 4px;
-        transition: 0.5s all ease;
+.theme-switch {
+    margin-left: auto;
+    width: 6rem;
+    height: 30px;
+    background-color: rgb(51, 51, 51);
+    border: darken(#aae2f1, 40);
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 6px;
+    cursor: pointer;
+    display: flex;
+    position: relative;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    svg {
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+}
+.switch {
+    position: absolute;
+    height: 2.1rem;
+    width: 2.1rem;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: transform 0.5s, background-color 0.5s;
+    will-change: transform;
+    // transform: translateX(calc(100% + 9px));
+}
+
+.theme--night-mode {
+    transform: translateX(calc(100% - 5rem));
+    .theme-sun {
+        opacity: 0.5;
     }
 }
 
+// .theme-switch {
+//     color: black;
+//     width: 60px;
+//     height: 30px;
+//     background: rgb(41, 40, 40);
+//     border-radius: 50px;
+//     position: relative;
+//     border: 4px solid rgb(41, 40, 40);
+//     display: inline-flex;
+//     cursor: pointer;
+//     outline: none;
+//     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+//     .switch {
+//         background: white;
+//         width: 16px;
+//         height: 16px;
+//         background: white;
+//         border-radius: 100%;
+//         position: absolute;
+//         top: 3px;
+//         left: 4px;
+//         transition: 0.5s all ease;
+//     }
+// }
+
 .light-theme {
     .theme-switch .switch {
-        transform: translateX(28px);
+        transform: translateX(calc(100% - 5rem));
+        background: white;
+    }
+    .theme-switch .switch-en {
+        transform: translateX(calc(100% + 0.72rem)) !important;
         background: white;
     }
     .theme-icon {
@@ -57,6 +101,23 @@
     color: var(--color-black);
     background-color: var(--color-grey-light-1) !important;
 
+    //- Body
+
+    &::-webkit-scrollbar-track {
+        background: rgb(168, 168, 168) !important; /* color of the tracking area */
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: rgb(80, 80, 80); /* color of the scroll thumb */
+        border-radius: 20px; /* roundness of the scroll thumb */
+        border: 3px solid rgb(80, 80, 80); /* creates padding around scroll thumb */
+    }
+    //----------------------------------------------------------------
+    //- Header
+    .header {
+        background-color: #6c757d;
+    }
+
+    //----------------------------------------------------------------
     //- Map section
     .title {
         color: inherit;
@@ -82,9 +143,11 @@
         &__text {
             p {
                 color: inherit;
+                font-weight: 600;
             }
             #timestamp {
                 color: rgb(66, 66, 66) !important;
+                font-weight: 700;
                 #updatedTime {
                     color: #ffbf00;
                     font-weight: 700;
@@ -111,6 +174,7 @@
         }
         &-p {
             color: rgb(51, 51, 51) !important;
+            font-weight: 700;
         }
     }
 
@@ -126,11 +190,20 @@
             background-color: #fff;
             border: 0.3rem solid var(--color-white);
             box-shadow: 0 0 35px 0 rgba(59, 62, 66, 0.18);
+            @media only screen and (max-width: $bp-375) {
+                box-shadow: 0 0 4rem 0.5rem rgba(59, 62, 66, 0.19);
+            }
 
+            .heading-2 {
+                @media only screen and (max-width: $bp-375) {
+                    font-weight: 600 !important;
+                }
+            }
             .heading-3 {
                 color: rgb(92, 92, 92) !important;
                 font-weight: 700;
             }
+
             &--info {
                 .info-text {
                     color: rgb(128, 127, 127) !important;
@@ -292,4 +365,132 @@
             }
         }
     }
+
+    //-----------------------------------------------------------------------
+    //- Social Fixed
+    .social__fixed {
+        .social__fixed-links:link i,
+        .social__fixed-links:visited i {
+            color: black;
+            fill: black;
+
+            i:hover,
+            i:active {
+                background-color: rgba(rgb(0, 0, 0), 0.2);
+            }
+        }
+    }
+
+    //----------------------------------------------------------------------
+    //- Footer
+    .footer-section {
+        background-color: white;
+
+        .logo-text {
+            .footer__logo {
+                color: var(--color-black);
+
+                &-link:hover,
+                &-link:active {
+                    background-color: rgba(rgb(0, 0, 0), 0.08) !important;
+                    transform: translateY(-3px);
+                }
+            }
+            .footer__text {
+                &-p {
+                    color: var(--color-black);
+                }
+            }
+        }
+        .footer .logo-text .footer__logo {
+            padding-left: 0;
+            border-bottom: 1px solid rgb(71, 71, 71);
+        }
+
+        .about__api {
+            color: var(--color-black);
+
+            .about__p {
+                .btn-data {
+                    color: white;
+                }
+            }
+        }
+
+        .useful__links {
+            color: var(--color-black);
+
+            .link {
+                color: rgb(54, 54, 54) !important;
+            }
+        }
+
+        .contact {
+            color: var(--color-black);
+
+            .contact-text {
+                &--p {
+                    color: rgb(54, 54, 54) !important;
+                }
+            }
+
+            .footer__socials {
+                i {
+                    color: var(--color-black);
+                    fill: black;
+                }
+            }
+        }
+        .copyright {
+            .heading-6 {
+                color: #807f7f !important;
+            }
+        }
+    }
+
+    //----------------------------------------------------------------
+    //- Select2
+    .select2-container--default .select2-selection--single {
+        background-color: #fff !important;
+        border: 1px solid #aaa;
+    }
+    .select2-results__options {
+        color: var(--color-black) !important;
+    }
+    .select2-results {
+        background-color: #fff !important;
+    }
+    .select2-search--dropdown {
+        background-color: #fff !important;
+    }
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        color: var(--color-black) !important;
+    }
+    .select2-container--default .select2-selection--single .select2-selection__clear span {
+        color: var(--color-black) !important;
+    }
+    .select2-container--default .select2-selection--single .select2-selection__arrow b {
+        border-color: black transparent transparent transparent !important;
+    }
+    .select2-search--dropdown .select2-search__field {
+        background-color: rgb(236, 236, 236) !important;
+        color: var(--color-black) !important;
+    }
+    .select2-container--default .select2-results__option--selected {
+        background-color: rgb(211, 211, 211) !important;
+    }
+    .select2-results__options {
+        color: var(--color-black) !important;
+
+        &::-webkit-scrollbar-track {
+            background: rgb(221, 221, 221); /* color of the tracking area */
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: rgb(80, 80, 80); /* color of the scroll thumb */
+            border-radius: 0.1rem; /* roundness of the scroll thumb */
+            border: 3px solid rgb(80, 80, 80); /* creates padding around scroll thumb */
+        }
+    }
 }
+
+//----------------------------------------------------------------

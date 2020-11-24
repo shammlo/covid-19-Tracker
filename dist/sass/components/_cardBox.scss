@@ -3,6 +3,7 @@
     background-color: var(--dark-4);
     border: 0.3rem solid var(--dark-4);
     border-radius: 1.3rem;
+    // height: 100%;
 
     padding: 1.5rem;
     -webkit-box-shadow: 0 0 4rem 0 rgba(13, 14, 15, 0.15);
@@ -22,6 +23,12 @@
         margin: 0.7rem;
         padding: 1;
     }
+
+    // @media only screen and (max-width: $bp-375) {
+    //     min-width: 19rem;
+    //     margin: 0.45rem;
+    //     padding: 1rem;
+    // }
     @media only screen and (max-width: $bp-350) {
         min-width: 18rem;
         margin: 0.45rem;
@@ -51,11 +58,36 @@
                 display: none;
             }
         }
+        .icon-ar {
+            width: 5rem;
+            height: 5rem;
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+
+            @media only screen and (max-width: $bp-735) {
+                width: 4rem;
+                height: 4rem;
+                margin-left: 1rem;
+            }
+            @media only screen and (max-width: $bp-400) {
+                width: 3.7rem;
+                height: 3.7rem;
+                top: 14rem;
+                left: 1rem;
+            }
+            @media only screen and (max-width: 20em) {
+                display: none;
+            }
+        }
     }
 
     &--info {
         font-family: var(--font--primary);
         color: var(--color-grey-light-1);
+        // @media only screen and (max-width: $bp-450) {
+        //     white-space: pre;
+        // }
 
         .info-increase {
             text-align: center;
@@ -72,7 +104,16 @@
                 padding: 0.3rem 0.5rem;
             }
             @media only screen and (max-width: $bp-450) {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
+            }
+        }
+
+        .info-inc-Ar {
+            @media only screen and (max-width: $bp-500) {
+                font-size: 1.6rem;
+            }
+            @media only screen and (max-width: $bp-414) {
+                font-size: 1.6rem;
             }
         }
         #Inc {
@@ -87,6 +128,23 @@
             }
             @media only screen and (max-width: $bp-450) {
                 font-size: 1.4rem;
+            }
+        }
+
+        .info-ar {
+            @media only screen and (max-width: $bp-500) {
+                font-size: 1.7rem;
+            }
+            @media only screen and (max-width: $bp-414) {
+                font-size: 1.7rem;
+            }
+            #text {
+                @media only screen and (max-width: $bp-414) {
+                    font-size: 1.7rem;
+                }
+            }
+            @media only screen and (max-width: $bp-375) {
+                font-size: 1.5rem;
             }
         }
     }

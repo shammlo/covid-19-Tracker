@@ -6,7 +6,12 @@ import { DOM } from "./base";
 const formatNumber = (number) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
-
+String.prototype.toArabicDigits = function () {
+    var id = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"];
+    return this.replace(/[0-9]/g, function (w) {
+        return id[+w];
+    });
+};
 //*************************************************************************************\\
 
 //*** ---------------- Global UI ---------------- ***\\
@@ -14,19 +19,29 @@ const formatNumber = (number) => {
 //- Rendering global Country name and flag on table
 export const renderAllData = (global) => {
     //- Global
-    const gCases = global.cases;
-    const gDeaths = global.deaths;
-    const gCritical = global.critical;
-    const gRecovered = global.recovered;
-    const gTodayCases = global.todayCases;
-    const gTodayDeaths = global.todayDeaths;
-    const gTodayRecovered = global.todayRecovered;
-    const gActiveCases = global.active;
+    let gCases = formatNumber(global.cases);
+    let gDeaths = formatNumber(global.deaths);
+    let gCritical = formatNumber(global.critical);
+    let gRecovered = formatNumber(global.recovered);
+    let gTodayCases = formatNumber(global.todayCases);
+    let gTodayDeaths = formatNumber(global.todayDeaths);
+    let gTodayRecovered = formatNumber(global.todayRecovered);
+    let gActiveCases = formatNumber(global.active);
 
+    if (document.location.pathname == "/arabic.html") {
+        gCases = formatNumber(global.cases).toArabicDigits();
+        gDeaths = formatNumber(global.deaths).toArabicDigits();
+        gCritical = formatNumber(global.critical).toArabicDigits();
+        gRecovered = formatNumber(global.recovered).toArabicDigits();
+        gTodayCases = formatNumber(global.todayCases).toArabicDigits();
+        gTodayDeaths = formatNumber(global.todayDeaths).toArabicDigits();
+        gTodayRecovered = formatNumber(global.todayRecovered).toArabicDigits();
+        gActiveCases = formatNumber(global.active).toArabicDigits();
+    }
     const html = `
                     <tr class="table__body--row">
-                        <td scope="row" class="table__body--header freeze" style="position: sticky; left: 0;z-index:500;">1</td>
-                        <td class=" freeze" style="text-align: left;position: sticky; left: 0;z-index:500;">
+                        <td scope="row" class="table__body--header freeze freeze-ar" style="position: sticky; left: 0;z-index:500;">1</td>
+                        <td class=" freeze freeze-ar" style="position: sticky; left: 0;z-index:500;">
                             <img
                                 src="img/worldwide-2.svg"
                                 class="table__icon"
@@ -46,6 +61,8 @@ export const renderAllData = (global) => {
                     
     `;
 
+    if (document.location.pathname == "/arabic.html") {
+    }
     // DOM.countryInfo.insertAdjacentHTML("beforeend", html);
     $(DOM.tableBody).append(html);
 
@@ -55,31 +72,100 @@ export const renderAllData = (global) => {
 $.countryData = (data) => {
     // data.forEach($.renderCountriesApi);
 
-    $("#dtBasicExample").DataTable({
-        pagingType: "simple_numbers",
-        data: data.forEach($.renderCountriesApi),
-        sort: "data.cases",
-
-        dom: "lBfrtip",
-
-        order: [[2, "desc"]],
-        bLengthChange: false,
-        fnRowCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-            //debugger;
-            var index = iDisplayIndexFull + 1;
-            $("td:first", nRow).html(index);
-            return nRow;
-        },
-    });
     $(".dataTables_length").addClass(".bs-select");
+    if (document.location.pathname == "/arabic.html") {
+        var arabic = {
+            sProcessing: "جاري التحميل...",
+            sLengthMenu: "أظهر مُدخلات _MENU_",
+            sZeroRecords: "لم يُعثر على أية سجلات",
+            sInfo: "إظهار _START_ إلى _END_ من أصل _TOTAL_ مُدخل",
+            sInfoEmpty: "يعرض 0 إلى 0 من أصل 0 سجلّ",
+            sInfoFiltered: "(منتقاة من مجموع _MAX_ مُدخل)",
+            sInfoPostFix: "",
+            sSearch: "ابحث:",
+            searchPlaceholder: "ابحث عن الدولة",
+
+            sUrl: "",
+            oPaginate: {
+                sFirst: "الأول",
+                sPrevious: "السابق",
+                sNext: "التالي",
+                sLast: "الأخير",
+            },
+        };
+        $("#dtBasicExample").DataTable({
+            pagingType: "simple_numbers",
+            data: data.forEach($.renderCountriesApi),
+            sort: "data.cases",
+
+            dom: "lBfrtip",
+            language: arabic,
+
+            order: [],
+            bLengthChange: false,
+            fnRowCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                //debugger;
+                var index = iDisplayIndexFull + 1;
+                $("td:first", nRow).html(index);
+                return nRow;
+            },
+        });
+        $("#dtBasicExample").on("draw.dt", function () {
+            $(".paginate_button")
+                .not(".previous, .next")
+                .each(function (i, a) {
+                    var val = $(a).text();
+                    val = new Intl.NumberFormat("ar-EG").format(val);
+                    $(a).text(val);
+                });
+        });
+        $(".dataTables_length").addClass(".bs-select");
+    } else {
+        $("#dtBasicExample").DataTable({
+            pagingType: "simple_numbers",
+            data: data.forEach($.renderCountriesApi),
+            sort: "data.cases",
+
+            dom: "lBfrtip",
+
+            order: [],
+            bLengthChange: false,
+            fnRowCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                //debugger;
+                var index = iDisplayIndexFull + 1;
+                $("td:first", nRow).html(index);
+                return nRow;
+            },
+        });
+        $(".dataTables_length").addClass(".bs-select");
+    }
 };
 
 $.renderCountriesApi = (data) => {
+    let gCases = formatNumber(data.cases);
+    let gDeaths = formatNumber(data.deaths);
+    let gCritical = formatNumber(data.critical);
+    let gRecovered = formatNumber(data.recovered);
+    let gTodayCases = formatNumber(data.todayCases);
+    let gTodayDeaths = formatNumber(data.todayDeaths);
+    let gTodayRecovered = formatNumber(data.todayRecovered);
+    let gActiveCases = formatNumber(data.active);
+
+    if (document.location.pathname == "/arabic.html") {
+        gCases = formatNumber(data.cases).toArabicDigits();
+        gDeaths = formatNumber(data.deaths).toArabicDigits();
+        gCritical = formatNumber(data.critical).toArabicDigits();
+        gRecovered = formatNumber(data.recovered).toArabicDigits();
+        gTodayCases = formatNumber(data.todayCases).toArabicDigits();
+        gTodayDeaths = formatNumber(data.todayDeaths).toArabicDigits();
+        gTodayRecovered = formatNumber(data.todayRecovered).toArabicDigits();
+        gActiveCases = formatNumber(data.active).toArabicDigits();
+    }
     if (data.todayCases > 0 && data.todayDeaths > 0 && data.todayRecovered > 0) {
         const html = `
                     <tr class="table__body--row">
-                        <td scope="row" class="table__body--header freeze">1</td>
-                        <td class=" freeze" style="text-align: left">
+                        <td scope="row" class="table__body--header freeze freeze-ar">1</td>
+                        <td class=" freeze freeze-ar">
                             <img
                                 src=${data.countryInfo.flag}
                                 class="table__icon"
@@ -87,20 +173,14 @@ $.renderCountriesApi = (data) => {
                             />
                             ${data.country}
                         </td>
-                        <td >${formatNumber(data.cases)}</td>
-                        <td >${formatNumber(data.deaths)}</td>
-                        <td >${formatNumber(data.critical)}</td>
-                        <td >${formatNumber(data.recovered)}</td>
-                        <td class="  badge-warning " id="warn">${formatNumber(
-                            "+" + data.todayCases
-                        )}</td>
-                        <td class=" badge-danger" id="dang">${formatNumber(
-                            "+" + data.todayDeaths
-                        )}</td>
-                        <td class=" badge-good" id="good">${formatNumber(
-                            "+" + data.todayRecovered
-                        )}</td>
-                        <td >${formatNumber(data.active)}</td>
+                        <td >${gCases}</td>
+                        <td >${gDeaths}</td>
+                        <td >${gCritical}</td>
+                        <td >${gRecovered}</td>
+                        <td class="  badge-warning " id="warn">${"+" + gTodayCases}</td>
+                        <td class=" badge-danger" id="dang">${"+" + gTodayDeaths}</td>
+                        <td class=" badge-good" id="good">${"+" + gTodayRecovered}</td>
+                        <td >${gActiveCases}</td>
                     </tr>
                     
     `;
@@ -110,7 +190,7 @@ $.renderCountriesApi = (data) => {
         const html = `
                     <tr class="table__body--row">
                         <td scope="row" class="table__body--header freeze" style="position: sticky; left: 0;">1</td>
-                        <td class=" freeze" style="text-align: left;">
+                        <td class=" freeze freeze-ar" >
                             <img
                                 src=${data.countryInfo.flag}
                                 class="table__icon"
@@ -118,18 +198,14 @@ $.renderCountriesApi = (data) => {
                             />
                             ${data.country}
                         </td>
-                        <td >${formatNumber(data.cases)}</td>
-                        <td >${formatNumber(data.deaths)}</td>
-                        <td >${formatNumber(data.critical)}</td>
-                        <td >${formatNumber(data.recovered)}</td>
-                        <td class="  badge-warning" id="warn">${formatNumber(
-                            "+" + data.todayCases
-                        )}</td>
-                        <td  id="dang">${formatNumber(data.todayDeaths)}</td>
-                        <td class=" badge-good" id="good">${formatNumber(
-                            "+" + data.todayRecovered
-                        )}</td>
-                        <td >${formatNumber(data.active)}</td>
+                        <td >${gCases}</td>
+                        <td >${gDeaths}</td>
+                        <td >${gCritical}</td>
+                        <td >${gRecovered}</td>
+                        <td class="  badge-warning" id="warn">${"+" + gTodayCases}</td>
+                        <td  id="dang">${gTodayDeaths}</td>
+                        <td class=" badge-good" id="good">${"+" + gTodayRecovered}</td>
+                        <td >${gActiveCases}</td>
                     </tr>
                     
     `;
@@ -138,8 +214,8 @@ $.renderCountriesApi = (data) => {
     } else if (data.todayDeaths > 0 && data.todayCases > 0 && data.todayRecovered <= 0) {
         const html = `
                     <tr class="table__body--row">
-                        <td scope="row" class="table__body--header freeze">1</td>
-                        <td class=" freeze" style="text-align: left">
+                        <td scope="row" class="table__body--header freeze freeze-ar">1</td>
+                        <td class=" freeze freeze-ar" >
                             <img
                                 src=${data.countryInfo.flag}
                                 class="table__icon"
@@ -147,18 +223,14 @@ $.renderCountriesApi = (data) => {
                             />
                             ${data.country}
                         </td>
-                        <td >${formatNumber(data.cases)}</td>
-                        <td >${formatNumber(data.deaths)}</td>
-                        <td >${formatNumber(data.critical)}</td>
-                        <td >${formatNumber(data.recovered)}</td>
-                        <td class="  badge-warning" id="warn">${formatNumber(
-                            "+" + data.todayCases
-                        )}</td>
-                        <td class=" badge-danger" id="dang">${formatNumber(
-                            "+" + data.todayDeaths
-                        )}</td>
-                        <td  id="good">${formatNumber(data.todayRecovered)}</td>
-                        <td >${formatNumber(data.active)}</td>
+                        <td >${gCases}</td>
+                        <td >${gDeaths}</td>
+                        <td >${gCritical}</td>
+                        <td >${gRecovered}</td>
+                        <td class="  badge-warning" id="warn">${"+" + gTodayCases}</td>
+                        <td class=" badge-danger" id="dang">${"+" + gTodayDeaths}</td>
+                        <td  id="good">${gTodayRecovered}</td>
+                        <td >${gActiveCases}</td>
                     </tr>
                     
     `;
@@ -167,8 +239,8 @@ $.renderCountriesApi = (data) => {
     } else if (data.todayCases > 0 && data.todayRecovered > 0 && data.todayDeaths <= 0) {
         const html = `
                     <tr class="table__body--row">
-                        <td scope="row" class="table__body--header freeze">1</td>
-                        <td class=" freeze" style="text-align: left">
+                        <td scope="row" class="table__body--header freeze freeze-ar">1</td>
+                        <td class=" freeze freeze-ar" >
                             <img
                                 src=${data.countryInfo.flag}
                                 class="table__icon"
@@ -176,18 +248,14 @@ $.renderCountriesApi = (data) => {
                             />
                             ${data.country}
                         </td>
-                        <td >${formatNumber(data.cases)}</td>
-                        <td >${formatNumber(data.deaths)}</td>
-                        <td >${formatNumber(data.critical)}</td>
-                        <td >${formatNumber(data.recovered)}</td>
-                        <td class="  badge-warning" id="warn">${formatNumber(
-                            "+" + data.todayCases
-                        )}</td>
-                        <td class=" " id="dang">${formatNumber(data.todayDeaths)}</td>
-                        <td class=" badge-good" id="good">${formatNumber(
-                            "+" + data.todayRecovered
-                        )}</td>
-                        <td >${formatNumber(data.active)}</td>
+                        <td >${gCases}</td>
+                        <td >${gDeaths}</td>
+                        <td >${gCritical}</td>
+                        <td >${gRecovered}</td>
+                        <td class="  badge-warning" id="warn">${"+" + gTodayCases}</td>
+                        <td class=" " id="dang">${gTodayDeaths}</td>
+                        <td class=" badge-good" id="good">${"+" + gTodayRecovered}</td>
+                        <td >${gActiveCases}</td>
                     </tr>
                     
     `;
@@ -196,8 +264,8 @@ $.renderCountriesApi = (data) => {
     } else if (data.todayDeaths > 0 && data.todayRecovered <= 0 && data.todayCases <= 0) {
         const html = `
                     <tr class="table__body--row">
-                        <td scope="row" class="table__body--header freeze">1</td>
-                        <td class=" freeze" style="text-align: left">
+                        <td scope="row" class="table__body--header freeze freeze-ar">1</td>
+                        <td class=" freeze freeze-ar" >
                             <img
                                 src=${data.countryInfo.flag}
                                 class="table__icon"
@@ -205,16 +273,14 @@ $.renderCountriesApi = (data) => {
                             />
                             ${data.country}
                         </td>
-                        <td >${formatNumber(data.cases)}</td>
-                        <td >${formatNumber(data.deaths)}</td>
-                        <td >${formatNumber(data.critical)}</td>
-                        <td >${formatNumber(data.recovered)}</td>
-                        <td  id="warn">${formatNumber(data.todayCases)}</td>
-                        <td class=" badge-danger" id="dang">${formatNumber(
-                            "+" + data.todayDeaths
-                        )}</td>
-                        <td class=" " id="good">${formatNumber(data.todayRecovered)}</td>
-                        <td >${formatNumber(data.active)}</td>
+                        <td >${gCases}</td>
+                        <td >${gDeaths}</td>
+                        <td >${gCritical}</td>
+                        <td >${gRecovered}</td>
+                        <td  id="warn">${gTodayCases}</td>
+                        <td class=" badge-danger" id="dang">${"+" + gTodayDeaths}</td>
+                        <td class=" " id="good">${gTodayRecovered}</td>
+                        <td >${gActiveCases}</td>
                     </tr>
                     
     `;
@@ -223,8 +289,8 @@ $.renderCountriesApi = (data) => {
     } else if (data.todayRecovered > 0 && data.todayCases <= 0 && data.todayDeaths <= 0) {
         const html = `
                     <tr class="table__body--row">
-                        <td scope="row" class="table__body--header freeze">1</td>
-                        <td class=" freeze" style="text-align: left">
+                        <td scope="row" class="table__body--header freeze freeze-ar">1</td>
+                        <td class=" freeze freeze-ar" >
                             <img
                                 src=${data.countryInfo.flag}
                                 class="table__icon"
@@ -232,16 +298,14 @@ $.renderCountriesApi = (data) => {
                             />
                             ${data.country}
                         </td>
-                        <td >${formatNumber(data.cases)}</td>
-                        <td >${formatNumber(data.deaths)}</td>
-                        <td >${formatNumber(data.critical)}</td>
-                        <td >${formatNumber(data.recovered)}</td>
-                        <td  id="warn">${formatNumber(data.todayCases)}</td>
-                        <td  id="dang">${formatNumber(data.todayDeaths)}</td>
-                        <td class=" badge-good" id="good">${formatNumber(
-                            "+" + data.todayRecovered
-                        )}</td>
-                        <td >${formatNumber(data.active)}</td>
+                        <td >${gCases}</td>
+                        <td >${gDeaths}</td>
+                        <td >${gCritical}</td>
+                        <td >${gRecovered}</td>
+                        <td  id="warn">${gTodayCases}</td>
+                        <td  id="dang">${gTodayDeaths}</td>
+                        <td class=" badge-good" id="good">${"+" + gTodayRecovered}</td>
+                        <td >${gActiveCases}</td>
                     </tr>
                     
     `;
@@ -250,8 +314,8 @@ $.renderCountriesApi = (data) => {
     } else {
         const html = `
                         <tr class="table__body--row">
-                            <td scope="row" class="table__body--header freeze">1</td>
-                            <td class=" freeze" style="text-align: left">
+                            <td scope="row" class="table__body--header freeze freeze-ar">1</td>
+                            <td class=" freeze freeze-ar" >
                                 <img
                                     src=${data.countryInfo.flag}
                                     class="table__icon"
@@ -259,17 +323,21 @@ $.renderCountriesApi = (data) => {
                                 />
                                 ${data.country}
                             </td>
-                            <td >${formatNumber(data.cases)}</td>
-                            <td >${formatNumber(data.deaths)}</td>
-                            <td >${formatNumber(data.critical)}</td>
-                            <td >${formatNumber(data.recovered)}</td>
-                            <td class="  " id="warn">${formatNumber(data.todayCases)}</td>
-                            <td  id="dang">${formatNumber(data.todayDeaths)}</td>
-                            <td  id="good">${formatNumber(data.todayRecovered)}</td>
-                            <td >${formatNumber(data.active)}</td>
+                            <td >${gCases}</td>
+                            <td >${gDeaths}</td>
+                            <td >${gCritical}</td>
+                            <td >${gRecovered}</td>
+                            <td class="  " id="warn">${gTodayCases}</td>
+                            <td  id="dang">${gTodayDeaths}</td>
+                            <td  id="good">${gTodayRecovered}</td>
+                            <td >${gActiveCases}</td>
                         </tr>
         `;
         // DOM.countryInfo.insertAdjacentHTML("beforeend", html);
         $(DOM.tableBody).append(html);
+    }
+
+    if (document.location.pathname == "/arabic.html") {
+        document.querySelector(".freeze-ar").style.textAlign = "right !important";
     }
 };

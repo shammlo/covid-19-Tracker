@@ -11,6 +11,13 @@
         text-align: center;
     }
 }
+
+.table_responsive-ar {
+    max-height: 69.4rem !important;
+}
+.main__table-ar {
+    height: 100% !important;
+}
 .main__table {
     height: 100%;
     position: relative;
@@ -55,6 +62,15 @@
             }
         }
     }
+
+    .table__main-ar {
+        th,
+        td {
+            &:not(:last-child) {
+                border-left: var(--border-white) !important;
+            }
+        }
+    }
     .table__header {
         &--row {
             border-bottom: var(--border-white);
@@ -68,6 +84,38 @@
         // }
     }
 
+    .freeze {
+        text-align: left !important;
+        position: sticky !important;
+        // position: -webkit-sticky !important;
+        left: 0px !important;
+        top: 0px !important;
+        z-index: 600 !important;
+    }
+    .table__body-ar {
+        &--row {
+            font-family: var(--font-primary);
+            font-weight: 400;
+
+            td:not(:first-child) {
+                border-top: var(--border-white);
+                padding: 0.7rem 0.8rem;
+            }
+
+            td {
+                font-size: 1.6rem;
+                font-weight: 500;
+                border-top: var(--border-white);
+                text-align: center;
+            }
+            td:not(:nth-child(2n)) {
+                text-align: center;
+            }
+        }
+        .freeze-ar {
+            text-align: right !important;
+        }
+    }
     .table__body {
         &--row:nth-of-type(odd) {
             background-color: var(--dark-4);
@@ -86,6 +134,9 @@
                 font-size: 1.6rem;
                 font-weight: 500;
                 border-top: var(--border-white);
+                text-align: center;
+            }
+            td:not(:nth-child(2n)) {
                 text-align: center;
             }
 
@@ -138,6 +189,7 @@
         width: 2rem;
         border-radius: 2px;
         margin-right: 0.7rem;
+        margin-left: 0.7rem;
     }
 }
 .dataTables_wrapper .dataTables_info {
@@ -304,20 +356,6 @@ div.dataTables_wrapper div.dataTables_filter label {
     }
 }
 
-// .freeze {
-//     position: sticky !important;
-//     position: -webkit-sticky !important;
-//     left: 0px !important;
-//     // background-color: #ffffff !important
-//     z-index: 400 !important;
-// }
-.freeze {
-    position: sticky !important;
-    // position: -webkit-sticky !important;
-    left: 0px !important;
-    top: 0px !important;
-    z-index: 5000 !important;
-}
 .pagination > li > a,
 .pagination > li > span {
     position: relative;

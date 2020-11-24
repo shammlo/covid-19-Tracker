@@ -47,6 +47,7 @@ export const DOM = {
     incDec: document.querySelector(".incDec"),
     tableBody: document.querySelector("#tableBody"),
     tableMain: document.querySelector(".table__main"),
+    tableMainAr: document.querySelector(".table__main-ar"),
     caseChart: document.getElementById("cases").getContext("2d"),
     dailyCases: document.querySelector("#daily-cases"),
     button1: document.querySelector("#button1"),

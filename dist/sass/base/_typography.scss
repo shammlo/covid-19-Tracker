@@ -62,7 +62,17 @@
 .yel {
     color: var(--yellow-2) !important;
 }
-
+.yel-ar {
+    @media only screen and (max-width: $bp-450) {
+        font-size: 1.8rem;
+    }
+    @media only screen and (max-width: $bp-414) {
+        margin-right: 0.5rem;
+    }
+    @media only screen and (max-width: $bp-375) {
+        font-size: 1.8rem;
+    }
+}
 .heading-3 {
     @extend %heading;
     font-size: 1.6rem;
@@ -182,4 +192,8 @@
         letter-spacing: 0.7px;
         padding-left: 1rem;
     }
+}
+.lang-items {
+    text-decoration: none;
+    color: inherit;
 }

@@ -36,7 +36,7 @@
 .data-section {
     height: 43rem;
     max-width: 100%;
-    background-color: var(--dark-3);
+    // background-color: var(--dark-3);
     @media only screen and (max-width: $bp-1400) {
         min-height: 60rem;
     }
@@ -52,17 +52,21 @@
     @media only screen and (max-width: $bp-450) {
         min-height: 70rem;
     }
+    @media only screen and (max-width: $bp-375) {
+        min-height: 75rem;
+    }
     @media only screen and (max-width: $bp-350) {
         min-height: 70rem;
     }
 }
 
 //* ---------------- TABLE SECTION --------------- *\\
-.table-section {
+.table-section,
+.table-section-arabic {
     // max-height: 75vh;
     width: 100%;
     min-height: 60rem;
-    background-color: var(--dark-3);
+    // background-color: var(--dark-3);
     padding-top: 2rem;
 }
 
@@ -72,7 +76,7 @@
     // padding-top: 5rem;
     padding-bottom: 5rem;
     min-height: 96rem;
-    background-color: var(--dark-3);
+    // background-color: var(--dark-3);
 }
 
 //* ---------------- FOOTER SECTION --------------- *\\
@@ -84,4 +88,9 @@
     border-top-right-radius: 2rem;
     border-top-left-radius: 2rem;
     padding-top: 1rem;
+    @media only screen and (max-width: $bp-375) {
+        box-shadow: inset 0 0 2rem 0 rgba(73, 80, 87, 0.17);
+        border-top-right-radius: 2.5rem;
+        border-top-left-radius: 2.5rem;
+    }
 }

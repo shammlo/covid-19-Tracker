@@ -68,6 +68,7 @@
     width: 3rem !important;
     border-radius: 2px;
     margin-right: 0.5rem;
+    margin-left: 0.5rem;
     padding-top: 4px;
 }
 
@@ -226,6 +227,7 @@
 //- Pie chart
 #chartdiv,
 #chartdiv2 {
+    direction: ltr;
     max-width: 100%;
     min-height: 60rem;
     background-color: #212327;
@@ -239,6 +241,7 @@
 }
 #pieCharting {
     background-color: var(--dark-4);
+    direction: ltr;
 }
 #pieChart {
     background-color: var(--dark-4);

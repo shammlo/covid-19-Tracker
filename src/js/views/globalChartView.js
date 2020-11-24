@@ -16,6 +16,51 @@ export const allCountrySearch = (data) => {
         object.flag = object.flag || object.countryInfo.flag;
         return object;
     });
+    var data = [
+        {
+            id: 1,
+            value: "eng",
+            text: "English(default)",
+            img: "img/English(default).svg",
+            url: "index.html",
+        },
+        {
+            id: 2,
+            value: "kur",
+            text: "Kurdish",
+            img: "img/kurd.png",
+            url: "kurdish.html",
+        },
+        {
+            id: 3,
+            value: "ar",
+            text: "Arabic",
+            img: "img/arabic.png",
+            url: "arabic.html",
+        },
+    ];
+    let languages = (data) => {
+        // return data.html;
+
+        if (typeof data.img === "undefined") {
+            let $new = $(
+                '<span ><a class="lang-items" href="' + data.url + '">' + data.text + "</a></span>"
+            );
+            return $new;
+        }
+        var $state = $(
+            '<span value="' +
+                data.value +
+                '"><img src="' +
+                data.img +
+                ' " class="img-flag" /><a class="lang-items" href="' +
+                data.url +
+                '">' +
+                data.text +
+                "</a></span>"
+        );
+        return $state;
+    };
 
     $(".js-data-filter").select2({
         data: result,
@@ -25,14 +70,6 @@ export const allCountrySearch = (data) => {
         tags: true,
     });
 
-    // $(".js-data-filter")
-    //     .select2()
-    //     .on("select2:open", () => {
-    //         $(".select2-results").append(
-    //             '<span><img src="img/worldwide-2.svg" class="img-flag" /> Global</span>'
-    //         );
-    //     });
-
     $(".pieChart-filler").select2({
         data: result,
         templateResult: formatCountry,
@@ -40,6 +77,25 @@ export const allCountrySearch = (data) => {
         allowClear: true,
         tags: true,
     });
+    $(".language-data").select2({
+        data: data,
+        templateResult: languages,
+        minimumResultsForSearch: Infinity,
+        placeholder: "Language",
+        allowClear: true,
+        // escapeMarkup: function (m) {
+        //     return m;
+        // },
+        // tags: true,
+    });
+    $(".language-data").on("select2:select", function (e) {
+        console.log(e.params.data.url);
+        window.open(e.params.data.url, "_self");
+    });
+    // $(".language-data").on("change", function () {
+    //     $(".select2-results__option--selected").hide();
+    //     $("." + $(this).val()).show();
+    // });
 };
 
 //- Rendering The Filter Country Names and Flag
@@ -88,14 +144,105 @@ export const renderCharts = async (onlyDate, onlyCases, onlyDeaths, onlyRecovere
 
     Chart.defaults.global.defaultFontColor = "#737373";
     let dailyCases = newFromCumulative(onlyCases);
-    // $(".theme-switch").on("click", () => {
-    //     if ($("body").hasClass("light-theme")) {
-    //     } else {
-    //         Chart.defaults.global.defaultFontColor = "#fff";
-    //     }
-    // });
+    const arCases = onlyDate.toString().toArabicDigits();
+    const engData = {
+        //- Labels
+        labels: onlyDate,
 
-    //var ctx = document.getElementById("cases").getContext("2d");
+        //- Datasets
+        datasets: [
+            {
+                data: onlyCases,
+                label: "Cases",
+                backgroundColor: "rgba(54, 162, 235, 0.2)",
+                borderColor: "rgba(54, 162, 235, 1)",
+                borderWidth: 1,
+                order: 1,
+            },
+            {
+                data: onlyDeaths,
+                label: "Deaths",
+                backgroundColor: "rgba(214, 102, 121, 0.3)",
+                borderColor: "rgba(214, 102, 121, 1)",
+                borderWidth: 1,
+                order: 3,
+            },
+            {
+                data: onlyRecovered,
+                label: "Recovered",
+
+                backgroundColor: "rgba(113, 255, 47, 0.2)",
+                borderColor: "rgba(113, 255, 47, 1)",
+                borderWidth: 1,
+                order: 2,
+            },
+        ],
+    };
+    const kurdData = {
+        //- Labels
+        labels: onlyDate,
+
+        //- Datasets
+        datasets: [
+            {
+                data: onlyCases,
+                label: "دۆسیـە",
+                backgroundColor: "rgba(54, 162, 235, 0.2)",
+                borderColor: "rgba(54, 162, 235, 1)",
+                borderWidth: 1,
+                order: 1,
+            },
+            {
+                data: onlyDeaths,
+                label: "مردووان",
+                backgroundColor: "rgba(214, 102, 121, 0.3)",
+                borderColor: "rgba(214, 102, 121, 1)",
+                borderWidth: 1,
+                order: 3,
+            },
+            {
+                data: onlyRecovered,
+                label: "چـاكـبـوونـەوە",
+
+                backgroundColor: "rgba(113, 255, 47, 0.2)",
+                borderColor: "rgba(113, 255, 47, 1)",
+                borderWidth: 1,
+                order: 2,
+            },
+        ],
+    };
+    const arData = {
+        //- Labels
+        labels: onlyDate,
+
+        //- Datasets
+        datasets: [
+            {
+                data: onlyCases,
+                label: "حالات",
+                backgroundColor: "rgba(54, 162, 235, 0.2)",
+                borderColor: "rgba(54, 162, 235, 1)",
+                borderWidth: 1,
+                order: 1,
+            },
+            {
+                data: onlyDeaths,
+                label: "حالات الوفاة",
+                backgroundColor: "rgba(214, 102, 121, 0.3)",
+                borderColor: "rgba(214, 102, 121, 1)",
+                borderWidth: 1,
+                order: 3,
+            },
+            {
+                data: onlyRecovered,
+                label: "تعافى",
+                backgroundColor: "rgba(113, 255, 47, 0.2)",
+                borderColor: "rgba(113, 255, 47, 1)",
+                borderWidth: 1,
+                order: 2,
+            },
+        ],
+    };
 
     //- Daily Cases
     let charts = new Chart(DOM.caseChart, {
@@ -104,39 +251,7 @@ export const renderCharts = async (onlyDate, onlyCases, onlyDeaths, onlyRecovere
         maintainAspectRatio: false,
 
         //- Data layer start
-        data: {
-            //- Labels
-            labels: onlyDate,
-
-            //- Datasets
-            datasets: [
-                {
-                    data: onlyCases,
-                    label: "Cases",
-                    backgroundColor: "rgba(54, 162, 235, 0.2)",
-                    borderColor: "rgba(54, 162, 235, 1)",
-                    borderWidth: 1,
-                    order: 1,
-                },
-                {
-                    data: onlyDeaths,
-                    label: "Deaths",
-                    backgroundColor: "rgba(214, 102, 121, 0.3)",
-                    borderColor: "rgba(214, 102, 121, 1)",
-                    borderWidth: 1,
-                    order: 3,
-                },
-                {
-                    data: onlyRecovered,
-                    label: "Recovered",
-
-                    backgroundColor: "rgba(113, 255, 47, 0.2)",
-                    borderColor: "rgba(113, 255, 47, 1)",
-                    borderWidth: 1,
-                    order: 2,
-                },
-            ],
-        },
+        data: engData,
         //- Data layer end
 
         //- Options Start
@@ -192,11 +307,19 @@ export const renderCharts = async (onlyDate, onlyCases, onlyDeaths, onlyRecovere
                         gridLines: {
                             color: "rgba(0, 0, 0, 0)",
                         },
+
+                        ticks: {
+                            fontSize: 14,
+                            callback: function (value) {
+                                return value.toString().toArabicDigits();
+                            },
+                        },
                     },
                 ],
                 yAxes: [
                     {
                         ticks: {
+                            fontSize: 16,
                             beginAtZero: true,
                             callback: function (value) {
                                 if (value >= 0 && value < 1000) return value;
@@ -213,80 +336,30 @@ export const renderCharts = async (onlyDate, onlyCases, onlyDeaths, onlyRecovere
         //- Options end
     });
 
-    // DOM.button1.addEventListener("click", () => {
-    //     charts.data.datasets = [];
+    if (document.location.pathname == "/arabic.html") {
+        charts.data = arData;
+        charts.options.scales.yAxes = [];
+        (charts.options.legend.labels = {
+            fontSize: 16,
+            padding: 4,
+        }),
+            charts.options.scales.yAxes.push({
+                ticks: {
+                    fontSize: 16,
+                    beginAtZero: true,
+                    callback: function (value) {
+                        if (value >= 0 && value < 1000) return value.toString().toArabicDigits();
+                        if (value >= 1000 && value < 1000000)
+                            return (value / 1000).toString().toArabicDigits() + "الف";
+                        if (value >= 1000000 && value < 1000000000)
+                            return (value / 1000000).toString().toArabicDigits() + "م";
+                        return value.toString().toArabicDigits();
+                    },
+                },
+            });
 
-    //     charts.config.type = "line";
-    //     charts.config.label = "Total Cases";
-
-    //     charts.data.datasets.push(
-    //         {
-    //             data: onlyCases,
-    //             label: "Cases",
-    //             backgroundColor: "rgba(54, 162, 235, 0.2)",
-    //             borderColor: "rgba(54, 162, 235, 1)",
-    //             borderWidth: 1,
-    //             order: 1,
-    //         },
-    //         {
-    //             data: onlyDeaths,
-    //             label: "Deaths",
-    //             backgroundColor: "rgba(214, 102, 121, 0.3)",
-    //             borderColor: "rgba(214, 102, 121, 1)",
-    //             borderWidth: 1,
-    //             order: 3,
-    //         },
-    //         {
-    //             data: onlyRecovered,
-    //             label: "Recovered",
-
-    //             backgroundColor: "rgba(113, 255, 47, 0.2)",
-    //             borderColor: "rgba(113, 255, 47, 1)",
-    //             borderWidth: 1,
-    //             order: 2,
-    //         }
-    //     );
-    //     charts.update();
-    // });
-
-    // //- Button 2
-    // DOM.button2.addEventListener("click", () => {
-    //     charts.data.datasets = [];
-    //     // charts.data.datasets.data[1] = [];
-    //     // charts.data.datasets.data[2] = [];
-
-    //     charts.type = "";
-    //     charts.config.type = "doughnut";
-    //     charts.data.datasets.push(
-    //         {
-    //             label: "Daily Cases",
-    //             data: dailyCases,
-    //             backgroundColor: "rgba(54, 162, 235, 0.2)",
-    //             pointBackgroundColor: "rgba(54, 162, 235, 1)",
-    //             borderColor: "rgba(54, 162, 235, 1)",
-    //             borderWidth: 1,
-    //             order: 1,
-    //         },
-    //         {
-    //             data: onlyDeaths,
-    //             label: "Deaths",
-    //             backgroundColor: "rgba(214, 102, 121, 0.2)",
-    //             borderColor: "rgba(214, 102, 121, 1)",
-    //             borderWidth: 1,
-    //             order: 2,
-    //         },
-    //         {
-    //             data: onlyRecovered,
-    //             label: "Recovered",
-    //             backgroundColor: "rgba(113, 255, 47, 0.2)",
-    //             borderColor: "rgba(113, 255, 47, 1)",
-    //             borderWidth: 1,
-    //             order: 3,
-    //         }
-    //     );
-
-    //     charts.update();
-    // });
+        charts.update();
+    }
 
     //--------------------------------------------------------------------------
 };
@@ -324,7 +397,7 @@ export const globalPieChart = async (data) => {
         // chart2.background.fill = "rgb(36, 35, 35)";
 
         // Add data
-        chart.data = [
+        const engData = [
             {
                 title: "Cases",
                 value: cases,
@@ -346,7 +419,7 @@ export const globalPieChart = async (data) => {
                 color: am4core.color("#902C2D"),
             },
         ];
-        chart2.data = [
+        const engData2 = [
             {
                 title: "Today Cases",
                 value: todayCases,
@@ -364,6 +437,66 @@ export const globalPieChart = async (data) => {
                 color: am4core.color("#FF5043"),
             },
         ];
+
+        const kurdData = [
+            {
+                title: "دۆسیـە",
+                value: cases,
+                color: am4core.color("#388DB2"),
+            },
+            {
+                title: "چـاڵـاك",
+                value: active,
+                color: am4core.color("#C767DC"),
+            },
+            {
+                title: "چـاكـبـوونـەوە",
+                value: recovered,
+                color: am4core.color("#4CB27F"),
+            },
+            {
+                title: "مردووان",
+                value: deaths,
+                color: am4core.color("#902C2D"),
+            },
+        ];
+        const kurdData2 = [
+            {
+                title: "كـەیسەكانی ئـەمـرۆ",
+                value: todayCases,
+                color: am4core.color("#67B7DC"),
+            },
+
+            {
+                title: "چاكبـوونەوەی ئەمڕۆ",
+                value: todayRecovered,
+                color: am4core.color("#69D7A0"),
+            },
+            {
+                title: "مـردووانی ئەمڕۆ",
+                value: todayDeaths,
+                color: am4core.color("#FF5043"),
+            },
+        ];
+        chart.data = engData;
+        chart2.data = engData2;
+
+        // $(".language-data").on("select2:select", function () {
+        //     if ($(".language-data").select2("data")[0].text === "English(default)") {
+        //         chart.rtl = true;
+        //         chart2.rtl = true;
+        //         chart.legend.itemContainers.template.reverseOrder = true;
+        //         chart2.legend.itemContainers.template.reverseOrder = true;
+
+        //         chart.data = engData;
+        //         chart2.data = engData2;
+        //     } else if ($(".language-data").select2("data")[0].text === "Kurdish") {
+        //         chart.data = kurdData;
+        //         chart2.data = kurdData2;
+        //     } else {
+        //         console.log("ERROR");
+        //     }
+        // });
 
         // Add and configure Series
         var pieSeries = chart.series.push(new am4charts.PieSeries());
@@ -547,10 +680,20 @@ export const globalPieChart = async (data) => {
                 chart2.legend.labels.template.fill = am4core.color("white");
             }
         });
+
+        if (document.location.pathname == "/kurdish.html") {
+            chart.rtl = true;
+            chart2.rtl = true;
+            chart.legend.itemContainers.template.reverseOrder = true;
+            chart2.legend.itemContainers.template.reverseOrder = true;
+            chart.data = kurdData;
+            chart2.data = kurdData2;
+        }
         //---------------------------------------------------------------------
 
         $(".pieChart-filler").on("select2:select", function (data) {
             $("#flag2").remove();
+            $("#flag3").remove();
 
             $("#country-cases-daily").remove();
 
@@ -558,7 +701,7 @@ export const globalPieChart = async (data) => {
 
             var imageUrl = data.params.data.flag;
             $(".select2-selection__rendered")
-                .eq(1)
+                .eq(2)
                 .prepend("<img class='img-flag' src=" + imageUrl + ">");
 
             // if (typeof imageUrl === "undefined") {
@@ -571,7 +714,7 @@ export const globalPieChart = async (data) => {
                 .prepend("<img  id='flag2' class='img-flag__main' src=" + imageUrl + ">");
             $(".text-big")
                 .eq(2)
-                .prepend("<img  id='flag2' class='img-flag__main' src=" + imageUrl + ">");
+                .prepend("<img  id='flag3' class='img-flag__main' src=" + imageUrl + ">");
             const query = data.params.data.country;
             //var url = "https://disease.sh/v3/covid-19/historical/" + query + "?lastdays=all";
             $.ajax({
@@ -641,11 +784,7 @@ export const globalPieChart = async (data) => {
                             value: cases,
                             color: am4core.color("#67B7DC"),
                         },
-                        // {
-                        //     title: "Critical",
-                        //     value: critical,
-                        //     color: am4core.color("#6794DC"),
-                        // },
+
                         {
                             title: "Today Recovered",
                             value: recovered,
@@ -656,24 +795,59 @@ export const globalPieChart = async (data) => {
                             value: deaths,
                             color: am4core.color("#902C2D"),
                         },
-                        // {
-                        //     title: "Cases Per 1M",
-                        //     value: casePerOneM,
-                        //     color: am4core.color("#C767DC"),
-                        // },
-                        // {
-                        //     title: "Deaths Per 1M",
-                        //     value: deathPerOneM,
-                        //     color: am4core.color("#902C2D"),
-                        // },
-                        // {
-                        //     title: "Recovered Per 1M",
-                        //     value: recoveredPerOneM,
-                        //     color: am4core.color("#559F7A"),
-                        // },
                     ];
                     chart.invalidateRawData();
                     chart2.invalidateRawData();
+
+                    const kurdData = [
+                        {
+                            title: "دۆسیـە",
+                            value: cases,
+                            color: am4core.color("#388DB2"),
+                        },
+                        {
+                            title: "چـاڵـاك",
+                            value: active,
+                            color: am4core.color("#C767DC"),
+                        },
+                        {
+                            title: "چـاكـبـوونـەوە",
+                            value: recovered,
+                            color: am4core.color("#4CB27F"),
+                        },
+                        {
+                            title: "مردووان",
+                            value: deaths,
+                            color: am4core.color("#902C2D"),
+                        },
+                    ];
+                    const kurdData2 = [
+                        {
+                            title: "كـەیسەكانی ئـەمـرۆ",
+                            value: todayCases,
+                            color: am4core.color("#67B7DC"),
+                        },
+
+                        {
+                            title: "چاكبـوونەوەی ئەمڕۆ",
+                            value: todayRecovered,
+                            color: am4core.color("#69D7A0"),
+                        },
+                        {
+                            title: "مـردووانی ئەمڕۆ",
+                            value: todayDeaths,
+                            color: am4core.color("#FF5043"),
+                        },
+                    ];
+
+                    if (document.location.pathname == "/kurdish.html") {
+                        chart.rtl = true;
+                        chart2.rtl = true;
+                        chart.legend.itemContainers.template.reverseOrder = true;
+                        chart2.legend.itemContainers.template.reverseOrder = true;
+                        chart.data = kurdData;
+                        chart2.data = kurdData2;
+                    }
                 },
                 error: (error) => {
                     console.log(error);
