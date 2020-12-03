@@ -4,6 +4,12 @@
     max-width: 135rem;
     margin: 0 auto;
     box-shadow: var(--shadow-dark);
+    @media only screen and (max-width: $bp-4000) and (min-width: $bp-2500) {
+        max-width: 165rem;
+    }
+    @media only screen and (max-width: 3000px) and (min-width: 141.3125em) {
+        max-width: 165rem;
+    }
 
     @media only screen and (max-width: $bp-1400) {
         padding: 0 3rem;
@@ -12,7 +18,7 @@
         padding: 0 1.5rem;
     }
     @media only screen and (max-width: $bp-600) {
-        padding: 0 1rem;
+        padding: 0 1.8rem;
     }
 }
 
@@ -57,6 +63,11 @@
     }
     @media only screen and (max-width: $bp-350) {
         min-height: 70rem;
+    }
+}
+.data-section-lang {
+    @media only screen and (max-width: $bp-450) {
+        min-height: 83rem !important;
     }
 }
 

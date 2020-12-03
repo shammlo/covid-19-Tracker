@@ -11,7 +11,7 @@
 
 .theme-switch {
     margin-left: auto;
-    width: 6rem;
+    width: 7rem;
     height: 30px;
     background-color: rgb(51, 51, 51);
     border: darken(#aae2f1, 40);
@@ -32,50 +32,25 @@
 }
 .switch {
     position: absolute;
-    height: 2.1rem;
-    width: 2.1rem;
+    height: 2.3rem;
+    width: 2.3rem;
     border-radius: 50%;
-    background-color: #fff;
+    background-color: var(--white);
     transition: transform 0.5s, background-color 0.5s;
     will-change: transform;
     // transform: translateX(calc(100% + 9px));
 }
 
 .theme--night-mode {
-    transform: translateX(calc(100% - 5rem));
+    transform: translateX(calc(100% - 4.6rem));
     .theme-sun {
         opacity: 0.5;
     }
 }
 
-// .theme-switch {
-//     color: black;
-//     width: 60px;
-//     height: 30px;
-//     background: rgb(41, 40, 40);
-//     border-radius: 50px;
-//     position: relative;
-//     border: 4px solid rgb(41, 40, 40);
-//     display: inline-flex;
-//     cursor: pointer;
-//     outline: none;
-//     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-//     .switch {
-//         background: white;
-//         width: 16px;
-//         height: 16px;
-//         background: white;
-//         border-radius: 100%;
-//         position: absolute;
-//         top: 3px;
-//         left: 4px;
-//         transition: 0.5s all ease;
-//     }
-// }
-
 .light-theme {
     .theme-switch .switch {
-        transform: translateX(calc(100% - 5rem));
+        transform: translateX(calc(100% - 5.8rem));
         background: white;
     }
     .theme-switch .switch-en {
@@ -98,6 +73,9 @@
 }
 
 .light-theme {
+    .select2-container--default .select2-selection--single .select2-selection__placeholder {
+        color: black !important;
+    }
     color: var(--color-black);
     background-color: var(--color-grey-light-1) !important;
 
@@ -187,7 +165,7 @@
             color: var(--color-black);
         }
         .card__box {
-            background-color: #fff;
+            background-color: var(--white);
             border: 0.3rem solid var(--color-white);
             box-shadow: 0 0 35px 0 rgba(59, 62, 66, 0.18);
             @media only screen and (max-width: $bp-375) {
@@ -273,7 +251,7 @@
         }
 
         .main__table .table__main {
-            border: var(--border-primary);
+            border: 0.05rem solid #b3b3b3;
             color: var(--color-black);
         }
 
@@ -325,6 +303,49 @@
         .dataTables_wrapper .dataTables_paginate {
             color: var(--color-black) !important;
         }
+        .freeze-lang {
+            @media only screen and (max-width: $bp-999) {
+                background-color: var(--white) !important;
+            }
+        }
+        .freeze {
+            @media only screen and (max-width: $bp-999) {
+                background-color: var(--white) !important;
+            }
+        }
+        .table-bordered {
+            border: var(--border-primary) !important;
+            border-radius: 6px !important;
+            border-left: 0px !important;
+            border-top: 0px !important;
+
+            td,
+            th {
+                border-left: 0.04rem solid #a5a5a5 !important;
+                border-top: 0.04rem solid #a5a5a5 !important;
+            }
+        }
+        .table-bordered > :first-child > :first-child > :first-child {
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+        .table-bordered > :last-child > :last-child > :last-child {
+            // border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+        .table-bordered > thead:first-child > tr:first-child > th {
+            border-bottom: 0px;
+            border-top: solid rgb(192, 192, 192) 0.5px;
+        }
+        .table-bordered > :last-child > :last-child > :first-child {
+            border-bottom-left-radius: 6px;
+        }
+        .table-bordered > :last-child > :last-child > :last-child {
+            border-bottom-right-radius: 6px;
+        }
+        .table-bordered > :first-child > :first-child > :last-child {
+            border-top-right-radius: 6px;
+        }
     }
 
     //----------------------------------------------------------------
@@ -344,6 +365,13 @@
                 .title__text {
                     &--header {
                         color: rgb(51, 51, 51) !important;
+                    }
+                }
+                .pie-note {
+                    &-text {
+                        span {
+                            color: rgb(255, 191, 0);
+                        }
                     }
                 }
             }

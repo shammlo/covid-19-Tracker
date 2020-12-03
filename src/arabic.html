@@ -16,7 +16,7 @@
         />
 
         <link rel="icon" href="img/virus-1.svg" type="img" />
-        <title>COVID-19 Tracker</title>
+        <title>تـعـقـب كـوفـيـد - ١٩</title>
 
         <!-- - Scripts -->
         <!-- jQuery -->
@@ -59,6 +59,21 @@
                 float: left !important;
                 outline: none;
             }
+            .select2-container--default .select2-selection--single .select2-selection__arrow {
+                margin-left: 1rem !important;
+            }
+            table.dataTable thead .sorting,
+            table.dataTable thead .sorting_asc,
+            table.dataTable thead .sorting_desc,
+            table.dataTable thead .sorting_asc_disabled,
+            table.dataTable thead .sorting_desc_disabled {
+                background-position: left;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            table.dataTable thead {
+                text-align: right !important;
+            }
         </style>
     </head>
     <body>
@@ -70,22 +85,30 @@
                     <div class="logo">
                         <a href="index.html" class="logo__link">
                             <img class="logo__image" src="img/virus-1.svg" />
-                            تعقب كوفيد -١٩
+                            تـعـقـب كـوفـیـد-١٩
                         </a>
                     </div>
                     <div class="navigation d-none">
                         <ul class="navigation__list">
-                            <li class="navigation__item">
-                                <a href="kurdish.html" class="navigation__link">الصفحة الرئيسية </a>
+                            <li class="navigation__item active">
+                                <a href="#home" class="navigation__link">
+                                    الـصـفـحـة الـرئـيـسـيــة
+                                </a>
                             </li>
                             <li class="navigation__item">
-                                <a href="#GlobalData" class="navigation__link">البيانات العالمية</a>
+                                <a href="#GlobalData" class="navigation__link">
+                                    الـبـيـانـات الـعـالـمـيـة
+                                </a>
                             </li>
                             <li class="navigation__item">
-                                <a href="#CountryTable" class="navigation__link">جدول الدول</a>
+                                <a href="#CountryTable" class="navigation__link">
+                                    جـــدول الـــدول
+                                </a>
                             </li>
                             <li class="navigation__item">
-                                <a href="#Charts" class="navigation__link">الرسوم البيانية</a>
+                                <a href="#Charts" class="navigation__link">
+                                    الـرسـوم الـبـيـانـيــة
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -93,7 +116,7 @@
             </div>
         </header>
 
-        <section class="map-section">
+        <section class="map-section" id="home">
             <div class="container">
                 <div class="web-title">
                     <div class="title">
@@ -103,10 +126,10 @@
                             src="img/coronavirus.svg"
                             alt="Covid-19 image"
                         />
-                        <h1 class="heading-1">تعقب كوفيد -١٩</h1>
+                        <h1 class="heading-1">تـعـقـب كـوفـیـد-١٩</h1>
                     </div>
                     <h5 class="heading-5 heading-4__dark">
-                        تتبع انتشار تفشي فيروس كورونا كوفيد -١٩.
+                        تــتــبـع انـتـشـار تـفـشــي فـيـروس كـورونـا كـوفـيــد-١٩.
                     </h5>
 
                     <!--- Theme  -->
@@ -328,30 +351,39 @@
 
                 <!--- About data -->
                 <div class="about-data disabled" id="aboutData" style="color: whitesmoke">
-                    <h4 class="heading-4" style="margin-bottom: 0.5rem">About the data</h4>
-                    <p class="about-data-text">It changes rapidly</p>
-                    <p class="margin-bottom-small about-data-p">
-                        This data updates around every 10-20 minutes by Greenwich Mean Time (GMT),
-                        and might not reflect some cases that still being reported.
+                    <h4 class="heading-4" style="margin-bottom: 0.5rem">حـــول الـبـيـانـات</h4>
+                    <p class="about-data-text about-text-lang">يـتـغـيـر بـســرعــة</p>
+                    <p class="margin-bottom-small about-data-p about-p-lang">
+                        يـتـم تـحـديـث هــذه الـبـيـانـات كــل ١٠-٢٠ دقـيـقـة تـقـريـبًـا حـسـب
+                        تـوقـيـت غـريـنـتـش (GMT) ، وقـد لا تـعـكـس بـعـض الـحـالات الـتـي لا يــزال
+                        يـتـم الإبـلاغ عـنـهـا.
                     </p>
-                    <p class="about-data-text">It only includes people tested</p>
-                    <p class="margin-bottom-small about-data-p">
-                        Numbers are based on official estimates, which may not account for
-                        unverified cases in countries lacking the proper infrastructure to diagnose
-                        patients.
+                    <p class="about-data-text about-text-lang">
+                        يـشـمـل فـقـط الأشـخـاص الـذيـن تـم اخـتـبـارهـم
                     </p>
-                    <p class="about-data-text">There may be discrepancies from other sources</p>
-                    <p class="margin-bottom-small about-data-p">
-                        The data is taken from an api source, which aggregates coronavirus data from
-                        over 13 sources. When there is a discrepancy, they report the higher
-                        infected/recovered/deceased count. These sources update at different times
-                        and may have different ways of gathering data regarding of that some data of
-                        specific countries might be delayed.
+                    <p class="margin-bottom-small about-data-p about-p-lang">
+                        تـسـتـنـد الأرقــام إلـى الـتـقـديـرات الـرسـمـيـة ، والـتـي قـد لا
+                        تـأخـذ فـي الـحـسـبـان الـحـالات الـتـي لـم يـتـم الـتـحـقـق مـنـهـا فـي
+                        الـبـلـدان الـتــي تـفـتـقـر إلـى الـبـنـيـة الـتـحـتـيـة الـمـنـاسـبـة
+                        لـتـشـخـيـص الـمـرضـى.
                     </p>
-                    <p class="about-data-text">The sources are not actively monitored</p>
-                    <p class="about-data-p">
-                        A change in a source may result in inaccurate/no data being reported for the
-                        associated region.
+                    <p class="about-data-text about-text-lang">
+                        قـد يـكـون هـنـاك تـنـاقـضـات مـن مـصـادر أخـرى
+                    </p>
+                    <p class="margin-bottom-small about-data-p about-p-lang">
+                        الـبـيـانـات مـأخـوذة مـن مـصـدر disease.sh API ، والـذي يـجـمـع بـيـانـات
+                        فـيـروس كـورونـا مـن أكـثـر مـن 13 مـصـدرًا. عـنـدمـا يـكون هـنـاك تـنـاقـض
+                        ، فـإنـهـم يـبـلـغـون عـن ارتـفـاع عـدد الـمـصـابـيـن / الـمـتـعـافـيـن /
+                        الـمـتـوفـيـن. يـتـمـم تـحـديـث هـذه الـمـصـادر فـي أوقـات مـخـتـلـفـة وقـد
+                        يـكـون لـهـا طـرق مـخـتـلـفـة لـجـمـع الـبـيـانـات فـيـمـا يـتـعــلـق بــأن
+                        بـعـض الــبـيـانــات الـخـاصــة بـدول مـعيـنـة قـد تـتـأخــر.
+                    </p>
+                    <p class="about-data-text about-text-lang">
+                        لا يـتـم رصـد الـمـصــادر بـنـشـاط
+                    </p>
+                    <p class="about-data-p about-p-lang pad-bot-small">
+                        قـــد يـؤدي الـتـغـيـيـر فـي المـصـدر إلــى عــدم دقـة / عـدم الإبــلاغ
+                        عــن بـيـانـات لـلـمــنـطـقـة الــمــرتــبــطــة.
                     </p>
                 </div>
             </div>
@@ -373,23 +405,24 @@
                                         alt="Confirmed Icon"
                                     />
                                 </span>
-                                <h3 class="heading-3">مجموع الحالات</h3>
+                                <h3 class="heading-3">مـجـمـوع الـحـالـات</h3>
                                 <h2
                                     class="heading-2 margin-top-small"
                                     id="totalCases"
                                     data-plugin="counterup"
                                     data-toggle="counter-up"
                                 >
-                                    Loading
+                                    جـار الـتـحـمـيـل
                                 </h2>
                                 <div class="card__box--info">
                                     <span class="info-increase info-inc-Ar">
-                                        <span id="caseIncrease">Loading</span></span
+                                        <span id="caseIncrease">جـار الـتـحـمـيـل</span></span
                                     >
                                     <span class="info-text info-ar"
-                                        >من البارحة
+                                        >مـن الـبـارحـة
+
                                         <span id="totalYesterday" class="yel yel-ar"
-                                            >Loading</span
+                                            >جـار الـتـحـمـيـل</span
                                         ></span
                                     >
                                 </div>
@@ -406,23 +439,24 @@
                                         alt="Confirmed Icon"
                                     />
                                 </span>
-                                <h3 class="heading-3">مجموع الوفيات</h3>
+                                <h3 class="heading-3">مـجـمـوع الــوفـيـات</h3>
                                 <h2
                                     class="heading-2 heading-2__danger margin-top-small"
                                     id="totalDeath"
                                     data-plugin="counterup"
                                     data-toggle="counter-up"
                                 >
-                                    Loading
+                                    جـار الـتـحـمـيـل
                                 </h2>
                                 <div class="card__box--info">
                                     <span class="info-increase info-inc-Ar"
-                                        ><span id="deadIncrease">Loading</span></span
+                                        ><span id="deadIncrease">جـار الـتـحـمـيـل</span></span
                                     >
                                     <span class="info-text info-ar"
-                                        >من البارحة
+                                        >مـن الـبـارحـة
+
                                         <span id="deadYesterday" class="yel yel-ar"
-                                            >Loading</span
+                                            >جـار الـتـحـمـيـل</span
                                         ></span
                                     >
                                 </div>
@@ -439,23 +473,24 @@
                                         alt="Confirmed Icon"
                                     />
                                 </span>
-                                <h3 class="heading-3">تعافى إجمالي</h3>
+                                <h3 class="heading-3">تـعـافـى إجـمـالـي</h3>
                                 <h2
                                     class="heading-2 heading-2__success margin-top-small"
                                     id="totalRecovered"
                                     data-plugin="counterup"
                                     data-toggle="counter-up"
                                 >
-                                    Loading
+                                    جـار الـتـحـمـيـل
                                 </h2>
                                 <div class="card__box--info">
                                     <span class="info-increase info-inc-Ar"
-                                        ><span id="recIncrease">Loading</span></span
+                                        ><span id="recIncrease">جـار الـتـحـمـيـل</span></span
                                     >
                                     <span class="info-text info-ar"
-                                        >من البارحة
+                                        >مـن الـبـارحـة
+
                                         <span id="recYesterday" class="yel yel-ar"
-                                            >Loading</span
+                                            >جـار الـتـحـمـيـل</span
                                         ></span
                                     >
                                 </div>
@@ -472,23 +507,24 @@
                                         alt="Confirmed Icon"
                                     />
                                 </span>
-                                <h3 class="heading-3">حالات اليوم</h3>
+                                <h3 class="heading-3">حـالـات الــيـوم</h3>
                                 <h2
                                     class="heading-2 margin-top-small counter"
                                     id="todayCases"
                                     data-plugin="counterup"
                                     data-toggle="counter-up"
                                 >
-                                    Loading
+                                    جـار الـتـحـمـيـل
                                 </h2>
                                 <div class="card__box--info">
                                     <span class="info-increase info-inc-Ar"
-                                        ><span id="todayIncrease">Loading</span></span
+                                        ><span id="todayIncrease">جـار الـتـحـمـيـل</span></span
                                     >
                                     <span class="info-text info-ar"
-                                        >من البارحة
+                                        >مـن الـبـارحـة
+
                                         <span id="todayYesterday" class="yel yel-ar"
-                                            >Loading</span
+                                            >جـار الـتـحـمـيـل</span
                                         ></span
                                     >
                                 </div>
@@ -501,23 +537,24 @@
                                 <span class="card__box--icon">
                                     <img class="icon-ar" src="img/Death.svg" alt="Confirmed Icon" />
                                 </span>
-                                <h3 class="heading-3">وفيات اليوم</h3>
+                                <h3 class="heading-3">وفـيـات الـيـوم</h3>
                                 <h2
                                     class="heading-2 heading-2__danger margin-top-small"
                                     id="todayDeaths"
                                     data-plugin="counterup"
                                     data-toggle="counter-up"
                                 >
-                                    Loading
+                                    جـار الـتـحـمـيـل
                                 </h2>
                                 <div class="card__box--info">
                                     <span class="info-increase info-inc-Ar"
-                                        ><span id="deathIncrease">Loading</span></span
+                                        ><span id="deathIncrease">جـار الـتـحـمـيـل</span></span
                                     >
                                     <span class="info-text info-ar"
-                                        >من البارحة
+                                        >مـن الـبـارحـة
+
                                         <span id="deathYesterday" class="yel yel-ar"
-                                            >Loading</span
+                                            >جـار الـتـحـمـيـل</span
                                         ></span
                                     >
                                 </div>
@@ -534,23 +571,24 @@
                                         alt="Confirmed Icon"
                                     />
                                 </span>
-                                <h3 class="heading-3">تعافى اليوم</h3>
+                                <h3 class="heading-3">تـعـافـى الـيـوم</h3>
                                 <h2
                                     class="heading-2 heading-2__success margin-top-small"
                                     id="todayRecovered"
                                     data-plugin="counterup"
                                     data-toggle="counter-up"
                                 >
-                                    Loading
+                                    جـار الـتـحـمـيـل
                                 </h2>
                                 <div class="card__box--info">
                                     <span class="info-increase info-inc-Ar" id="success-rate"
-                                        ><span id="recoverIncrease">Loading</span></span
+                                        ><span id="recoverIncrease">جـار الـتـحـمـيـل</span></span
                                     >
                                     <span class="info-text info-ar"
-                                        >من البارحة
+                                        >مـن الـبـارحـة
+
                                         <span id="recoverYesterday" class="yel yel-ar"
-                                            >Loading</span
+                                            >جـار الـتـحـمـيـل</span
                                         ></span
                                     >
                                 </div>
@@ -561,12 +599,12 @@
             </div>
         </section>
 
-        <!--* -------- GLOBAL DATA SECTION --------*-->
+        <!--* -------- TABLE DATA SECTION --------*-->
 
         <section class="table-section" id="CountryTable">
             <div class="container">
                 <div class="table_responsive">
-                    <h1 class="heading-1" style="padding-bottom: 1.5rem">🌎 عرض البلد :</h1>
+                    <h1 class="heading-1" style="padding-bottom: 1.5rem">🌎 عـرض الـبـلـد :</h1>
 
                     <div class="main__table dataTables_wrapper">
                         <table
@@ -577,8 +615,12 @@
                         >
                             <thead class="table__header">
                                 <tr class="table__header--row">
-                                    <th class="table__header--items freeze" style="width: 0.5rem">
-                                        مرتبة
+                                    <th
+                                        id="table-rank-lang"
+                                        class="table__header--items freeze"
+                                        style="width: 0.5rem"
+                                    >
+                                        مـرتـبـة
                                     </th>
                                     <th
                                         class="table__header--items freeze freeze-ar"
@@ -586,31 +628,29 @@
                                             width: 25rem;
                                             text-align: right !important;
                                             margin-right: 0.5rem;
+                                            right: 5.7rem !important;
                                         "
                                     >
-                                        بلد
+                                        بـلـد
                                     </th>
-                                    <th class="table__header--items">حالات</th>
-                                    <th class="table__header--items">حالات الوفاة</th>
-                                    <th class="table__header--items">حالات حرجة</th>
-                                    <th class="table__header--items" id="loading">حالات تعافى</th>
-                                    <th class="table__header--items warn">حالات اليوم</th>
-                                    <th class="table__header--items dang">وفيات اليوم</th>
-                                    <th class="table__header--items go">تعافى اليوم</th>
-                                    <th class="table__header--items">الحالات المصابة حاليا</th>
+                                    <th class="table__header--items">حـالـات</th>
+                                    <th class="table__header--items">حـالات الـوفـاة</th>
+                                    <th class="table__header--items">حـالات حـرجــة</th>
+                                    <th class="table__header--items" id="جـار الـتـحـمـيـل">
+                                        حـالات تـعـافـى
+                                    </th>
+                                    <th class="table__header--items warn">حـالات الـيـوم</th>
+                                    <th class="table__header--items dang">وفـيـات الـيـوم</th>
+                                    <th class="table__header--items go">تـعـافـى الـيـوم</th>
+                                    <th
+                                        class="table__header--items"
+                                        style="border-radius: 10px 0px 0px 0px !important"
+                                    >
+                                        الـحـالات الـمـصـابـة حـالـيـا
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody class="table__body table__body-ar" id="tableBody"></tbody>
-                            <!-- <tfoot>
-                            <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
-                            </tr>
-                        </tfoot>  -->
                         </table>
                     </div>
                 </div>
@@ -618,9 +658,9 @@
         </section>
 
         <!--* ----------- CHART SECTION -----------*-->
-        <section class="chart-section">
+        <section class="chart-section" id="Charts">
             <div class="container">
-                <div class="chart-wrapper" id="Charts">
+                <div class="chart-wrapper">
                     <div class="filter">
                         <select
                             class="js-data-filter chart-filter"
@@ -631,12 +671,20 @@
                         </select>
                     </div>
                     <div class="chart__title">
-                        <h1 id="ConImg" class="heading-1 text-big">Total Data</h1>
+                        <h1 id="ConImg" class="heading-1 text-big">
+                            <img
+                                id="worldTot"
+                                class="img-flag__main"
+                                src="img/worldwide-2.svg "
+                                style="margin-right: 0"
+                            />إجـمـالـي الـبـيـانـات
+                        </h1>
                         <div class="title__text">
                             <h2 class="title__text--header heading-2__light">
-                                Total Cases, Deaths, Recovered
+                                إجـمـالـي الـحـالات، الـوفـيـات، الـمـتـعـافـيـن
+                                <span class="title__text--text">(مـقـيـاس خـطـي)</span>
                             </h2>
-                            <p class="title__text--text">(Linear scale)</p>
+                            <!-- <p class="title__text--text">(مـقـيـاس خـطـي)</p> -->
                         </div>
                     </div>
 
@@ -655,22 +703,38 @@
                 </div>
                 <!-------------------------------------------- -->
                 <!--- pie chart -->
-                <div class="chart-wrapper margin-top-large" id="Charts">
+                <div class="chart-wrapper margin-top-large">
                     <div class="filter">
                         <select
                             class="pieChart-filler chart-filter"
-                            style="width: 25rem; float: right"
+                            style="width: 25rem; float: left"
                         >
-                            <option value="3620194" selected="selected">Country Search</option>
+                            <option></option>
+                            <!-- <option value="3620194" selected="selected">Country Search</option> -->
                         </select>
                     </div>
                     <div class="chart__title">
-                        <h1 id="ConImg" class="heading-1 text-big">Total Data</h1>
+                        <h1 id="ConImg" class="heading-1 text-big">
+                            <img
+                                id="worldTot2"
+                                class="img-flag__main"
+                                src="img/worldwide-2.svg "
+                                style="margin-right: 0"
+                            />إجـمـالـي الـبـيـانـات
+                        </h1>
                         <div class="title__text">
                             <h2 class="title__text--header heading-2__light">
-                                Total Cases, Deaths, Recovered
+                                إجـمـالـي الـحـالات، الـوفـيـات، الـمـتـعـافـيـن
+                                <span class="title__text--text">(مـخـطـط دائــري)</span>
                             </h2>
-                            <p class="title__text--text">(Pie Chart)</p>
+                            <p class="title__text--text">(مـخـطـط دائــري)</p>
+                        </div>
+                        <div class="pie-note">
+                            <h5 class="pie-note-text">
+                                <span>مـلـحـوظـة:&nbsp;</span>
+                                أرقـام الـبـيـانـات لـلـمـخـطـط الـدائـري مـتـوفـرة فـقـط فـي
+                                الأرقـام الإنـجـلـيـزيــة.
+                            </h5>
                         </div>
                     </div>
 
@@ -683,16 +747,31 @@
                         <span class="line-separator"></span>
                     </div>
                     <div class="chart__title pad-top-small">
-                        <h1 id="ConImg" class="heading-1 text-big">Today's Data</h1>
+                        <h1 id="ConImg" class="heading-1 text-big">
+                            <img
+                                id="worldTot3"
+                                class="img-flag__main"
+                                src="img/worldwide-2.svg "
+                                style="margin-right: 0"
+                            />بـيـانـات الـيـوم
+                        </h1>
                         <div class="title__text">
                             <h2 class="title__text--header heading-2__light">
-                                Total Cases, Deaths, Recovered
+                                إجـمـالـي الـحـالات، الـوفـيـات، الـمـتـعـافـيـن
+                                <span class="title__text--text">(مخطط دائري)</span>
                             </h2>
-                            <p class="title__text--text">(Pie Chart)</p>
+                            <!-- <p class="title__text--text">(مخطط دائري)</p> -->
+                        </div>
+                        <div class="pie-note">
+                            <h5 class="pie-note-text">
+                                <span>مـلـحـوظـة:&nbsp;</span>
+                                أرقـام الـبـيـانـات لـلـمـخـطـط الـدائـري مـتـوفـرة فـقـط فـي
+                                الأرقـام الإنـجـلـيـزيــة.
+                            </h5>
                         </div>
                     </div>
 
-                    <div id="casesContainer" class="chart-container pad-bot-small">
+                    <div id="casesContainer" class="chart-container pad-bot-small pad-top-medium">
                         <div id="pieCharting" class="chartCase">
                             <div id="chartdiv2" style="background-color: var(--dark-4)"></div>
                         </div>
@@ -717,42 +796,51 @@
             <div class="container">
                 <div class="footer">
                     <!--- Logo and text -->
-                    <div class="logo-text">
+                    <div class="logo-text logo-text-lang">
                         <div class="footer__logo">
                             <a href="index.html" class="footer__logo-link">
-                                <img class="footer__logo-img" src="img/virus-1.svg" />
+                                <img
+                                    class="footer__logo-img footer__logo-lang"
+                                    src="img/virus-1.svg"
+                                />
 
-                                Covid-19 Tracker
+                                تـعـقـب كـوفـيـد -١٩
                             </a>
                         </div>
                         <div class="footer__text">
                             <p class="footer__text-p">
-                                This Web app was created to track the new Pandemic Covid-19 virus
-                                outbreak live worldwide, with visualization of graph, table, and
-                                map. The data updates rapidly.
+                                تـم إنـشـاء هـذا الـمـوقـع الإلـكـتـرونـي لـتـتـبـع انـتـشـار
+                                وبـاء الـجـديـد كـوفـيـد -١٩ فـيـروس فـي جـمـيـع أنـحـاء الـعـالـم
+                                ، مـع تـصـور لـلـرسـم الـبـيـانـي والـجـدول والـخـريـطـة. و يـتـم
+                                تـحديـث الـبـيـانـات بـسـرعـة.
                             </p>
                         </div>
                     </div>
 
                     <!--- about api -->
-                    <div class="about__api">
-                        <div class="about__text">
+                    <div class="about__api about__api-lang">
+                        <div class="about__text about__text-lang">
                             <h3 class="about__text-header">
-                                About Sources
-                                <img class="fot__img" src="img/data-driven.svg" alt="Resources" />
+                                حـول الـمـصـادر
+                                <img
+                                    class="fot__img fot__img-lang"
+                                    src="img/data-driven.svg"
+                                    alt="Resources"
+                                />
                             </h3>
                         </div>
                         <div class="about__p">
-                            <p class="footer__text-p">
-                                The data is provided by NovelCOVID API disease.sh, that is collected
-                                from sources like
+                            <p class="footer__text-p footer__p-lang">
+                                يـتـم تـوفـيـر الـبـيـانـات مـن قـبـل disease.sh NovelCOVID API ،
+                                الـتـي يـتـم جـمـعـهـا مـن مـصـادر مـــثـــل
+
                                 <a href="https://coronavirus.data.gov.uk/">GOV.UK</a>,
                                 <a
                                     href="https://www.canada.ca/en/public-health/services/diseases/2019-novel-coronavirus-infection.html"
                                     >CanadaGOV</a
                                 >,
-                                <a href="https://www.worldometers.info/coronavirus/">Worldometer</a
-                                >, and 10 more, Get the data:
+                                <a href="https://www.worldometers.info/coronavirus/">Worldometer</a>
+                                , و ١٠ أخـرى ، احـصـل عـلـى الـبـيـانــات:
                             </p>
 
                             <a href="#" type="button" class="btn-data btn-info"
@@ -762,11 +850,12 @@
                     </div>
 
                     <!--- useful links -->
-                    <div class="useful__links">
-                        <div class="about__text">
+                    <div class="useful__links useful__links-lang">
+                        <div class="about__text about__text-lang">
                             <h3 class="about__text-header">
-                                Useful Links<img
-                                    class="fot__img"
+                                روابـط مـفـيـدة
+                                <img
+                                    class="fot__img fot__img-lang"
                                     src="img/domain.svg"
                                     alt="Resources"
                                 />
@@ -775,16 +864,23 @@
                         <div class="link">
                             <ul class="link__list">
                                 <li class="list-item">
-                                    <a href="#" class="list-link"> Home </a>
+                                    <a href="#" class="list-link"> الـصـفـحـة الـرئـيـسـيـة </a>
                                 </li>
                                 <li class="list-item">
-                                    <a href="#" class="list-link"> About the Api </a>
+                                    <a href="https://disease.sh/" class="list-link"> حــول API </a>
                                 </li>
                                 <li class="list-item">
-                                    <a href="#" class="list-link"> Data Recourses </a>
+                                    <a href="https://github.com/disease-sh/API" class="list-link">
+                                        مـصـدر الـبـيـانـات
+                                    </a>
                                 </li>
                                 <li class="list-item">
-                                    <a href="#" class="list-link"> Report a problem </a>
+                                    <a
+                                        href="https://github.com/shammlo/covid-19-Tracker"
+                                        class="list-link"
+                                    >
+                                        الإبــلاغ عـن مـشـكـلـة
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -792,16 +888,21 @@
 
                     <!--- support -->
                     <div class="contact">
-                        <div class="about__text">
+                        <div class="about__text about__text-lang">
                             <h3 class="about__text-header">
-                                Contact & Socials
-                                <img class="fot__img" src="img/message.svg" alt="Resources" />
+                                الـتـواصـل الاجـتـمـاعــي
+                                <img
+                                    class="fot__img fot__img-lang"
+                                    src="img/message.svg"
+                                    alt="Resources"
+                                />
                             </h3>
                         </div>
-                        <div class="contact-text">
+                        <div class="contact-text contact-text-lang">
                             <p class="contact-text--p">
-                                Developed by <a href="https://github.com/shammlo"> Shammlo</a>, all
-                                support appreciated.
+                                طــورت بــواســطــة
+                                <a href="https://github.com/shammlo"> Shammlo</a>, كــل الـدعـم
+                                مـوضـع تـقـديـر.
                             </p>
                             <!-- <a href="#" type="button" class="btn-data btn-info"
                                 >disease.sh <img src="img/api.svg" alt="API"
@@ -825,8 +926,7 @@
                 </div>
                 <div class="copyright">
                     <h6 class="heading-6 heading-6__dark">
-                        © Developed by <a href="https://github.com/shammlo"> Shammlo</a>. All Rights
-                        Reserved.
+                        © طــورت بــواســطــة <a href="https://github.com/shammlo"> Shammlo</a>.
                     </h6>
                 </div>
             </div>
@@ -841,10 +941,5 @@
         <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
         <!--- Mobile Nab -->
         <script type="text/javascript" src="js/mobile-nav.js"></script>
-        <!-- <script>
-            $(".theme-switch").on("click", () => {
-                $("body").toggleClass("light-theme");
-            });
-        </script> -->
     </body>
 </html>

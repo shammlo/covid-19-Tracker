@@ -10,7 +10,13 @@
         &__item {
             display: inline-block;
         }
-
+        .active {
+            .navigation__link:link,
+            .navigation__link:visited {
+                background-color: rgba(rgb(255, 255, 255), 0.06);
+                border-bottom: 3px solid var(--danger);
+            }
+        }
         &__link:link,
         &__link:visited {
             color: inherit;

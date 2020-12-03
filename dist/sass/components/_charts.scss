@@ -22,7 +22,13 @@
 
     .chart__title {
         width: 75%;
-        height: 10rem;
+        min-height: 10rem;
+        @media only screen and (max-width: $bp-600) {
+            width: 85%;
+        }
+        @media only screen and (max-width: $bp-414) {
+            width: 100%;
+        }
 
         h1 {
             margin-top: 1.6rem;
@@ -36,7 +42,7 @@
 
             &--header {
                 font-size: inherit;
-                margin-right: 0.3rem;
+                // margin-right: 0.3rem;
             }
             &--text {
                 font-size: inherit;
@@ -54,6 +60,10 @@
 .select2-container .select2-selection--single {
     height: 3rem !important;
 }
+
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+    color: white !important;
+}
 .select2-container .select2-selection--single .select2-selection__rendered {
     display: block;
     padding-left: 8px;
@@ -63,13 +73,24 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.select2-container[dir="rtl"] .select2-selection--single .select2-selection__rendered {
+    padding-right: 8px;
+    padding-left: 20px;
+}
+.select2-container[dir="rtl"] .select2-selection--single .select2-selection__rendered {
+    display: flex;
+    align-items: center;
+    @media only screen and (max-width: $bp-414) {
+        height: 2.6rem;
+    }
+}
 .img-flag {
-    height: 2.5rem !important;
+    height: 2rem !important;
     width: 3rem !important;
     border-radius: 2px;
     margin-right: 0.5rem;
     margin-left: 0.5rem;
-    padding-top: 4px;
+    // padding-top: 4px;
 }
 
 .img-flag__main {
@@ -77,6 +98,7 @@
     width: 3.7rem !important;
     border-radius: 2px;
     margin-right: 1rem;
+    margin-left: 1rem;
     padding-top: 4px;
 }
 .select2-results__options {
@@ -157,9 +179,22 @@
 .select2-container {
     float: right !important;
     outline: none;
+    @media only screen and (max-width: $bp-414) {
+        width: 17rem !important;
+    }
+}
+.language {
+    .select2 {
+        @media only screen and (max-width: $bp-414) {
+            width: 20rem !important;
+        }
+    }
 }
 .select2 {
     margin-top: 1rem !important;
+    @media only screen and (max-width: $bp-414) {
+        width: 15rem;
+    }
 }
 .select2-selection {
     outline: none;
@@ -197,10 +232,10 @@
 
         &--header {
             font-size: inherit;
-            margin-right: 0.3rem;
         }
         &--text {
             font-size: inherit;
+            color: var(--color-grey-light-2);
         }
     }
 }
@@ -214,6 +249,11 @@
     // @media only screen and (max-width: $bp-375) {
     //     min-height: 55rem;
     // }
+}
+#lineChart {
+    @media only screen and (max-width: $bp-4000) and (min-width: $bp-2500) {
+        max-height: 72rem;
+    }
 }
 #cases {
     @media only screen and (max-width: $bp-450) {
@@ -247,4 +287,8 @@
     background-color: var(--dark-4);
     margin: 0 auto !important;
     text-align: right !important;
+}
+.text-big {
+    display: flex;
+    align-items: center;
 }

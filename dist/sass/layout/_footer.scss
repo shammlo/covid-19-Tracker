@@ -5,6 +5,7 @@
     padding-top: 1rem;
     display: flex;
     flex-wrap: wrap;
+    // direction: ltr;
     // justify-content: space-between;
     @media only screen and (max-width: $bp-800) {
         flex-direction: column;
@@ -17,23 +18,23 @@
     //-logo text
     .logo-text {
         width: 30rem;
-        margin-right: 10rem;
+        margin-right: auto;
 
         @media only screen and (max-width: $bp-1400) {
-            margin-right: 5rem;
+            margin-right: auto;
             width: 28rem;
         }
 
         @media only screen and (max-width: $bp-1200) {
-            margin-right: 3rem;
+            margin-right: auto;
             width: 25rem;
         }
         @media only screen and (max-width: $bp-large) {
-            margin-right: 3rem;
+            margin-right: auto;
             width: 24rem;
         }
         @media only screen and (max-width: 56.25em) {
-            margin-right: 3rem;
+            margin-right: auto;
             padding-right: 2rem;
             width: 23.5rem;
             margin-right: auto;
@@ -87,7 +88,10 @@
                 background-color: rgba(rgb(255, 255, 255), 0.06);
                 transform: translateY(-3px);
             }
-
+            .footer__logo-lang {
+                margin-left: 0.6rem !important;
+                margin-right: 0 !important;
+            }
             &-img {
                 width: 4rem;
                 height: 4rem;
@@ -105,23 +109,50 @@
         }
     }
 
+    .logo-text-lang {
+        margin-left: auto;
+        margin-right: 0;
+        @media only screen and (max-width: $bp-1400) {
+            margin-left: 5rem;
+        }
+
+        @media only screen and (max-width: $bp-1200) {
+            margin-left: auto;
+        }
+        @media only screen and (max-width: $bp-large) {
+            margin-left: auto;
+        }
+        @media only screen and (max-width: 56.25em) {
+            margin-left: auto;
+            margin-left: auto;
+        }
+        @media only screen and (max-width: 50.9375em) {
+            margin-left: auto;
+            padding-left: 0.5rem;
+        }
+        @media only screen and (max-width: $bp-800) {
+            margin-left: 0;
+            margin-left: 0;
+        }
+    }
+
     //----------------------------------------------------------------
 
     .about__api {
         width: 31rem;
         padding: 1rem 0rem;
-        margin-right: 7rem;
+        margin-right: auto;
 
         @media only screen and (max-width: $bp-1400) {
-            margin-right: 3rem;
+            //margin-right: auto;
             width: 28rem;
         }
         @media only screen and (max-width: $bp-1200) {
-            margin-right: 3rem;
+            // margin-right: auto;
             width: 25rem;
         }
         @media only screen and (max-width: $bp-large) {
-            margin-right: 1.5rem;
+            // margin-right: auto;
             width: 24rem;
         }
         @media only screen and (max-width: $bp-800) {
@@ -147,7 +178,10 @@
             @media only screen and (max-width: $bp-800) {
                 text-align: justify;
             }
-
+            .footer__p-lang {
+                margin-right: 1rem !important;
+                margin-left: 0 !important;
+            }
             .footer__text-p {
                 margin-left: 1rem;
             }
@@ -187,10 +221,39 @@
                 height: 3rem;
             }
         }
+
+        .btn-lang {
+            margin-right: 1rem;
+        }
+    }
+    .about__api-lang {
+        margin-left: auto;
+        margin-right: 0;
+        @media only screen and (max-width: $bp-1400) {
+            margin-left: auto;
+        }
+        @media only screen and (max-width: $bp-1200) {
+            // margin-left: auto;
+        }
+        @media only screen and (max-width: $bp-large) {
+            // margin-left: 1.5rem;
+        }
+        @media only screen and (max-width: $bp-800) {
+            margin-left: 0;
+            padding-bottom: 4rem;
+        }
     }
 
     //----------------------------------------------------------------
-
+    .useful__links-lang {
+        margin-left: auto;
+        margin-right: 0;
+        @media only screen and (max-width: $bp-800) {
+            margin-left: 0;
+            width: 65rem;
+            padding-bottom: 4rem;
+        }
+    }
     .useful__links {
         color: var(--color-grey-light-1);
         width: 30rem;
@@ -202,18 +265,15 @@
             width: 28rem;
         }
         @media only screen and (max-width: $bp-1200) {
+            margin-right: 4rem;
             width: 25rem;
         }
         @media only screen and (max-width: $bp-large) {
             margin-right: 0;
             width: 22rem;
-            margin-right: auto;
-            margin-left: auto;
         }
         @media only screen and (max-width: 57.125em) {
             width: 20rem;
-            margin-right: auto;
-            margin-left: auto;
         }
         @media only screen and (max-width: $bp-800) {
             width: 65rem;
@@ -237,6 +297,7 @@
                 color: inherit;
                 @media only screen and (max-width: $bp-800) {
                     display: flex;
+                    justify-content: center;
                 }
                 @media only screen and (max-width: $bp-500) {
                     display: block;
@@ -308,7 +369,10 @@
         @media only screen and (max-width: $bp-400) {
             width: 35rem;
         }
-
+        .contact-text-lang {
+            padding-right: 1rem !important;
+            padding-left: 0 !important;
+        }
         &-text {
             padding-left: 1rem;
 
@@ -395,7 +459,18 @@
 }
 
 //----------------------------------------------------------------
+.about__text-lang {
+    border-right: 1px solid var(--danger) !important;
+    border-left: 0 !important;
+    @media only screen and (max-width: $bp-800) {
+        border-right: 2px solid var(--danger) !important;
+    }
 
+    .about__text-header {
+        margin-right: 1rem !important;
+        margin-left: 0 !important;
+    }
+}
 .about__text {
     padding-top: 0.5rem;
     border-left: 1px solid var(--danger);
@@ -413,7 +488,10 @@
             margin-left: 0;
             justify-content: center;
         }
-
+        .fot__img-lang {
+            margin-right: 0.8rem !important;
+            margin-left: 0 !important;
+        }
         .fot__img {
             width: 3.3rem;
             height: 3.3rem;

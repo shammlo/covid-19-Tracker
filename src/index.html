@@ -68,8 +68,8 @@
                     </div>
                     <div class="navigation d-none">
                         <ul class="navigation__list">
-                            <li class="navigation__item">
-                                <a href="kurdish.html" class="navigation__link">Home </a>
+                            <li class="navigation__item active">
+                                <a href="#home" class="navigation__link">Home </a>
                             </li>
                             <li class="navigation__item">
                                 <a href="#GlobalData" class="navigation__link">Global Data </a>
@@ -88,7 +88,7 @@
             </div>
         </header>
 
-        <section class="map-section">
+        <section class="map-section" id="home">
             <div class="container">
                 <div class="web-title">
                     <div class="title">
@@ -98,6 +98,7 @@
                     <h5 class="heading-5 heading-4__dark">
                         Track the spread of the Coronavirus Covid-19 outbreak.
                     </h5>
+                    <!--- theme -->
                     <div class="theme-container">
                         <div class="theme-switch">
                             <div class="switch switch-en"></div>
@@ -240,6 +241,8 @@
                             </svg>
                         </div>
                     </div>
+                    <!--- theme end -->
+                    <!--- language -->
                     <div class="language">
                         <select
                             class="language-data chart-filter"
@@ -253,6 +256,7 @@
                             <option value="3">Arabic</option> -->
                         </select>
                     </div>
+                    <!--- language end -->
                 </div>
 
                 <!--* Map -->
@@ -304,7 +308,7 @@
                     <p class="about-data-text">It changes rapidly</p>
                     <p class="margin-bottom-small about-data-p">
                         This data updates around every 10-20 minutes by Greenwich Mean Time (GMT),
-                        and might not reflect some cases that still being reported.
+                        and might not reflect some cases that are still being reported.
                     </p>
                     <p class="about-data-text">It only includes people tested</p>
                     <p class="margin-bottom-small about-data-p">
@@ -321,7 +325,7 @@
                         specific countries might be delayed.
                     </p>
                     <p class="about-data-text">The sources are not actively monitored</p>
-                    <p class="about-data-p">
+                    <p class="about-data-p pad-bot-small">
                         A change in a source may result in inaccurate/no data being reported for the
                         associated region.
                     </p>
@@ -522,7 +526,9 @@
         <section class="table-section" id="CountryTable">
             <div class="container">
                 <div class="table_responsive">
-                    <h1 class="heading-1" style="padding-bottom: 1.5rem">🌎 Country Breakdown:</h1>
+                    <h1 class="heading-1 freeze" style="padding-bottom: 1.5rem">
+                        🌎 Country Breakdown:
+                    </h1>
 
                     <div class="main__table dataTables_wrapper">
                         <table
@@ -533,12 +539,20 @@
                         >
                             <thead class="table__header">
                                 <tr class="table__header--row">
-                                    <th class="table__header--items freeze" style="width: 0.5rem">
+                                    <th
+                                        id="table-rank"
+                                        class="table__header--items freeze"
+                                        style="border-radius: 10px 0px 0px 0px !important"
+                                    >
                                         Rank
                                     </th>
                                     <th
                                         class="table__header--items freeze"
-                                        style="width: 25rem; text-align: left"
+                                        style="
+                                            width: 25rem;
+                                            text-align: left;
+                                            left: 5rem !important;
+                                        "
                                     >
                                         Country
                                     </th>
@@ -553,6 +567,7 @@
                                 </tr>
                             </thead>
                             <tbody class="table__body" id="tableBody"></tbody>
+
                             <!-- <tfoot>
                             <tr>
                                 <th>Name</th>
@@ -570,25 +585,33 @@
         </section>
 
         <!--* ----------- CHART SECTION -----------*-->
-        <section class="chart-section">
+        <section class="chart-section" id="Charts">
             <div class="container">
-                <div class="chart-wrapper" id="Charts">
+                <div class="chart-wrapper">
                     <div class="filter">
                         <select
                             class="js-data-filter chart-filter"
                             style="width: 25rem; float: right"
                         >
                             <option></option>
-                            <option id="global">Global</option>
+                            <option value="1">Global</option>
                         </select>
                     </div>
                     <div class="chart__title">
-                        <h1 id="ConImg" class="heading-1 text-big">Total Data</h1>
+                        <h1 id="ConImg" class="heading-1 text-big">
+                            <img
+                                id="worldTot"
+                                class="img-flag__main"
+                                src="img/worldwide-2.svg "
+                                style="margin-left: 0"
+                            />Total Data
+                        </h1>
                         <div class="title__text">
                             <h2 class="title__text--header heading-2__light">
                                 Total Cases, Deaths, Recovered
+                                <span class="title__text--text">(Linear scale)</span>
                             </h2>
-                            <p class="title__text--text">(Linear scale)</p>
+                            <!-- <p class="title__text--text">(Linear scale)</p> -->
                         </div>
                     </div>
 
@@ -621,12 +644,20 @@
                         </select>
                     </div>
                     <div class="chart__title">
-                        <h1 id="ConImg" class="heading-1 text-big">Total Data</h1>
+                        <h1 id="ConImg" class="heading-1 text-big">
+                            <img
+                                id="worldTot2"
+                                class="img-flag__main"
+                                src="img/worldwide-2.svg "
+                                style="margin-left: 0"
+                            />Total Data
+                        </h1>
                         <div class="title__text">
                             <h2 class="title__text--header heading-2__light">
                                 Total Cases, Deaths, Recovered
+                                <span class="title__text--text">(Pie Chart)</span>
                             </h2>
-                            <p class="title__text--text">(Pie Chart)</p>
+                            <!-- <p class="title__text--text">(Pie Chart)</p> -->
                         </div>
                     </div>
 
@@ -639,12 +670,20 @@
                         <span class="line-separator"></span>
                     </div>
                     <div class="chart__title pad-top-small">
-                        <h1 id="ConImg" class="heading-1 text-big">Today's Data</h1>
+                        <h1 id="ConImg" class="heading-1 text-big">
+                            <img
+                                id="worldTot3"
+                                class="img-flag__main"
+                                src="img/worldwide-2.svg "
+                                style="margin-left: 0"
+                            />Total Data
+                        </h1>
                         <div class="title__text">
                             <h2 class="title__text--header heading-2__light">
                                 Total Cases, Deaths, Recovered
+                                <span class="title__text--text">(Pie Chart)</span>
                             </h2>
-                            <p class="title__text--text">(Pie Chart)</p>
+                            <!-- <p class="title__text--text">(Pie Chart)</p> -->
                         </div>
                     </div>
 
@@ -683,9 +722,9 @@
                         </div>
                         <div class="footer__text">
                             <p class="footer__text-p">
-                                This Web app was created to track the new Pandemic Covid-19 virus
+                                This Website was created to track the new Pandemic Covid-19 virus
                                 outbreak live worldwide, with visualization of graph, table, and
-                                map. The data updates rapidly.
+                                map.also, The data updates rapidly.
                             </p>
                         </div>
                     </div>
@@ -781,8 +820,7 @@
                 </div>
                 <div class="copyright">
                     <h6 class="heading-6 heading-6__dark">
-                        © Developed by <a href="https://github.com/shammlo"> Shammlo</a>. All Rights
-                        Reserved.
+                        © Developed by <a href="https://github.com/shammlo"> Shammlo</a>.
                     </h6>
                 </div>
             </div>

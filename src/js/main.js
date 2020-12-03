@@ -1,12 +1,11 @@
 //*** ----------------- IMPORTS ----------------- ***\\
 import $ from "jquery";
-import Search from "./model/Search";
 import MainData from "./model/MainData";
 import GlobalData from "./model/AllCountries";
 import Charts from "./model/Charts";
-import * as searchView from "./views/lineChartView";
+import * as searchView from "./views/lineChartCountryView";
 import * as mainDataView from "./views/mainDataView";
-import * as allCountriesView from "./views/allCountriesView";
+import * as allCountriesView from "./views/tableView";
 import * as globalChartView from "./views/globalChartView";
 import * as mapView from "./views/mapView";
 import { DOM, renderLoader, clearLoader } from "./views/base";
@@ -25,33 +24,6 @@ const state = {};
 //*************************************************************************************\\
 
 //*** ---------- GLOBAL APP CONTROLLER ---------- ***\\
-
-//*** ------------ SEARCH CONTROLLER ------------ ***\\
-
-// const controlSearch = async (data, imageUrl) => {
-//     //-1- Get the query from the view
-//     console.log(data);
-//     const query = data;
-
-//     if (query) {
-//         //-2- New search object and add it to the state
-//         state.search = new Search(query);
-
-//         //-3- Prepare the Ui for the results
-//         // searchView.clearSearch();
-//         try {
-//             //-4- Search for country
-//             await state.search.getResults();
-
-//             //-5- Render Country info on the UI
-
-//             searchView.renderCountry(state.search.result, await imageUrl);
-//         } catch (error) {
-//             console.log(error);
-//         }
-//     }
-// };
-//*************************************************************************************\\
 
 //*** ------------ MAIN DATA CONTROLLER ------------ ***\\
 
@@ -143,7 +115,7 @@ const controlChart = async () => {
         //- rendering the data for the charts
         globalChartView.allCountrySearch(state.chartsData.result);
         // chartsView.newFromCumulative(state.casesByDay.onlyCases);
-        // mapView.renderMapData(state.chartsData.result);
+        mapView.renderMapData(state.chartsData.result);
 
         globalChartView.renderCharts(
             state.casesByDay.onlyDates,
@@ -175,4 +147,59 @@ $(DOM.aboutBtn).on("click", function () {
 $(".theme-switch").on("click", () => {
     $("body").toggleClass("light-theme");
 });
+
+// Cache selectors
+var lastId,
+    topMenu = $(".navigation__list"),
+    topMenuHeight = topMenu.outerHeight() + 1,
+    // All list items
+    menuItems = topMenu.find("a"),
+    // Anchors corresponding to menu items
+    scrollItems = menuItems.map(function () {
+        var item = $($(this).attr("href"));
+        if (item.length) {
+            return item;
+        }
+    });
+
+// Bind click handler to menu items
+// so we can get a fancy scroll animation
+menuItems.on("click", function (e) {
+    var href = $(this).attr("href"),
+        offsetTop = href === "#" ? 0 : $(href).offset().top - topMenuHeight + 1;
+    $("html, body").stop().animate(
+        {
+            scrollTop: offsetTop,
+        },
+        200
+    );
+    e.preventDefault();
+});
+
+// Bind to scroll
+$(window).on("scroll", function () {
+    // Get container scroll position
+    var fromTop = $(this).scrollTop() + topMenuHeight;
+
+    // Get id of current scroll item
+    var cur = scrollItems.map(function () {
+        if ($(this).offset().top < fromTop) return this;
+    });
+    // Get the id of the current element
+    cur = cur[cur.length - 1];
+    var id = cur && cur.length ? cur[0].id : "";
+
+    if (lastId !== id) {
+        lastId = id;
+        // Set/remove active class
+        menuItems
+            .parent()
+            .removeClass("active")
+            .end()
+            .filter("[href=\\#" + id + "]")
+            .parent()
+            .addClass("active");
+    }
+});
+
 //*************************************************************************************\\

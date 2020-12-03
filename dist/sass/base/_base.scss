@@ -25,11 +25,13 @@ html {
     @media only screen and (max-width: $bp-1200) {
         font-size: 50%;
     }
-
+    @include responsive(large-desktop) {
+        font-size: 87%; //- 1rem = 12px, 12/16= 0.75 = 75%
+    }
     // //? this is commented because it will be ENABLED on our laptop
-    // // @include responsive(big-desktop) {
-    // //     font-size: 75%; //- 1rem = 12px, 12/16= 0.75 = 75%
-    // // }
+    @include responsive(big-desktop) {
+        font-size: 75%; //- 1rem = 12px, 12/16= 0.75 = 75%
+    }
 
     @include responsive(tablet-landscape) {
         font-size: 56.25%; //- 1rem = 9px, 9/16= 0.56.25 = 56.25%
@@ -51,8 +53,24 @@ body {
 
     // padding: 1.5rem 1.5rem 1rem 1.5rem;
 }
+@media only screen and (min-width: $bp-4000) {
+    body::-webkit-scrollbar {
+        width: 5rem; /* width of the entire scrollbar */
+    }
+    body::-webkit-scrollbar-track {
+        background: var(--dark-4); /* color of the tracking area */
+    }
+    body::-webkit-scrollbar-thumb {
+        background-color: rgb(80, 80, 80); /* color of the scroll thumb */
+        border-radius: 30px; /* roundness of the scroll thumb */
+        border: 6px solid rgb(80, 80, 80); /* creates padding around scroll thumb */
+    }
+}
 body::-webkit-scrollbar {
     width: 1.2rem; /* width of the entire scrollbar */
+    @media only screen and (min-width: $bp-4000) {
+        width: 5rem;
+    }
 }
 body::-webkit-scrollbar-track {
     background: var(--dark-4); /* color of the tracking area */
