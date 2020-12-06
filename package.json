@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "start": "webpack-dev-server --mode development --open"
+    "start": "webpack-dev-server --mode development --open",
+    "mob-start": "webpack-dev-server --mode development --open --host 0.0.0.0 --port 4000"
   },
   "author": "sham",
   "license": "ISC",

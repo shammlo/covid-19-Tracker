@@ -111,6 +111,7 @@ const controlChart = async () => {
     state.casesByDay = new Charts();
     await state.chartsData.getResults();
     await state.casesByDay.getByDayCases();
+
     try {
         //- rendering the data for the charts
         globalChartView.allCountrySearch(state.chartsData.result);

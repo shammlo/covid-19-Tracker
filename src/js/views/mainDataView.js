@@ -17,7 +17,7 @@ const yesterdayCalc = () => {
             // return Math.abs(yesterdayPercent);
         },
         FormattingNumber: (number) => {
-            if (path == "/arabic.html") {
+            if (path == "/arabic.html" || path == "/dist/arabic.html") {
                 if (isNaN(number)) return number;
 
                 if (number < 9999) {
@@ -28,11 +28,11 @@ const yesterdayCalc = () => {
                     return (number / 1000).toFixed(1) + "ألف";
                 }
                 if (number < 10000000) {
-                    return (number / 1000000).toFixed(1) + "مليون";
+                    return (number / 1000000).toFixed(2) + "مليون";
                 }
 
                 if (number < 1000000000) {
-                    return (number / 1000000).toFixed(1) + "مليون";
+                    return (number / 1000000).toFixed(2) + "مليون";
                 }
 
                 if (number < 1000000000000) {
@@ -40,7 +40,7 @@ const yesterdayCalc = () => {
                 }
 
                 return "1تريليون+";
-            } else if (path == "/kurdish.html") {
+            } else if (path == "/kurdish.html" || path == "/dist/kurdish.html") {
                 if (isNaN(number)) return number;
 
                 if (number < 9999) {
@@ -51,11 +51,11 @@ const yesterdayCalc = () => {
                     return (number / 1000).toFixed(1) + "ھـەزار";
                 }
                 if (number < 10000000) {
-                    return (number / 1000000).toFixed(1) + "مـلـیـۆن";
+                    return (number / 1000000).toFixed(2) + "مـلـیـۆن";
                 }
 
                 if (number < 1000000000) {
-                    return (number / 1000000).toFixed(1) + "مـلـیـۆن";
+                    return (number / 1000000).toFixed(2) + "مـلـیـۆن";
                 }
 
                 if (number < 1000000000000) {
@@ -120,7 +120,7 @@ export const renderTotalCases = (cases, yesterday) => {
     const data = yesterdayData.yesterdayPercent(cases, yesterday).toString();
 
     //- For Arabic language
-    if (path == "/arabic.html" || path == "/kurdish.html") {
+    if (path == "/arabic.html" || path == "/kurdish.html" || path == "/dist/kurdish.html") {
         DOM.totalCases.textContent = totalCases.toArabicDigits();
         DOM.yesterdayCase.textContent =
             "(" + yesterdayData.FormattingNumber(yesterday).toArabicDigits() + ")";
@@ -132,9 +132,9 @@ export const renderTotalCases = (cases, yesterday) => {
             .querySelector(".data__confirmed .card__box--info .info-increase")
             .classList.add("success");
 
-        if (path == "/arabic.html") {
+        if (path == "/arabic.html" || path == "/dist/arabic.html") {
             DOM.totalCaseInc.textContent = "% " + pos.posAr + " انخفضت";
-        } else if (path == "/kurdish.html") {
+        } else if (path == "/kurdish.html" || path == "/dist/kurdish.html") {
             DOM.totalCaseInc.textContent = "% " + pos.posAr + " كـەمـی كـردووە";
         } else {
             DOM.totalCaseInc.textContent = pos.pos + "% decreased";
@@ -143,9 +143,9 @@ export const renderTotalCases = (cases, yesterday) => {
         document
             .querySelector(".data__confirmed .card__box--info .info-increase")
             .classList.add("danger");
-        if (path == "/arabic.html") {
+        if (path == "/arabic.html" || path == "/dist/arabic.html") {
             DOM.totalCaseInc.textContent = "% " + pos.posAr + " زاد";
-        } else if (path == "/kurdish.html") {
+        } else if (path == "/kurdish.html" || path == "/dist/kurdish.html") {
             DOM.totalCaseInc.textContent = "% " + pos.posAr + " زیـادی كـردووە";
         } else {
             DOM.totalCaseInc.textContent = pos.pos + "% increased";
@@ -165,7 +165,7 @@ export const renderTotalDead = (dead, yesterday) => {
     const data = yesterdayData.yesterdayPercent(dead, yesterday).toString();
 
     //- For Arabic language
-    if (path == "/arabic.html" || path == "/kurdish.html") {
+    if (path == "/arabic.html" || path == "/kurdish.html" || path == "/dist/kurdish.html") {
         DOM.totalDead.textContent = totalDead.toArabicDigits();
         DOM.yesterdayDead.textContent =
             "(" + yesterdayData.FormattingNumber(yesterday).toArabicDigits() + ")";
@@ -177,9 +177,9 @@ export const renderTotalDead = (dead, yesterday) => {
             .querySelector(".data__Dead .card__box--info .info-increase")
             .classList.add("success");
 
-        if (path == "/arabic.html") {
+        if (path == "/arabic.html" || path == "/dist/arabic.html") {
             DOM.totalDeadInc.textContent = "% " + pos.posAr + " انخفضت";
-        } else if (path == "/kurdish.html") {
+        } else if (path == "/kurdish.html" || path == "/dist/kurdish.html") {
             DOM.totalDeadInc.textContent = "% " + pos.posAr + " كـەمـی كـردووە";
         } else {
             DOM.totalDeadInc.textContent = pos.pos + "% decreased";
@@ -189,9 +189,9 @@ export const renderTotalDead = (dead, yesterday) => {
             .querySelector(".data__Dead .card__box--info .info-increase")
             .classList.add("danger");
 
-        if (path == "/arabic.html") {
+        if (path == "/arabic.html" || path == "/dist/arabic.html") {
             DOM.totalDeadInc.textContent = "% " + pos.posAr + " زاد";
-        } else if (path == "/kurdish.html") {
+        } else if (path == "/kurdish.html" || path == "/dist/kurdish.html") {
             DOM.totalDeadInc.textContent = "% " + pos.posAr + " زیـادی كـردووە";
         } else {
             DOM.totalDeadInc.textContent = pos.pos + "% increased";
@@ -211,7 +211,7 @@ export const renderTotalRecovered = (recovered, yesterday) => {
     const data = yesterdayData.yesterdayPercent(recovered, yesterday).toString();
 
     //- For Arabic language
-    if (path == "/arabic.html" || path == "/kurdish.html") {
+    if (path == "/arabic.html" || path == "/kurdish.html" || path == "/dist/kurdish.html") {
         DOM.totalRecovered.textContent = totalRecovered.toArabicDigits();
         DOM.yesterdayRec.textContent =
             "(" + yesterdayData.FormattingNumber(yesterday).toArabicDigits() + ")";
@@ -223,9 +223,9 @@ export const renderTotalRecovered = (recovered, yesterday) => {
             .querySelector(".data__recovered .card__box--info .info-increase")
             .classList.add("danger");
 
-        if (path == "/arabic.html") {
+        if (path == "/arabic.html" || path == "/dist/arabic.html") {
             DOM.totalRecoveredInc.textContent = "% " + pos.posAr + " انخفضت";
-        } else if (path == "/kurdish.html") {
+        } else if (path == "/kurdish.html" || path == "/dist/kurdish.html") {
             DOM.totalRecoveredInc.textContent = "% " + pos.posAr + " كـەمـی كـردووە";
         } else {
             DOM.totalRecoveredInc.textContent = pos.pos + "% decreased";
@@ -235,9 +235,9 @@ export const renderTotalRecovered = (recovered, yesterday) => {
             .querySelector(".data__recovered .card__box--info .info-increase")
             .classList.add("success");
 
-        if (path == "/arabic.html") {
+        if (path == "/arabic.html" || path == "/dist/arabic.html") {
             DOM.totalRecoveredInc.textContent = "% " + pos.posAr + " زاد";
-        } else if (path == "/kurdish.html") {
+        } else if (path == "/kurdish.html" || path == "/dist/kurdish.html") {
             DOM.totalRecoveredInc.textContent = "% " + pos.posAr + " زیـادی كـردووە";
         } else {
             DOM.totalRecoveredInc.textContent = pos.pos + "% increased";
@@ -259,7 +259,7 @@ export const renderTodayCases = (cases, yesterday) => {
     const data = yesterdayData.yesterdayPercent(cases, yesterday).toString();
 
     //- For Arabic language
-    if (path == "/arabic.html" || path == "/kurdish.html") {
+    if (path == "/arabic.html" || path == "/kurdish.html" || path == "/dist/kurdish.html") {
         DOM.todayCases.textContent = todayCases.toArabicDigits();
         DOM.totalYesCases.textContent =
             "(" + yesterdayData.FormattingNumber(yesterday).toArabicDigits() + ")";
@@ -271,9 +271,9 @@ export const renderTodayCases = (cases, yesterday) => {
             .querySelector(".data__cases .card__box--info .info-increase")
             .classList.add("success");
 
-        if (path == "/arabic.html") {
+        if (path == "/arabic.html" || path == "/dist/arabic.html") {
             DOM.todayCaseInc.textContent = "% " + pos.posAr + " انخفضت";
-        } else if (path == "/kurdish.html") {
+        } else if (path == "/kurdish.html" || path == "/dist/kurdish.html") {
             DOM.todayCaseInc.textContent = "% " + pos.posAr + " كـەمـی كـردووە";
         } else {
             DOM.todayCaseInc.textContent = pos.pos + "% decreased";
@@ -282,9 +282,9 @@ export const renderTodayCases = (cases, yesterday) => {
         document
             .querySelector(".data__cases .card__box--info .info-increase")
             .classList.add("danger");
-        if (path == "/arabic.html") {
+        if (path == "/arabic.html" || path == "/dist/arabic.html") {
             DOM.todayCaseInc.textContent = "% " + pos.posAr + " زاد";
-        } else if (path == "/kurdish.html") {
+        } else if (path == "/kurdish.html" || path == "/dist/kurdish.html") {
             DOM.todayCaseInc.textContent = "% " + pos.posAr + " زیـادی كـردووە";
         } else {
             DOM.todayCaseInc.textContent = pos.pos + "% increased";
@@ -304,7 +304,7 @@ export const renderTodayDeaths = (deaths, yesterday) => {
     const data = yesterdayData.yesterdayPercent(deaths, yesterday).toString();
 
     //- For Arabic language
-    if (path == "/arabic.html" || path == "/kurdish.html") {
+    if (path == "/arabic.html" || path == "/kurdish.html" || path == "/dist/kurdish.html") {
         DOM.todayDeaths.textContent = todayDeaths.toArabicDigits();
         DOM.totalYesDead.textContent =
             "(" + yesterdayData.FormattingNumber(yesterday).toArabicDigits() + ")";
@@ -315,9 +315,9 @@ export const renderTodayDeaths = (deaths, yesterday) => {
         document
             .querySelector(".data__death .card__box--info .info-increase")
             .classList.add("success");
-        if (path == "/arabic.html") {
+        if (path == "/arabic.html" || path == "/dist/arabic.html") {
             DOM.todayDeadInc.textContent = "% " + pos.posAr + " انخفضت";
-        } else if (path == "/kurdish.html") {
+        } else if (path == "/kurdish.html" || path == "/dist/kurdish.html") {
             DOM.todayDeadInc.textContent = "% " + pos.posAr + " كـەمـی كـردووە";
         } else {
             DOM.todayDeadInc.textContent = pos.pos + "% decreased";
@@ -326,9 +326,9 @@ export const renderTodayDeaths = (deaths, yesterday) => {
         document
             .querySelector(".data__death .card__box--info .info-increase")
             .classList.add("danger");
-        if (path == "/arabic.html") {
+        if (path == "/arabic.html" || path == "/dist/arabic.html") {
             DOM.todayDeadInc.textContent = "% " + pos.posAr + " زاد";
-        } else if (path == "/kurdish.html") {
+        } else if (path == "/kurdish.html" || path == "/dist/kurdish.html") {
             DOM.todayDeadInc.textContent = "% " + pos.posAr + " زیـادی كـردووە";
         } else {
             DOM.todayDeadInc.textContent = pos.pos + "% increased";
@@ -348,7 +348,7 @@ export const renderTodayRecovered = async (recovered, yesterday) => {
     const data = yesterdayData.yesterdayPercent(recovered, yesterday).toString();
 
     //- For Arabic language
-    if (path == "/arabic.html" || path == "/kurdish.html") {
+    if (path == "/arabic.html" || path == "/kurdish.html" || path == "/dist/kurdish.html") {
         DOM.todayRecovered.textContent = todayRecovered.toArabicDigits();
         DOM.totalYesRec.textContent =
             "(" + yesterdayData.FormattingNumber(yesterday).toArabicDigits() + ")";
@@ -360,9 +360,9 @@ export const renderTodayRecovered = async (recovered, yesterday) => {
             .querySelector(".data__TodRecovered .card__box--info .info-increase")
             .classList.add("danger");
 
-        if (path == "/arabic.html") {
+        if (path == "/arabic.html" || path == "/dist/arabic.html") {
             DOM.todayRecoveredInc.textContent = "% " + pos.posAr + " انخفضت";
-        } else if (path == "/kurdish.html") {
+        } else if (path == "/kurdish.html" || path == "/dist/kurdish.html") {
             DOM.todayRecoveredInc.textContent = "% " + pos.posAr + " زیـادی كـردووە";
         } else {
             DOM.todayRecoveredInc.textContent = pos.pos + "% decreased";
@@ -371,9 +371,9 @@ export const renderTodayRecovered = async (recovered, yesterday) => {
         document
             .querySelector(".data__TodRecovered .card__box--info .info-increase")
             .classList.add("success");
-        if (path == "/arabic.html") {
+        if (path == "/arabic.html" || path == "/dist/arabic.html") {
             DOM.todayRecoveredInc.textContent = "% " + pos.posAr + " زاد";
-        } else if (path == "/kurdish.html") {
+        } else if (path == "/kurdish.html" || path == "/dist/kurdish.html") {
             DOM.todayRecoveredInc.textContent = "% " + pos.posAr + " زیـادی كـردووە";
         } else {
             DOM.todayRecoveredInc.textContent = pos.pos + "% increased";
@@ -388,12 +388,6 @@ export const renderUpdatedTime = (updated) => {
     var hour = date.getHours();
 
     //? current time
-    // const now = new Date();
-    // var min = now.getMinutes();
-    // var hou = now.getHours();
-    // const newH = hou - hour;
-    // const newM = minutes - min;
-    // const ago = newH + ":" + newM;
     const current = Math.abs(new Date() - date);
     const timesAgo = Math.round(current / 60000);
     // console.log("new" + " " + timesAgo);

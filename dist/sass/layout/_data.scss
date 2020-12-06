@@ -31,9 +31,13 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
         }
+        @media only screen and (max-width: $bp-375) {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+        }
         @media only screen and (max-width: $bp-350) {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
         }
     }
 

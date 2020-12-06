@@ -4,6 +4,25 @@ import { DOM } from "./base";
 
 //*************************************************************************************\\
 //*** ------------ PRIVATE FUNCTIONS ------------ ***\\
+const renderUpdatedTime = (updated) => {
+    var date = new Date(updated);
+    //? current time
+    const current = Math.abs(new Date() - date);
+    const timesAgo = Math.round(current / 60000);
+    return timesAgo;
+};
+const formatNumber = (number) => {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+String.prototype.toArabicDigits = function () {
+    var id = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"];
+    return this.replace(/[0-9]/g, function (w) {
+        return id[+w];
+    });
+};
+
+//*** ------------- GLOBAL VARIABLE -------------- ***\\
+const path = document.location.pathname;
 
 //*************************************************************************************\\
 
@@ -70,12 +89,22 @@ export const renderMapData = async (data) => {
                 recovered: data.recovered,
                 active: data.active,
                 formatCases: casesFormatted,
+                updated: data.updated,
             });
         });
 
         return GeoJSON.parse(arr, {
             Point: ["latitude", "longitude"],
-            include: ["text", "flag", "cases", "deaths", "recovered", "active", "formatCases"],
+            include: [
+                "text",
+                "flag",
+                "cases",
+                "deaths",
+                "recovered",
+                "active",
+                "formatCases",
+                "updated",
+            ],
         });
     };
 
@@ -173,49 +202,36 @@ export const renderMapData = async (data) => {
         });
     });
 
-    // map.on("click", "clusters", function (e) {
-    //     var features = map.queryRenderedFeatures(e.point, {
-    //         layers: ["clusters"],
-    //     });
-    //     var clusterId = e.features[0].properties.cases;
-    //     map.getSource("data").getClusterExpansionZoom(clusterId, function (err, zoom) {
-    //         if (err) return;
-
-    //         map.easeTo({
-    //             center: features[0].geometry.coordinates,
-    //             zoom: zoom,
-    //         });
-    //     });
-    // });
-
     map.on("click", "cluster", function (e) {
         var coordinates = e.features[0].geometry.coordinates.slice();
         var description = e.features[0].properties.text;
         let flag = e.features[0].properties.flag;
-        let cases = e.features[0].properties.cases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        let deaths = e.features[0].properties.deaths
-            .toString()
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        let recovered = e.features[0].properties.recovered
-            .toString()
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        let active = e.features[0].properties.active
-            .toString()
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        let cases = formatNumber(e.features[0].properties.cases);
+        let deaths = formatNumber(e.features[0].properties.deaths);
+        let recovered = formatNumber(e.features[0].properties.recovered);
+        let active = formatNumber(e.features[0].properties.active);
+        let updated = renderUpdatedTime(e.features[0].properties.updated);
 
-        // Ensure that if the map is zoomed out such that multiple
-        // copies of the feature are visible, the popup appears
-        // over the copy being pointed to.
-        // while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-        //     coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        // }
+        if (path === "/arabic.html" || path === "/kurdish.html") {
+            cases = formatNumber(e.features[0].properties.cases).toArabicDigits();
+            deaths = formatNumber(e.features[0].properties.deaths).toArabicDigits();
+            recovered = formatNumber(e.features[0].properties.recovered).toArabicDigits();
+            active = formatNumber(e.features[0].properties.active).toArabicDigits();
+            updated = renderUpdatedTime(e.features[0].properties.updated)
+                .toString()
+                .toArabicDigits();
+        }
 
         new mapboxgl.Popup()
             .setLngLat(coordinates)
             .setHTML(
                 `
 
-                    <div class="map-popup">
+                    <div class="${
+                        path === "/arabic.html" || path === "/kurdish.html"
+                            ? "map-popup--lang"
+                            : "map-popup"
+                    }">
                         <div class="popup-header">
                         <img style="margin-left: .4rem;"
                                     src="img/virus-1.svg"
@@ -224,22 +240,48 @@ export const renderMapData = async (data) => {
                                     class="d-inline-block align-top"
                                     alt="logo"
                                 />
-                            <h5  style="font-size: 1.7rem; margin-left: 1rem;">
-
-                                Covid-19 Tracker</h5></div>
+                            <h5  style="font-size: 1.7rem; margin-left: 1rem;">${(() => {
+                                if (path === "/arabic.html") {
+                                    return "تـعـقـب كـوفـیـد-١٩";
+                                } else if (path === "/kurdish.html") {
+                                    return "بـەدواداچـوونـی كـۆڤـیـد-١٩";
+                                } else {
+                                    return " Covid-19 Tracker";
+                                }
+                            })()}</h5></div>
                         <div class="popup-title">
-                            <a id="infoCountryLegend" style="margin-left: .4rem;"
+                            <span id="infoCountryLegend" style="margin-left: .4rem;"
                                 >${description} &nbsp;&nbsp;
                                 <img
                                     src="${flag}"
                                     style="max-width: 30px; height: auto"
                                     onerror="this.style.display='none'"
                                     onwidth="20"
-                            /></a>
-                            <br /><a
-                                style="font-size: small; padding: 0.5; color: rgb(155, 154, 154)"
-                                id="infoUpdatedLegend"
-                                >Updated 5 minutes ago</a>
+                            /></span>
+                            <span
+                                id="${
+                                    path === "/arabic.html" || path === "/kurdish.html"
+                                        ? "infoUpdatedLegend-lang"
+                                        : "infoUpdatedLegend"
+                                }"
+                                >
+                                ${(() => {
+                                    if (path == "/arabic.html") {
+                                        return "محدث";
+                                    } else if (path === "/kurdish.html") {
+                                        return "تازەکراوەتەوە";
+                                    } else {
+                                        return "Updated";
+                                    }
+                                })()} <span style="color: var(--warning);">${updated}</span>  ${(() => {
+                    if (path == "/arabic.html") {
+                        return "دقائق مضت";
+                    } else if (path === "/kurdish.html") {
+                        return "خولەک پێش ئێستا";
+                    } else {
+                        return "minutes ago";
+                    }
+                })()}</span>
                             <hr
                                 style="
                                     border: 0.1rem solid rgb(212, 212, 212);
@@ -252,28 +294,60 @@ export const renderMapData = async (data) => {
                         </div>
                         <article class="popup__data">
                             <div class="popup__data-cases">
-                                <h5>Cases</h5>
+                                <h5>${(() => {
+                                    if (path == "/arabic.html") {
+                                        return "حـالـات";
+                                    } else if (path == "/kurdish.html") {
+                                        return "توشبووان";
+                                    } else {
+                                        return "Cases";
+                                    }
+                                })()}</h5>
                                 <span>
                                     <img src="img/health.svg" alt="icon" width="22.5" height="22.5"
                                 /></span>
                                 <span id="popCase padTop">${cases}</span>
                             </div>
                             <div class="popup__data-deaths">
-                                <h5> Deaths</h5>
+                                <h5> ${(() => {
+                                    if (path == "/arabic.html") {
+                                        return "الـوفـاة";
+                                    } else if (path == "/kurdish.html") {
+                                        return "قوربانیان";
+                                    } else {
+                                        return "Deaths";
+                                    }
+                                })()}</h5>
                                 <span>
                                     <img src="img/headstone.svg" alt="icon" width="22.5" height="22.5"
                                 /></span>
                                 <span id="popDead padTop" style="color: var(--danger)">${deaths}</span>
                             </div>
                             <div class="popup__data-recovered">
-                                <h5> Recovered</h5>
+                                <h5> ${(() => {
+                                    if (path == "/arabic.html") {
+                                        return "تـعـافـى";
+                                    } else if (path == "/kurdish.html") {
+                                        return "چاکبووەوان";
+                                    } else {
+                                        return "Recovered";
+                                    }
+                                })()}</h5>
                                 <span>
                                     <img src="img/heartbeat.svg" alt="icon" width="22.5" height="22.5"
                                 /></span>
                                 <span id="popRec padTop" style="color: var(--success)">${recovered}</span>
                             </div>
                             <div class="popup__data-active" >
-                                <h5> Active</h5>
+                                <h5> ${(() => {
+                                    if (path == "/arabic.html") {
+                                        return "الـمـصـابـة حـالـيـا";
+                                    } else if (path == "/kurdish.html") {
+                                        return "حاڵەتە چەڵاکەکان";
+                                    } else {
+                                        return "Active";
+                                    }
+                                })()}</h5>
                                 <span>
                                 <span id="popAct padTop">${active}</span>
                                     <img
@@ -307,29 +381,6 @@ export const renderMapData = async (data) => {
         var newMarkers = {};
         var features = map.querySourceFeatures("mapCases");
 
-        // features.forEach((feature) => {
-        //     let coordinates = feature.geometry.coordinates;
-        //     let properties = feature.properties;
-        //     if (!properties.cluster) {
-        //         return;
-        //     }
-        //     let id = properties.cluster.id;
-
-        //     let marker = markers[id];
-
-        //     if (!marker) {
-        //         const element = createDonutChart(properties);
-        //         marker = markers[id] = new mapboxgl.Marker({
-        //             element: element,
-        //         }).setLngLat(coordinates);
-        //     }
-        //     newMarkers[id] = marker;
-
-        //     if (!markersOnScreen[id]) {
-        //         marker.addTo(map);
-        //     }
-        // });
-
         for (var i = 0; i < features.length; i++) {
             var coords = features[i].geometry.coordinates;
             var props = features[i].properties.cases;
@@ -361,19 +412,7 @@ export const renderMapData = async (data) => {
         map.on("moveend", updateMarker);
         updateMarker();
     });
-    // const colors = [
-    //     "#8dd3c7",
-    //     "#ffffb3",
-    //     "#bebada",
-    //     "#fb8072",
-    //     "#80b1d3",
-    //     "#fdb462",
-    //     "#b3de69",
-    //     "#fccde5",
-    //     "#d9d9d9",
-    //     "#bc80bd",
-    //     "#ccebc5",
-    // ];
+
     function createDonutChart(props) {
         var offsets = [];
         var counts = [props.cases2, props.cases3, props.cases4];
@@ -466,30 +505,3 @@ export const renderMapData = async (data) => {
         ].join(" ");
     }
 };
-
-//     var layers = [
-//         [20, "#f28cb1"],
-//         [10, "#f1f075"],
-//         [0, "#51bbd6"],
-//     ];
-
-//     layers.forEach(function (layer, i) {
-//         map.addLayer({
-//             id: "cluster-" + i,
-//             type: "circle",
-//             source: "data",
-//             paint: {
-//                 "circle-color": layer[1],
-//                 "circle-radius": 18,
-//             },
-//             filter:
-//                 i === 0
-//                     ? [">=", "cluster", layer[0]]
-//                     : [
-//                           "all",
-//                           [">=", "cluster", layer[0]],
-//                           ["<", "cluster", layers[i - 1][0]],
-//                       ],
-//         });
-//     });
-// });

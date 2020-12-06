@@ -5,6 +5,10 @@
     .navigation {
         &__list {
             list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-width: 68rem;
         }
 
         &__item {

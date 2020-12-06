@@ -1,10 +1,10 @@
 .language {
-    padding-top: 2rem;
+    // padding-top: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: fixed;
+    // position: fixed;
     z-index: 1000000;
 
     /* Reset Select */
@@ -82,4 +82,23 @@
             padding: 100rem;
         }
     }
+    .language__info {
+        font-size: 1.4rem;
+    }
+
+    .select2-container {
+        width: 12rem !important;
+    }
+}
+.language-data .select2 {
+    width: 10rem !important;
+}
+.language-data {
+    .select2-results__options span {
+        padding-left: 0 !important;
+    }
+}
+.language-items {
+    font-size: 1.4rem;
+    padding-left: 0 !important;
 }

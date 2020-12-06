@@ -108,6 +108,7 @@ a.mapboxgl-ctrl-logo {
 .popup-header {
     display: flex;
     align-items: center;
+    direction: ltr;
 }
 .popup-title {
     margin-top: 2rem;
@@ -127,6 +128,7 @@ a.mapboxgl-ctrl-logo {
         padding-bottom: 2rem;
         margin: 0.3rem;
         position: relative;
+        min-height: 10.5rem;
 
         img {
             position: absolute;
@@ -135,10 +137,13 @@ a.mapboxgl-ctrl-logo {
         }
 
         h5 {
-            padding-top: 1.5rem;
+            padding-top: 1.8rem;
             margin-right: 0.6rem;
         }
 
+        #popCase {
+            font-size: 1.5rem;
+        }
         #popDead {
             color: var(--danger) !important;
         }
@@ -166,15 +171,25 @@ a.mapboxgl-ctrl-logo {
 
 .legend {
     background-color: #fff;
-    border-radius: 3px;
-    bottom: 30px;
+    border-radius: 5px;
+    bottom: 3rem;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    font: 12px/20px "Helvetica Neue", Arial, Helvetica, sans-serif;
-    padding: 10px;
+    font: 1.2rem/2rem "Helvetica Neue", Arial, Helvetica, sans-serif;
+    padding: 1rem;
     position: absolute;
     right: 10px;
     z-index: 1;
     color: var(--color-black);
+    font-size: 1.5rem;
+    @media only screen and (max-width: $bp-500) {
+        font-size: 1.3rem;
+        bottom: 1rem;
+        right: 1rem;
+    }
+}
+.legend-lang div span {
+    margin-right: 0 !important;
+    margin-left: 0.5rem !important;
 }
 
 .legend h4 {
@@ -184,16 +199,16 @@ a.mapboxgl-ctrl-logo {
 .legend div span {
     border-radius: 50%;
     display: inline-block;
-    height: 10px;
-    margin-right: 5px;
-    width: 10px;
+    height: 1rem;
+    margin-right: 0.5rem;
+    width: 1rem;
 }
 .map-overlay {
     position: absolute;
     bottom: 0;
     right: 0;
     background: rgba(255, 255, 255, 0.8);
-    margin-right: 20px;
+    margin-right: 2rem;
     font-family: Arial, sans-serif;
     overflow: auto;
     border-radius: 3px;
@@ -201,18 +216,18 @@ a.mapboxgl-ctrl-logo {
 
 #features {
     top: 0;
-    height: 100px;
-    margin-top: 20px;
-    width: 250px;
+    height: 10rem;
+    margin-top: 2rem;
+    width: 25rem;
 }
 
 #legend {
-    padding: 10px;
+    padding: 1rem;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    line-height: 18px;
-    height: 150px;
-    margin-bottom: 40px;
-    width: 100px;
+    line-height: 1.8rem;
+    height: 15rem;
+    margin-bottom: 4rem;
+    width: 10rem;
 }
 
 .legend-key {
@@ -225,4 +240,47 @@ a.mapboxgl-ctrl-logo {
 .map-container {
     margin-top: 7rem;
     padding-top: 3rem;
+}
+.map-popup {
+    // text-align: center;
+}
+.map-popup--lang {
+    // text-align: center;
+    direction: rtr;
+}
+#padTop {
+    font-size: 1.5rem;
+}
+.mapboxgl-ctrl-bottom-right > .mapboxgl-ctrl-attrib.mapboxgl-compact:after {
+    @media only screen and (max-width: $bp-500) {
+        display: none;
+    }
+}
+.mapboxgl-ctrl-geocoder {
+    @media only screen and (max-width: $bp-500) {
+        width: 10rem !important;
+    }
+}
+.mapboxgl-ctrl-geocoder--input {
+    @media only screen and (max-width: $bp-500) {
+        height: 0 !important;
+    }
+}
+#infoUpdatedLegend {
+    font-size: small;
+    padding: 0.5;
+    color: rgb(228, 226, 226);
+    text-align: left;
+}
+#infoUpdatedLegend-lang {
+    font-size: small;
+    padding: 0.5;
+    color: #e4e2e2;
+    direction: rtl !important;
+    text-align: right !important;
+}
+#infoCountryLegend {
+    text-align: center;
+    display: block;
+    padding-bottom: 1rem;
 }

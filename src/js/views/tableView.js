@@ -84,9 +84,9 @@ export const renderAllData = (global) => {
                     
     `;
 
-    if (path == "/arabic.html") {
-        document.querySelector(".freeze").classList.add("freeze-lang");
-    }
+    // if (path == "/arabic.html") {
+    //     document.querySelector(".freeze").classList.add("freeze-lang");
+    // }
     // DOM.countryInfo.insertAdjacentHTML("beforeend", html);
     $(DOM.tableBody).append(html);
 

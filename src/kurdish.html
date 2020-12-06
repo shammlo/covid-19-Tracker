@@ -89,22 +89,37 @@
                         </a>
                     </div>
                     <div class="navigation d-none">
-                        <ul class="navigation__list">
+                        <ul
+                            class="navigation__list navigation__list--lang"
+                            style="min-width: 80rem"
+                        >
                             <li class="navigation__item active">
-                                <a href="#home" class="navigation__link"> پـەڕەی سەرەكی </a>
+                                <a href="#home" class="navigation__link mob-lang">
+                                    پـەڕەی سەرەكی
+                                </a>
                             </li>
                             <li class="navigation__item">
-                                <a href="#GlobalData" class="navigation__link"
+                                <a href="#GlobalData" class="navigation__link mob-lang"
                                     >ڕاگـەیـەنـدراوە جـیـھـانـیـیـەكـان</a
                                 >
                             </li>
                             <li class="navigation__item">
-                                <a href="#CountryTable" class="navigation__link">
+                                <a href="#CountryTable" class="navigation__link mob-lang">
                                     خـشـتـەی وڵـاتـەكـان</a
                                 >
                             </li>
                             <li class="navigation__item">
-                                <a href="#Charts" class="navigation__link"> ھێـڵكاری</a>
+                                <a href="#Charts" class="navigation__link mob-lang"> ھێـڵكاری</a>
+                            </li>
+                            <li class="navigation__item">
+                                <div class="language">
+                                    <select
+                                        class="language-data chart-filter"
+                                        style="width: 25rem; float: right"
+                                    >
+                                        <option></option>
+                                    </select>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -275,20 +290,16 @@
                     <!--- theme end -->
 
                     <!--- Language  -->
-                    <div class="language">
+                    <!-- <div class="language">
                         <select
                             class="language-data chart-filter"
                             style="width: 25rem; float: right"
                         >
                             <option></option>
 
-                            <!-- <option selected disabled>Select your language</option> -->
-                            <!--
-                            <option selected="selected" value="1">English(default)</option>
-                            <option value="2">Kurdish</option>
-                            <option value="3">Arabic</option> -->
+                           
                         </select>
-                    </div>
+                    </div> -->
                 </div>
 
                 <!--* Map -->
@@ -300,15 +311,26 @@
                     ></div>
                     <!-- <div class="map-overlay" id="legend"></div> -->
 
-                    <div id="state-legend" class="legend">
+                    <div id="state-legend" class="legend legend-lang">
                         <h4>Total Cases</h4>
-                        <div><span style="background-color: #fc3f41"></span>more than 5M</div>
-                        <div><span style="background-color: #fc9c19"></span>Between 1M to 5M</div>
-                        <div><span style="background-color: #fed976"></span>Between 500K to 1M</div>
                         <div>
-                            <span style="background-color: #51bbd6"></span>Between 100K to 500K
+                            <span style="background-color: #fc3f41"></span>زیـاتـر لـە ٥ مـلـیـۆن
                         </div>
-                        <div><span style="background-color: #52e374"></span>Less than 100K</div>
+                        <div>
+                            <span style="background-color: #fc9c19"></span>لـە نـێـوان ١ مـلـیـۆن
+                            بـۆ ٥ مـلـیـۆن
+                        </div>
+                        <div>
+                            <span style="background-color: #fed976"></span>لـە نـێـوان ٥٠٠ ھـەزار
+                            بـۆ ١ مـلـیـۆن
+                        </div>
+                        <div>
+                            <span style="background-color: #51bbd6"></span>لـە نـێـوان ١٠٠ ھـەزار
+                            بـۆ ٥٠٠ ھـەزار
+                        </div>
+                        <div>
+                            <span style="background-color: #52e374"></span>کـەمـتـر لـە ١٠٠ ھـەزار
+                        </div>
                     </div>
                 </div>
                 <div class="separator">
@@ -320,7 +342,8 @@
                             كـۆتـا زانیـاریەكـان : جـیـھـان
                         </p>
                         <small id="timestamp">
-                            تـازەكـراوەتـەوە &nbsp<span id="updatedTime">0</span>&nbsp خـولـەك پـێـش
+                            تـازەكـراوەتـەوە &nbsp<span id="updatedTime">0</span>&nbsp
+                             خـولـەك پـێـش
                             ئـێـسـتـا
                         </small>
                         <hr class="update__text--hr" />
@@ -391,7 +414,7 @@
                                         alt="Confirmed Icon"
                                     />
                                 </span>
-                                <h3 class="heading-3">كـۆی گـشـتـی تــوشـبـووان</h3>
+                                <h3 class="heading-3 heading-3-m">كـۆی گـشـتـی تــوشـبـووان</h3>
                                 <h2
                                     class="heading-2 margin-top-small"
                                     id="totalCases"
@@ -425,7 +448,7 @@
                                         alt="Confirmed Icon"
                                     />
                                 </span>
-                                <h3 class="heading-3">كـۆی گـشـتـی قـوربـانـیـان</h3>
+                                <h3 class="heading-3 heading-3-m">كـۆی گـشـتـی قـوربـانـیـان</h3>
                                 <h2
                                     class="heading-2 heading-2__danger margin-top-small"
                                     id="totalDeath"
@@ -459,7 +482,7 @@
                                         alt="Confirmed Icon"
                                     />
                                 </span>
-                                <h3 class="heading-3">كـۆی گـشـتـی چـاكبـوونـەوە</h3>
+                                <h3 class="heading-3 heading-3-m">كـۆی گـشـتـی چـاكبـوونـەوە</h3>
                                 <h2
                                     class="heading-2 heading-2__success margin-top-small"
                                     id="totalRecovered"
@@ -493,7 +516,7 @@
                                         alt="Confirmed Icon"
                                     />
                                 </span>
-                                <h3 class="heading-3">تــوشبـووانـی ئـەمـڕۆ</h3>
+                                <h3 class="heading-3 heading-3-m">تــوشبـووانـی ئـەمـڕۆ</h3>
                                 <h2
                                     class="heading-2 margin-top-small counter"
                                     id="todayCases"
@@ -523,7 +546,7 @@
                                 <span class="card__box--icon">
                                     <img class="icon-ar" src="img/Death.svg" alt="Confirmed Icon" />
                                 </span>
-                                <h3 class="heading-3">قـوربـانـیـانـی ئـەمـڕۆ</h3>
+                                <h3 class="heading-3 heading-3-m">قـوربـانـیـانـی ئـەمـڕۆ</h3>
                                 <h2
                                     class="heading-2 heading-2__danger margin-top-small"
                                     id="todayDeaths"
@@ -557,7 +580,7 @@
                                         alt="Confirmed Icon"
                                     />
                                 </span>
-                                <h3 class="heading-3">چـاكـبـووەوانـی ئـەمـرۆ</h3>
+                                <h3 class="heading-3 heading-3-m">چـاكـبـووەوانـی ئـەمـرۆ</h3>
                                 <h2
                                     class="heading-2 heading-2__success margin-top-small"
                                     id="todayRecovered"
@@ -611,7 +634,7 @@
                                         پـلـە
                                     </th>
                                     <th
-                                        class="table__header--items freeze freeze-ar"
+                                        class="table__header--items freeze-ar freeze-lang"
                                         style="
                                             width: 25rem;
                                             text-align: right !important;
@@ -903,18 +926,25 @@
                             /></a> -->
                         </div>
                         <div class="footer__socials">
-                            <a class="footer__socials-links" href="https://github.com/shammlo"
+                            <a
+                                class="footer__socials-links"
+                                href="https://github.com/shammlo"
+                                target="_blank"
                                 ><i class="fab fa-github-square"></i
                             ></a>
                             <a
                                 class="footer__socials-links"
                                 href="https://www.facebook.com/shamlo.redzx/"
+                                target="_blank"
                                 ><i class="fab fa-facebook-square"></i
                             ></a>
-                            <a class="footer__socials-links" href="https://twitter.com/Shamlo_"
+                            <a
+                                class="footer__socials-links"
+                                href="https://twitter.com/Shamlo_"
+                                target="_blank"
                                 ><i class="fab fa-twitter-square"></i
                             ></a>
-                            <a class="footer__socials-links" href="#"
+                            <a class="footer__socials-links" href="#" target="_blank"
                                 ><i class="fab fa-linkedin"></i
                             ></a>
                         </div>

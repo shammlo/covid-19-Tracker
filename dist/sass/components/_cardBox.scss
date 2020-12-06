@@ -24,11 +24,11 @@
         padding: 1;
     }
 
-    // @media only screen and (max-width: $bp-375) {
-    //     min-width: 19rem;
-    //     margin: 0.45rem;
-    //     padding: 1rem;
-    // }
+    @media only screen and (max-width: $bp-375) {
+        min-width: 18rem;
+        margin: 0.45rem;
+        padding: 1rem;
+    }
     @media only screen and (max-width: $bp-350) {
         min-width: 18rem;
         margin: 0.45rem;
@@ -51,7 +51,7 @@
             @media only screen and (max-width: $bp-400) {
                 width: 3.7rem;
                 height: 3.7rem;
-                top: 14rem;
+                top: 1rem;
                 right: 1rem;
             }
             @media only screen and (max-width: 20em) {
@@ -68,12 +68,12 @@
             @media only screen and (max-width: $bp-735) {
                 width: 4rem;
                 height: 4rem;
-                margin-left: 1rem;
+                margin-right: 1rem;
             }
             @media only screen and (max-width: $bp-400) {
                 width: 3.7rem;
                 height: 3.7rem;
-                top: 14rem;
+                top: 1rem;
                 left: 1rem;
             }
             @media only screen and (max-width: 20em) {

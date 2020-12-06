@@ -15,10 +15,13 @@
         padding: 0 3rem;
     }
     @media only screen and (max-width: $bp-800) {
-        padding: 0 1.5rem;
+        padding: 0 1.8rem;
     }
     @media only screen and (max-width: $bp-600) {
         padding: 0 1.8rem;
+    }
+    @media only screen and (max-width: $bp-375) {
+        padding: 0 1.5rem;
     }
 }
 
@@ -59,7 +62,7 @@
         min-height: 70rem;
     }
     @media only screen and (max-width: $bp-375) {
-        min-height: 75rem;
+        min-height: 60rem;
     }
     @media only screen and (max-width: $bp-350) {
         min-height: 70rem;

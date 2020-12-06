@@ -42,7 +42,7 @@ export const allCountrySearch = (data) => {
         {
             id: 1,
             value: "eng",
-            text: "English(default)",
+            text: "English",
             img: "img/English(default).svg",
             url: "index.html",
         },
@@ -79,7 +79,7 @@ export const allCountrySearch = (data) => {
         {
             id: 3,
             value: "eng",
-            text: " الـإنـجـلـيـزيـة (افـتـراضـي)",
+            text: "الـإنـجـلـيـزيـة",
             img: "img/English(default).svg",
             url: "index.html",
         },
@@ -102,9 +102,10 @@ export const allCountrySearch = (data) => {
         {
             id: 3,
             value: "eng",
-            text: "ئــیــنـگـلـیـزی (بـە بـنـەڕەت)",
+            text: "ئــیــنـگـلـیـزی",
             img: "img/English(default).svg",
             url: "index.html",
+            // "ئــیــنـگـلـیـزی (بـە بـنـەڕەت)",
         },
     ];
     let languages = (data) => {
@@ -112,13 +113,17 @@ export const allCountrySearch = (data) => {
 
         if (typeof data.img === "undefined") {
             let $new = $(
-                '<span ><a class="lang-items" href="' + data.url + '">' + data.text + "</a></span>"
+                '<span class="language-items" ><a class="lang-items" href="' +
+                    data.url +
+                    '">' +
+                    data.text +
+                    "</a></span>"
             );
             return $new;
         }
         // background-color:#303030";
         var $state = $(
-            '<span value="' +
+            '<span class="language-items" value="' +
                 data.value +
                 '"><img src="' +
                 data.img +
@@ -181,11 +186,12 @@ export const allCountrySearch = (data) => {
             data: data2,
             templateResult: languages,
             minimumResultsForSearch: Infinity,
-            placeholder: `<span style="display: flex; align-items: center;" ><img src="img/arabic.png" class="img-flag" /> الــعــربــيــة</span>`,
+            placeholder: `<span class="language__info" style="display: flex; align-items: center;" ><img src="img/arabic.png" class="img-flag" /> الــعــربــيــة</span>`,
             allowClear: true,
             escapeMarkup: function (m) {
                 return m;
             },
+            dropdownCssClass: "increase-zIndex",
             // tags: true,
         });
     } else if (path == "/kurdish.html") {
@@ -208,11 +214,12 @@ export const allCountrySearch = (data) => {
             data: data3,
             templateResult: languages,
             minimumResultsForSearch: Infinity,
-            placeholder: `<span style="display: flex; align-items: center;"><img src="img/kurd.png" class="img-flag" /> كـوردی</span>`,
+            placeholder: `<span class="language__info" style="display: flex; align-items: center;"><img src="img/kurd.png" class="img-flag" /> كـوردی</span>`,
             allowClear: true,
             escapeMarkup: function (m) {
                 return m;
             },
+            dropdownCssClass: "increase-zIndex",
             // tags: true,
         });
     } else {
@@ -236,11 +243,12 @@ export const allCountrySearch = (data) => {
             data: data,
             templateResult: languages,
             minimumResultsForSearch: Infinity,
-            placeholder: `<span style="display: flex; align-items: center;" ><img src="img/English(default).svg" class="img-flag" /> English(default)</span>`,
+            placeholder: `<span class="language__info" style="display: flex; align-items: center;" ><img src="img/English(default).svg" class="img-flag" />English</span>`,
             allowClear: true,
             escapeMarkup: function (m) {
                 return m;
             },
+            dropdownCssClass: "increase-zIndex",
             // tags: true,
         });
     }
@@ -452,8 +460,7 @@ export const renderCharts = async (onlyDate, onlyCases, onlyDeaths, onlyRecovere
     if (path == "/arabic.html") {
         charts.data = arData;
         charts.options.scales.yAxes = [];
-
-        charts.options.scales.yAxes = [];
+        charts.options.scales.xAxes = [];
         (charts.options.legend.labels = {
             fontSize: 16,
             padding: 4,

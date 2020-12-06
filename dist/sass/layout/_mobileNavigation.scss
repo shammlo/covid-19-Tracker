@@ -40,6 +40,11 @@
         padding-left: 1rem;
         padding-top: 1rem;
     }
+    .navigation__item {
+        .language {
+            width: 25rem;
+        }
+    }
 
     .navigation__item:not(:first-child) {
         margin-top: 2rem;
@@ -58,6 +63,15 @@
         transition: all 0.2s;
         border: 3px solid transparent;
         border-left: 1.5px solid var(--danger);
+    }
+    .navigation__list--lang {
+        padding-left: 0 !important;
+        padding-right: 1rem !important;
+    }
+    .mob-lang {
+        border-left: 0 !important;
+
+        border-right: 2.1px solid var(--danger) !important;
     }
 
     .navigation__link:hover,
