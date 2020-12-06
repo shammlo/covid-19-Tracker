@@ -21,11 +21,11 @@ const yesterdayCalc = () => {
                 if (isNaN(number)) return number;
 
                 if (number < 9999) {
-                    return (number / 1000).toFixed(1) + "ألف";
+                    return (number / 1000).toFixed(2) + "ألف";
                 }
 
                 if (number < 1000000) {
-                    return (number / 1000).toFixed(1) + "ألف";
+                    return (number / 1000).toFixed(2) + "ألف";
                 }
                 if (number < 10000000) {
                     return (number / 1000000).toFixed(2) + "مليون";
@@ -44,11 +44,11 @@ const yesterdayCalc = () => {
                 if (isNaN(number)) return number;
 
                 if (number < 9999) {
-                    return (number / 1000).toFixed(1) + "ھـەزار";
+                    return (number / 1000).toFixed(2) + "ھـەزار";
                 }
 
                 if (number < 1000000) {
-                    return (number / 1000).toFixed(1) + "ھـەزار";
+                    return (number / 1000).toFixed(2) + "ھـەزار";
                 }
                 if (number < 10000000) {
                     return (number / 1000000).toFixed(2) + "مـلـیـۆن";
@@ -67,22 +67,22 @@ const yesterdayCalc = () => {
             if (isNaN(number)) return number;
 
             if (number < 9999) {
-                return (number / 1000).toFixed(1) + "k";
+                return (number / 1000).toFixed(2) + "k";
             }
 
             if (number < 1000000) {
-                return (number / 1000).toFixed(1) + "K";
+                return (number / 1000).toFixed(2) + "K";
             }
             if (number < 10000000) {
-                return (number / 1000000).toFixed(1) + "M";
+                return (number / 1000000).toFixed(2) + "M";
             }
 
             if (number < 1000000000) {
-                return (number / 1000000).toFixed(1) + "M";
+                return (number / 1000000).toFixed(2) + "M";
             }
 
             if (number < 1000000000000) {
-                return (number / 1000000000).toFixed(1) + "B";
+                return (number / 1000000000).toFixed(2) + "B";
             }
 
             return "1T+";

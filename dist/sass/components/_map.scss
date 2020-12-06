@@ -238,8 +238,8 @@ a.mapboxgl-ctrl-logo {
     margin-right: 5px;
 }
 .map-container {
-    margin-top: 7rem;
-    padding-top: 3rem;
+    // margin-top: 7rem;
+    // padding-top: 3rem;
 }
 .map-popup {
     // text-align: center;
@@ -263,7 +263,17 @@ a.mapboxgl-ctrl-logo {
 }
 .mapboxgl-ctrl-geocoder--input {
     @media only screen and (max-width: $bp-500) {
-        height: 0 !important;
+        height: 4rem !important;
+    }
+}
+.mapboxgl-ctrl-geocoder--icon-search {
+    position: absolute;
+    top: 13px;
+    left: 12px;
+    width: 23px;
+    height: 23px;
+    @media only screen and (max-width: $bp-500) {
+        top: 6.6px !important;
     }
 }
 #infoUpdatedLegend {
