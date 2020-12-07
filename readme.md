@@ -1,18 +1,6 @@
 <h1 align="center">Covid-19 Tracker</h1>
-<!-- <p align="center"><i>I created this website to showcase Covid cases/deaths/recovered, and etc, as my first personal project, containing map, table, charts, line chart, and pie chart, with 3 languages, english, kurdish, and arabic, as to help as many people as it can.</i></p> -->
-<!-- <div align="center">
-  <a href="https://github.com/shammlo/covid-19-Tracker/stargazers"><img src="https://img.shields.io/github/stars/elangosundar/awesome-README-templates" alt="Stars Badge"/></a>
-<a href="https://github.com/shammlo/covid-19-Tracker/network/members"><img src="https://img.shields.io/github/forks/elangosundar/awesome-README-templates" alt="Forks Badge"/></a>
-<a href="https://github.com/shammlo/covid-19-Tracker/pulls"><img src="https://img.shields.io/github/issues-pr/elangosundar/awesome-README-templates" alt="Pull Requests Badge"/></a>
-<a href="https://github.com/shammlo/covid-19-Tracker/issues"><img src="https://img.shields.io/github/issues/elangosundar/awesome-README-templates" alt="Issues Badge"/></a>
-<a href="https://github.com/elangosundar/awesome-README-templates/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/elangosundar/awesome-README-templates?color=2b9348"></a>
-<a href="#"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/elangosundar/awesome-README-templates?color=2b9348"></a>
-<a href="https://github.com/elangosundar/awesome-README-templates/blob/master/LICENSE"><img src="https://img.shields.io/github/license/elangosundar/awesome-README-templates?color=2b9348" alt="License Badge"/></a>
-</div> -->
-<br>
-<!-- <p align="center"><i>Loved the project? Please visit our <a href="https://awesome-github-readme-profile.netlify.app">Website</a></i></p> -->
-<br>
-I created this website to showcase Covid cases/deaths/recovered, and etc, as my first personal project. 
+
+I created this website to showcase Covid cases/deaths/recovered, and etc, as my first personal project.
 If you like this Repo, Please click the :star:
 
 List of `Covid-19 Tracker` categories mentioned below
