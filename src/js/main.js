@@ -3,7 +3,6 @@ import $ from "jquery";
 import MainData from "./model/MainData";
 import GlobalData from "./model/AllCountries";
 import Charts from "./model/Charts";
-import * as searchView from "./views/lineChartCountryView";
 import * as mainDataView from "./views/mainDataView";
 import * as allCountriesView from "./views/tableView";
 import * as globalChartView from "./views/globalChartView";
