@@ -25,12 +25,9 @@ this Site contains world map, table, charts, line chart, and pie chart, with 3 l
 
 Link : https://covid-teacker.netlify.app
 
-<p>
-<a href="https://covid-teacker.netlify.app/"><img src="https://raw.githubusercontent.com/shammlo/covid-19-Tracker/master/dist/img/covid-19tracker.png?token=AQUKQVOIVZZ366PF3P3FM5K7ZZ6YS" alt="Covid-19 Tracker" /></a>
+[![Covid-19 Tracker](https://raw.githubusercontent.com/shammlo/covid-19-Tracker/master/dist/img/covid-19tracker.png?token=AQUKQVOIVZZ366PF3P3FM5K7ZZ6YS)](https://covid-teacker.netlify.app/)
+[![Covid-19 Tracker](https://raw.githubusercontent.com/shammlo/covid-19-Tracker/master/dist/img/covid-19tracker2.png?token=AQUKQVPIIDPWRGU5M5RB2M27ZZ62I)](https://covid-teacker.netlify.app/)
 
-<a href="https://covid-teacker.netlify.app/"><img src="https://raw.githubusercontent.com/shammlo/covid-19-Tracker/master/dist/img/covid-19tracker2.png?token=AQUKQVPIIDPWRGU5M5RB2M27ZZ62I" alt="Covid-19 Tracker" /></a>
-
-</p>
 ## Languages and tools
 
 -   <code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png"></code> [Html](HTML)
