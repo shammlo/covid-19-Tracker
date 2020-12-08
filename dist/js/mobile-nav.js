@@ -1,3 +1,4 @@
+//*** ----------------- MOBILE NAVIGATION ------------------- ***\
 (function ($) {
     "use strict";
 
