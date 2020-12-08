@@ -33,12 +33,12 @@ Link : https://covid-teacker.netlify.app
 -   <code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png"></code> [Html](HTML)
 -   <code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/sass/sass.png"></code> [Sass-Scss](sass-scss)
 -   <code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png"></code> [JavaScript](javascript)
--   [MVC design pattern](mvc)
--   [Mapbox](https://www.mapbox.com/)
--   [dataTables.js](https://datatables.net/)
--   [select2.js](https://select2.org/)
--   [charts.js](https://www.chartjs.org/)
--   [amCharts.js](https://www.amcharts.com/)
+-   [] [MVC design pattern](mvc)
+-   [] [Mapbox](https://www.mapbox.com/)
+-   [] [dataTables.js](https://datatables.net/)
+-   [] [select2.js](https://select2.org/)
+-   [] [charts.js](https://www.chartjs.org/)
+-   [] [amCharts.js](https://www.amcharts.com/)
 
 ## 🚧 To-do list
 
@@ -53,7 +53,7 @@ List of TODOs for future development
 
 # Contribute
 
-Contributions are always welcome! Please create a PR to add Github Profile.
+Contributions are always welcome!
 
 ## :pencil: License
 
