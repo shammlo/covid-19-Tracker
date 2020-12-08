@@ -75,9 +75,3 @@ $(window).on("scroll", function () {
         $("#header").removeClass("header-scrolled");
     }
 });
-
-// // Start counting, do this on DOM ready or with Waypoints.
-// counterUp(el, {
-//     duration: 1000,
-//     delay: 10,
-// });
