@@ -44,7 +44,7 @@ Link : https://covid-teacker.netlify.app
 
 List of TODOs for future development
 
--   Make the site un faster, smoother on mobile device.
+-   Make the site run faster, smoother on mobile device.
 -   Adding a world map with timeline for each case.
 
 ## Data Resources
