@@ -1,5 +1,5 @@
 {
-  "name": "covid-19",
+  "name": "Covid-19 Tracker",
   "version": "1.0.0",
   "description": "covid-19 tracker",
   "main": "main.js",
@@ -8,7 +8,7 @@
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development --open"
   },
-  "author": "sham",
+  "author": "shammlo",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.20.0",
