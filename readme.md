@@ -25,7 +25,8 @@ this Site contains world map, table, charts, line chart, and pie chart, with 3 l
 
 Link : https://covidvirus-tracker.netlify.app
 
-[![Covid-19 Tracker](https://i.imgur.com/trDyKhM.png)](https://covidvirus-tracker.netlify.app)
+## [![Covid-19 Tracker](https://i.imgur.com/trDyKhM.png)](https://covidvirus-tracker.netlify.app)
+
 [![Covid-19 Tracker/Table & chart](https://i.imgur.com/CiSFI50.png)](https://covidvirus-tracker.netlify.app)
 
 ## Languages and useful tools
