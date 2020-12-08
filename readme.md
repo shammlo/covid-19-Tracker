@@ -35,12 +35,12 @@ Link : https://covidvirus-tracker.netlify.app
 -   [ ] <code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png"></code> [JavaScript](javascript)
 -   [ ] <code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/webpack/webpack.png"></code> [Webpack](webpack)
 -   [ ] <code><img height="20" src="https://raw.githubusercontent.com/github/explore/cb39e2385dfcec8a661d01bfacff6b1e33bbaa9d/topics/babel/babel.png"></code> [babel](babel)
--   [ ] [MVC design pattern](mvc)
--   [ ] [Mapbox](https://www.mapbox.com/)
--   [ ] [dataTables.js](https://datatables.net/)
--   [ ] [select2.js](https://select2.org/)
--   [ ] [charts.js](https://www.chartjs.org/)
--   [ ] [amCharts.js](https://www.amcharts.com/)
+-   [ ] <code> [MVC design pattern](mvc) </code>
+-   [ ] <code> [Mapbox](https://www.mapbox.com/) </code>
+-   [ ] <code> [dataTables.js](https://datatables.net/) </code>
+-   [ ] <code> [select2.js](https://select2.org/) </code>
+-   [ ] <code> [charts.js](https://www.chartjs.org/) </code>
+-   [ ] <code> [amCharts.js](https://www.amcharts.com/) </code>
 
 ## 🚧 To-do list
 
