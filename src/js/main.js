@@ -1,8 +1,8 @@
 //*** ----------------- IMPORTS ----------------- ***\\
 import $ from "jquery";
 import MainData from "./model/MainData";
-import GlobalData from "./model/AllCountries";
-import Charts from "./model/Charts";
+import GlobalData from "./model/TableData";
+import Charts from "./model/ChartsData";
 import * as mainDataView from "./views/mainDataView";
 import * as allCountriesView from "./views/tableView";
 import * as globalChartView from "./views/globalChartView";
@@ -12,11 +12,6 @@ import { DOM, renderLoader, clearLoader } from "./views/base";
 //*************************************************************************************\\
 
 //*** --------- GLOBAL STATE OF THE APP --------- ***\\
-
-//- Search object
-//- Current recipe object
-//- Shopping list object
-//- Liked recipes
 
 const state = {};
 

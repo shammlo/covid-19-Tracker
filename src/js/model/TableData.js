@@ -1,8 +1,8 @@
-//*** ----------------- IMPORTS ----------------- ***\\
+//*** ----------------- IMPORTS ---------------- ***\\
 
 import axios from "axios";
 
-//*** ----------------- MAIN API ----------------- ***\\
+//*** ----------------- MAIN API ---------------- ***\\
 
 export default class GlobalData {
     constructor() {}

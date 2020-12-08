@@ -2,7 +2,7 @@
 import { DOM } from "./base";
 
 //*************************************************************************************\\
-//*** ------------ PRIVATE FUNCTIONS ------------ ***\\
+//*** ------------ PRIVATE FUNCTIONS ----------- ***\\
 const formatNumber = (number) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
