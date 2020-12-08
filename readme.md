@@ -23,10 +23,10 @@ this Site contains world map, table, charts, line chart, and pie chart, with 3 l
 
 ## Website
 
-Link : https://covid-teacker.netlify.app
+Link : https://covidvirus-tracker.netlify.app
 
-[![Covid-19 Tracker](https://i.imgur.com/trDyKhM.png)](https://covid-teacker.netlify.app/)
-[![Covid-19 Tracker/Table & chart](https://i.imgur.com/CiSFI50.png)](https://covid-teacker.netlify.app/)
+[![Covid-19 Tracker](https://i.imgur.com/trDyKhM.png)](https://covidvirus-tracker.netlify.app)
+[![Covid-19 Tracker/Table & chart](https://i.imgur.com/CiSFI50.png)](https://covidvirus-tracker.netlify.app)
 
 ## Languages and tools
 
