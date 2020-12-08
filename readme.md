@@ -9,7 +9,7 @@ List of `Covid-19 Tracker` categories mentioned below
 
 -   [General Info](#general-info)
 -   [Website link & layout](#website)
--   [Languages and tools](#languages-and-tools)
+-   [Languages and tools](#languages-and-useful-tools)
 -   [🚧 To-do list](#to-do-list)
 -   [Data Recourses](#data-recourses)
 -   [Contribute](#contribute)
@@ -28,11 +28,13 @@ Link : https://covidvirus-tracker.netlify.app
 [![Covid-19 Tracker](https://i.imgur.com/trDyKhM.png)](https://covidvirus-tracker.netlify.app)
 [![Covid-19 Tracker/Table & chart](https://i.imgur.com/CiSFI50.png)](https://covidvirus-tracker.netlify.app)
 
-## Languages and tools
+## Languages and useful tools
 
 -   [ ] <code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png"></code> [Html](HTML)
 -   [ ] <code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/sass/sass.png"></code> [Sass-Scss](sass-scss)
 -   [ ] <code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png"></code> [JavaScript](javascript)
+-   [ ] <code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/webpack/webpack.png"></code> [Webpack](webpack)
+-   [ ] <code><img height="20" src="https://raw.githubusercontent.com/github/explore/cb39e2385dfcec8a661d01bfacff6b1e33bbaa9d/topics/babel/babel.png"></code> [babel](babel)
 -   [ ] [MVC design pattern](mvc)
 -   [ ] [Mapbox](https://www.mapbox.com/)
 -   [ ] [dataTables.js](https://datatables.net/)
