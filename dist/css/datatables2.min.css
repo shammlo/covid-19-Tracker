@@ -33,7 +33,7 @@ div.dataTables_wrapper div.dataTables_filter input {
 }
 div.dataTables_wrapper div.dataTables_info,
 div.dataTables_wrapper div.dataTables_paginate {
-    padding-top: 1rem;
+    padding-top: 1.1rem;
     padding-bottom: 1rem;
     font-weight: 400;
 }

@@ -123,7 +123,7 @@ table.dataTable thead .sorting_asc_disabled:after,
 table.dataTable thead .sorting_desc_disabled:after {
     right: 16px;
     font-family: "Font Awesome\ 5 Free", sans-serif;
-    font-size: 1rem;
+    font-size: 1.01rem;
     font-weight: 900;
     content: "\f0dd";
 }

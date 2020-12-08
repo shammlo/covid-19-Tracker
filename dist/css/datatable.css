@@ -21,7 +21,7 @@ table.dataTable thead td:active {
 table.dataTable tfoot th,
 table.dataTable tfoot td {
     padding: 10px 18px 6px 18px;
-    border-top: 1px solid #6c757d;
+    border-top: 1.01px solid #6c757d;
 }
 table.dataTable thead .sorting,
 table.dataTable thead .sorting_asc,

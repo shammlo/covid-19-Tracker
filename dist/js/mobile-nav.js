@@ -76,8 +76,6 @@ $(window).on("scroll", function () {
     }
 });
 
-// const el = document.querySelector('[data-toggle="counter-up"]');
-
 // // Start counting, do this on DOM ready or with Waypoints.
 // counterUp(el, {
 //     duration: 1000,
