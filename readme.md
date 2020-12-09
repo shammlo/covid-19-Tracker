@@ -1,4 +1,4 @@
-<h1>Covid-19 Tracker</h1>
+<h1 align="center">Covid-19 Tracker</h1>
 
 I created this website to showcase Covid cases/deaths/recovered, and etc, as my first personal project.
 If you like this Repo, Please click the :star:
@@ -10,11 +10,11 @@ List of `Covid-19 Tracker` categories mentioned below
 -   [General Info](#general-info)
 -   [Website link & layout](#website)
 -   [Languages and tools](#languages-and-useful-tools)
--   [🚧 To-do list](#to-do-list)
--   [Data Recourses](#data-recourses)
+-   [🚧 To-do list](#-to-do-list)
+-   [Data Recourses](#data-resources)
 -   [Contribute](#contribute)
--   [:pencil: License](#license)
--   [:man_astronaut: Show your support](#show-your-support)
+-   [:pencil: License](#pencil-license)
+-   [:man_astronaut: Show your support](#man_astronaut-show-your-support)
 -   [Contact](#Contact)
 
 ## General info
