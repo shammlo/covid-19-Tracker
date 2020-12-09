@@ -19,7 +19,7 @@ List of `Covid-19 Tracker` categories mentioned below
 
 ## General info
 
-this Site contains world map, table, charts, line chart, and pie chart, with 3 languages, english, kurdish, and arabic, as to help as many people as it can.
+this Site contains world map, table, charts, line chart, and pie chart, with 3 languages, english, kurdish, and arabic, as to help as many people as it can, along with 2 themes, dark and light.
 
 ## Website
 
