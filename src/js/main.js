@@ -198,3 +198,15 @@ $(window).on("scroll", function () {
 });
 
 //*************************************************************************************\\
+console.log("%cHello, Welcome.", "color: white; font-weight: bold; font-size: 25px");
+console.log(
+    "%cDeveloped by" + " %cShammlo" + "%c.",
+    " font-weight: bold; font-size: 25px",
+    "color: #FFD700; font-weight: bold; font-size: 28px",
+    " font-weight: bold; font-size: 25px"
+);
+console.log("%cGitHub Profile: https://github.com/shammlo.", " font-weight: bold; font-size: 25px");
+console.log(
+    "%cFor source code and more information: https://github.com/shammlo/covid-19-Tracker.",
+    " font-weight: bold; font-size: 25px"
+);
