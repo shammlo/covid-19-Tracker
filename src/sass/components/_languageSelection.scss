@@ -1,0 +1,104 @@
+.language {
+    // padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // position: fixed;
+    z-index: 1000000;
+
+    /* Reset Select */
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+        appearance: none;
+        outline: 0;
+        box-shadow: none;
+        border: 0 !important;
+        // background: #2c3e50;
+        background-color: rgb(36, 35, 35);
+        background-image: none;
+        padding: 1rem;
+    }
+    /* Remove IE arrow */
+    select::-ms-expand {
+        display: none;
+    }
+    /* Custom Select */
+    .select {
+        position: relative;
+        display: flex;
+        width: 20em;
+        height: 3em;
+        line-height: 3;
+        // background: #2c3e50;
+        background-color: rgb(32, 32, 32);
+        overflow: hidden;
+        border-radius: 0.25em;
+    }
+    select {
+        flex: 1;
+        padding: 1rem 0.5em;
+        color: #fff;
+        cursor: pointer;
+    }
+    /* Arrow */
+    .select::after {
+        content: "\25BC";
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 0 1em;
+        // background: #34495e;
+        background-color: rgb(29, 29, 29);
+        cursor: pointer;
+        pointer-events: none;
+        -webkit-transition: 0.25s all ease;
+        -o-transition: 0.25s all ease;
+        transition: 0.25s all ease;
+    }
+    /* Transition */
+    .select:hover::after {
+        color: #f39c12;
+    }
+    .language-options {
+        padding: 1rem;
+        text-indent: 10px;
+    }
+    #slct {
+        padding: 0.6em 1.4em 0.5em 0.8em;
+        option {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            padding: 0.6em 1.4em 0.5em 0.8em;
+        }
+        .language-options {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            padding: 0.6em 1.4em 0.5em 0.8em;
+            padding: 100rem;
+        }
+    }
+    .language__info {
+        font-size: 1.4rem;
+    }
+
+    .select2-container {
+        width: 12rem !important;
+    }
+}
+.language-data .select2 {
+    width: 10rem !important;
+}
+.language-data {
+    .select2-results__options span {
+        padding-left: 0 !important;
+    }
+}
+.language-items {
+    font-size: 1.4rem;
+    padding-left: 0 !important;
+}

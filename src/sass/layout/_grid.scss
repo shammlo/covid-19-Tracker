@@ -1,0 +1,91 @@
+.rrow {
+    max-width: $grid-width;
+    margin: 0 auto;
+    color: $color-black;
+
+    &:not(:last-child) {
+        margin-bottom: $gap-vertical;
+
+        @include responsive(tablet-portrait) {
+            margin-bottom: $gap-vertical-small;
+        }
+    }
+
+    @include responsive(tablet-portrait) {
+        max-width: 50rem;
+        padding: 0 3rem;
+    }
+
+    @include clearfix;
+
+    [class^="col-"] {
+        float: left;
+
+        &:not(:last-child) {
+            margin-right: $gap-horizontal;
+
+            @include responsive(tablet-portrait) {
+                margin-right: 0;
+                margin-bottom: $gap-vertical-small;
+            }
+        }
+
+        @include responsive(tablet-portrait) {
+            width: 100% !important;
+        }
+    }
+
+    .col-1-of-2 {
+        width: calc((100% - #{$gap-horizontal}) / 2);
+    }
+
+    .col-1-of-3 {
+        width: calc((100% - (#{$gap-horizontal} * 2)) / 3);
+    }
+
+    .col-2-of-3 {
+        width: calc(2 * ((100% - (#{$gap-horizontal} * 2)) / 3) + #{$gap-horizontal});
+    }
+    .col-3-of-3 {
+        width: calc(3 * ((100% - (#{$gap-horizontal} * 2)) / 3) + #{$gap-horizontal});
+    }
+
+    .col-1-of-4 {
+        width: calc((100% - (#{$gap-horizontal} * 3)) / 4);
+    }
+
+    .col-2-of-4 {
+        width: calc(2 * ((100% - (#{$gap-horizontal} * 3)) / 4) + #{$gap-horizontal});
+    }
+
+    .col-3-of-4 {
+        width: calc(3 * ((100% - (#{$gap-horizontal} * 3)) / 4) + 2 * #{$gap-horizontal});
+    }
+
+    .col-1-33-of-4 {
+        width: calc();
+    }
+}
+
+// .row {
+//     margin: 5rem auto;
+//     width: 75%;
+//     height: 20rem;
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     font-size: 3rem;
+//     color: var(--color-grey-light-1);
+//     text-align: center;
+
+//     .confirmed {
+//         font-size: inherit;
+//     }
+//     .dead {
+//         font-size: inherit;
+//     }
+//     .recovered {
+//         font-size: inherit;
+//     }
+// }
+// // style="height: 100%; width: 100%; margin: 0 auto"

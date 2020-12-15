@@ -1,0 +1,95 @@
+//* ----------------- COLORS ---------------- *\\
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,500;0,600;1,400&display=swap");
+
+:root {
+    --color-primary: #c69963;
+    --color-primary-rgb: 198, 153, 99;
+
+    --color-primary-dark: #b28451;
+
+    --color-secondary: #101d2c;
+    --color-secondary-rgb: 16, 29, 44;
+
+    --color-grey-light-1: #f9f7f6;
+    --color-grey-light-3: #d8d8d8;
+    --color-grey-light-2: #aaa;
+
+    --color-grey-dark-1: #54483a;
+    --color-grey-dark-2: #6d5d4b;
+    --color-grey-dark-3: rgb(155, 154, 154);
+
+    // FONT VARIABLES
+    --font-primary: "Lato", sans-serif;
+    --font-secondary: "Roboto Mono", monospace, sans-serif;
+
+    --color-white: #fff;
+    --color-black: #000;
+
+    --border-primary: 0.05rem solid #6c757d;
+    --border-secondary: 1px solid rgba(255, 255, 255, 0.1);
+    --border-white: 0.05rem solid #3a4046;
+
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --red-light: #b93b47;
+    --orange: #ff9742;
+    --yellow: #fcbd00;
+    --yellow-2: #ffd24d;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-dark: #343a40;
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --good: #6ddd87;
+    --info: #37c1d6;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #303438;
+    --dark-1: #2a3136;
+    --dark-2: #282e33;
+    --dark-3: rgb(18, 18, 18);
+    --dark-4: rgb(36, 35, 35);
+    --dark-5: rgb(41, 40, 40);
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+}
+
+// RESPONSIVE BREAKPOINTS
+$bp-4000: 250em; //  4000px
+$bp-2500: 156.25em; // 2500px
+$bp-1400: 87.5em; // 1400px
+$bp-1349: 84.3125em; // 1349px
+$bp-1300: 81.25em; // 1300px
+$bp-1200: 75em; // 1200px
+$bp-1100: 68.75em; // 1100px
+$bp-large: 62.5em; // 1000px
+$bp-999: 62.4375em; // 999px
+$bp-800: 50em; // 800px;
+$bp-767: 47.9375em; // 767px;
+$bp-735: 46em; // 735px;
+$bp-600: 37.5em; // 600px;
+$bp-500: 31.25em; // 500px;
+$bp-450: 28.125em; // 450px;
+$bp-414: 25.875em; // 450px;
+$bp-400: 25em; // 400px;
+$bp-375: 23.4375em; // 375px;
+$bp-350: 21.875em; // 350px;
+
+$color-white: #fff;
+$color-black: #000;
+$grid-width: 125rem;
+$gap-vertical: 8rem;
+$gap-vertical-small: 6rem;
+$gap-horizontal: 6rem;

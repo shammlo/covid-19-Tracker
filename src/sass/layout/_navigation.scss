@@ -1,0 +1,100 @@
+.main__navigation {
+    width: 100%;
+    transition: all 0.1s;
+
+    .navigation {
+        &__list {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-width: 68rem;
+        }
+
+        &__item {
+            display: inline-block;
+        }
+        .active {
+            .navigation__link:link,
+            .navigation__link:visited {
+                background-color: rgba(rgb(255, 255, 255), 0.06);
+                border-bottom: 3px solid var(--danger);
+            }
+        }
+        &__link:link,
+        &__link:visited {
+            color: inherit;
+            font-size: 1.4rem;
+            letter-spacing: 0.13rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            padding: 1.5rem;
+            font-family: var(--font-display);
+            text-align: center;
+            display: block;
+            transition: all 0.2s;
+            border: 3px solid transparent;
+            @media only screen and (max-width: $bp-735) {
+                padding: 1.6rem 0 1.6rem 1.6rem;
+            }
+        }
+
+        &__link:hover,
+        &__link:active {
+            background-color: rgba(rgb(255, 255, 255), 0.06);
+            transform: translateY(-3px);
+            border-bottom: 3px solid var(--danger);
+        }
+
+        @media only screen and (max-width: $bp-999) {
+            display: none;
+        }
+    }
+    .logo {
+        text-align: center;
+        // padding-left: 1rem;
+        @media only screen and (max-width: $bp-735) {
+            padding: 0;
+        }
+
+        &__link:link,
+        &__link:visited {
+            color: inherit;
+            font-size: 1.85rem;
+            letter-spacing: 0.13rem;
+            text-decoration: none;
+            font-family: var(--font-display);
+            display: inline-block;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 0rem;
+        }
+
+        &__link:hover,
+        &__link:active {
+            background-color: rgba(rgb(255, 255, 255), 0.06);
+            transform: translateY(-3px);
+        }
+        &__image {
+            width: 4rem;
+            height: 4rem;
+            display: inline-block;
+            margin-right: 0.6rem;
+        }
+    }
+    @media only screen and (max-width: $bp-999) {
+        .d-none {
+            display: none !important;
+        }
+    }
+}
+
+.main__navigation.sticky {
+    // position: fixed;
+
+    padding: 4rem;
+    transition: 0.3s;
+    background-color: #1a1d20;
+}

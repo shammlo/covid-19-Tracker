@@ -1,0 +1,296 @@
+.mapboxgl-map {
+    .mapboxgl-popup-anchor-top .mapboxgl-popup-tip {
+        display: none !important;
+    }
+
+    .mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip {
+        display: none !important;
+    }
+    .mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip {
+        display: none !important;
+    }
+    .mapboxgl-popup {
+        font-family: var(--font-secondary);
+        // font: 12px/20px "Helvetica Neue", Arial, Helvetica, sans-serif;
+        color: black !important;
+        transform: translate(0, 0) translate(0, 0) !important;
+        max-width: 24rem !important;
+        height: calc(100% - 1rem) !important;
+        padding-bottom: 1rem !important;
+        z-index: 100;
+        // background: rgba(192, 192, 192, 0.2) !important;
+        margin: 1rem;
+    }
+
+    .mapboxgl-popup-content {
+        font-size: 1.6rem;
+        font-weight: 500;
+        position: relative;
+        border-radius: 3px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        padding: 1rem 0.3rem 1rem 0.3rem;
+        pointer-events: auto;
+        height: 100% !important;
+        width: 23.2rem;
+        // z-index: 100 !important;
+        background: rgba(192, 192, 192, 0.4) !important;
+    }
+}
+
+a.mapboxgl-ctrl-logo {
+    width: 88px;
+    height: 23px;
+    margin: 0 0 -4px -4px;
+    display: block;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1 !important;
+    opacity: 0.5 !important;
+}
+
+.mapboxgl-ctrl-bottom-right {
+    opacity: 0.5 !important;
+}
+.custom-clustericon::before,
+.custom-clustericon::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    background: var(--cluster-color);
+    opacity: 0.2;
+    border-radius: 100%;
+}
+
+.custom-clustericon {
+    background: var(--cluster-color);
+    color: #fff;
+    border-radius: 100%;
+    font-weight: bold;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+}
+.custom-clustericon::before {
+    padding: 25px;
+}
+
+.custom-clustericon-1 {
+    --cluster-color: #00a2d3;
+}
+.custom-clustericon-2 {
+    --cluster-color: #ff9b00;
+}
+.custom-clustericon-3 {
+    --cluster-color: #ff6969;
+}
+
+.mapboxgl-popup-close-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: 0;
+    border-radius: 0 3px 0 0;
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 2.5rem;
+    width: 3rem !important;
+    // height: 3rem !important;
+}
+//----------------------------------------------------------------
+
+//- Popup Styles
+.popup-header {
+    display: flex;
+    align-items: center;
+    direction: ltr;
+}
+.popup-title {
+    margin-top: 2rem;
+}
+.popup__data {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    text-align: center;
+    div {
+        color: var(--color-white);
+        font-family: var(--font-secondary);
+        font-weight: 500;
+        background-color: rgba(36, 35, 35, 0.5);
+        border-radius: 0.5rem;
+        padding: 1rem;
+        padding-bottom: 2rem;
+        margin: 0.3rem;
+        position: relative;
+        min-height: 10.5rem;
+
+        img {
+            position: absolute;
+            top: 0.4rem;
+            right: 0.3rem;
+        }
+
+        h5 {
+            padding-top: 1.8rem;
+            margin-right: 0.6rem;
+        }
+
+        #popCase {
+            font-size: 1.5rem;
+        }
+        #popDead {
+            color: var(--danger) !important;
+        }
+        #popRec {
+            color: var(--success) !important;
+        }
+    }
+
+    &-cases {
+        margin: 0.3rem 0.3rem 0.3rem 0;
+    }
+    &-deaths {
+        margin: 0 0.3rem 0.3rem 0.3rem;
+    }
+    &-recovered {
+        margin: 0.3rem 0.3rem 0.3rem 0;
+    }
+    &-active {
+        margin: 0 0.3rem 0.3rem 0.3rem;
+    }
+    #padTop {
+        padding-bottom: 2rem;
+    }
+}
+
+.legend {
+    background-color: #fff;
+    border-radius: 5px;
+    bottom: 3rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    font: 1.2rem/2rem "Helvetica Neue", Arial, Helvetica, sans-serif;
+    padding: 1rem;
+    position: absolute;
+    right: 10px;
+    z-index: 1;
+    color: var(--color-black);
+    font-size: 1.5rem;
+    @media only screen and (max-width: $bp-500) {
+        font-size: 1.3rem;
+        bottom: 1rem;
+        right: 1rem;
+    }
+}
+.legend-lang div span {
+    margin-right: 0 !important;
+    margin-left: 0.5rem !important;
+}
+
+.legend h4 {
+    margin: 0 0 10px;
+}
+
+.legend div span {
+    border-radius: 50%;
+    display: inline-block;
+    height: 1rem;
+    margin-right: 0.5rem;
+    width: 1rem;
+}
+.map-overlay {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.8);
+    margin-right: 2rem;
+    font-family: Arial, sans-serif;
+    overflow: auto;
+    border-radius: 3px;
+}
+
+#features {
+    top: 0;
+    height: 10rem;
+    margin-top: 2rem;
+    width: 25rem;
+}
+
+#legend {
+    padding: 1rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    line-height: 1.8rem;
+    height: 15rem;
+    margin-bottom: 4rem;
+    width: 10rem;
+}
+
+.legend-key {
+    display: inline-block;
+    border-radius: 20%;
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+}
+.map-container {
+    // margin-top: 7rem;
+    // padding-top: 3rem;
+}
+.map-popup {
+    // text-align: center;
+}
+.map-popup--lang {
+    // text-align: center;
+    direction: rtr;
+}
+#padTop {
+    font-size: 1.5rem;
+}
+.mapboxgl-ctrl-bottom-right > .mapboxgl-ctrl-attrib.mapboxgl-compact:after {
+    @media only screen and (max-width: $bp-500) {
+        display: none;
+    }
+}
+.mapboxgl-ctrl-geocoder {
+    @media only screen and (max-width: $bp-500) {
+        width: 10rem !important;
+    }
+}
+.mapboxgl-ctrl-geocoder--input {
+    @media only screen and (max-width: $bp-500) {
+        height: 4rem !important;
+    }
+}
+.mapboxgl-ctrl-geocoder--icon-search {
+    position: absolute;
+    top: 13px;
+    left: 12px;
+    width: 23px;
+    height: 23px;
+    @media only screen and (max-width: $bp-500) {
+        top: 6.6px !important;
+    }
+}
+#infoUpdatedLegend {
+    font-size: small;
+    padding: 0.5;
+    color: rgb(228, 226, 226);
+    text-align: left;
+}
+#infoUpdatedLegend-lang {
+    font-size: small;
+    padding: 0.5;
+    color: #e4e2e2;
+    direction: rtl !important;
+    text-align: right !important;
+}
+#infoCountryLegend {
+    text-align: center;
+    display: block;
+    padding-bottom: 1rem;
+}

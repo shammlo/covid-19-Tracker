@@ -1,0 +1,31 @@
+// * ---- MAIN -----*\\
+@import "./abstracts/variables";
+@import "./abstracts/mixins";
+
+@import "./base/base";
+@import "./base/utilities";
+@import "./base/typography";
+
+@import "./layout/header";
+@import "./layout/navigation";
+@import "./layout/mobileNavigation";
+@import "./layout/title";
+@import "./layout/data";
+@import "./layout/grid";
+@import "./layout/footer";
+@import "./theme/lightTheme";
+
+@import "./components/map";
+@import "./components/animations";
+@import "./components/buttons";
+// @import "./components/search";
+@import "./components/updatedTime";
+@import "./components/cardBox";
+@import "./components/table";
+@import "./components/pagination";
+@import "./components/loader";
+@import "./components/charts";
+@import "./components/socials";
+@import "./components/languageSelection";
+
+@import "./pages/home";
