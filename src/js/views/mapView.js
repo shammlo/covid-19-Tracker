@@ -55,7 +55,6 @@ const valueFormatter = (number) => {
     return "1T+";
 };
 export const renderMapData = async (data) => {
-    console.log(data);
     mapboxgl.accessToken =
         "pk.eyJ1Ijoic2hhbXp4IiwiYSI6ImNrZzVsN3dmYTB2aGwydXA0cTRjYTNlOHIifQ.PJEx5stm9_rUjgRzFQaLFg";
     var map = new mapboxgl.Map({
@@ -108,7 +107,7 @@ export const renderMapData = async (data) => {
         });
     };
 
-    console.log(convertToGeoJSON(res));
+    // console.log(convertToGeoJSON(res));
     const result = convertToGeoJSON(res);
     var colors = [
         "#fed976",
