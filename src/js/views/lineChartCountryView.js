@@ -46,7 +46,6 @@ $(".js-data-filter").on("select2:select", function (data) {
         dataType: "json",
         "X-Requested-With": "XMLHttpRequest",
         success: async (data) => {
-            console.log(data);
             //----------------------------------------------------------------
             //* Chart
             //- chart section

@@ -6,6 +6,7 @@ import Charts from "./model/ChartsData";
 import * as mainDataView from "./views/mainDataView";
 import * as allCountriesView from "./views/tableView";
 import * as globalChartView from "./views/globalChartView";
+import * as lineChartCountryView from "./views/lineChartCountryView";
 import * as mapView from "./views/mapView";
 import { DOM, renderLoader, clearLoader } from "./views/base";
 

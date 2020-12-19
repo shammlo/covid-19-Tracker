@@ -253,7 +253,6 @@ export const allCountrySearch = (data) => {
         });
     }
     $(".language-data").on("select2:select", function (e) {
-        console.log(e.params.data.url);
         window.open(e.params.data.url, "_self");
     });
     // $(".language-data").on("change", function () {
@@ -752,7 +751,7 @@ export const globalPieChart = async (data) => {
         pieSeries.slices.template.strokeOpacity = 1;
         pieSeries.slices.template.propertyFields.fill = "color";
         pieSeries.slices.template.events.on("hit", function (ev) {
-            console.log(ev.target.dataItem.value);
+            // console.log(ev.target.dataItem.value);
         });
         chart.legend = new am4charts.Legend();
 
@@ -943,7 +942,7 @@ export const globalPieChart = async (data) => {
                     const recoveredPerOneM = await data.recoveredPerOneMillion;
                     const tests = await data.tests;
 
-                    console.log(data);
+                    // console.log(data);
 
                     //----------------------------------------------------------------
 
