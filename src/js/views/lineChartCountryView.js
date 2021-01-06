@@ -14,45 +14,45 @@ const newFromCumulative = (data) => {
 };
 
 String.prototype.toArabicDigits = function () {
-    var id = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"];
+    var id = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
     return this.replace(/[0-9]/g, function (w) {
         return id[+w];
     });
 };
 
 //*************************************************************************************\\
-
+//- Url Path
 const path = document.location.pathname;
 //*** ------------ PUBLIC FUNCTIONS ------------ ***\\
 
-$(".js-data-filter").on("select2:select", function (data) {
-    $("#flag").remove();
-    $("#worldTot").remove();
+$('.js-data-filter').on('select2:select', function (data) {
+    $('#flag').remove();
+    $('#worldTot').remove();
 
-    $("#country-cases").remove();
+    $('#country-cases').remove();
 
     var imageUrl = data.params.data.flag;
-    $(".select2-selection__rendered")
+    $('.select2-selection__rendered')
         .eq(1)
-        .prepend("<img class='img-flag' src=" + imageUrl + ">");
+        .prepend("<img class='img-flag' src=" + imageUrl + '>');
 
-    $(".text-big")
+    $('.text-big')
         .eq(0)
-        .prepend("<img  id='flag' class='img-flag__main' src=" + imageUrl + ">");
+        .prepend("<img  id='flag' class='img-flag__main' src=" + imageUrl + '>');
     const query = data.params.data.country;
     $.ajax({
-        url: "https://disease.sh/v3/covid-19/historical/" + query + "?lastdays=all",
-        type: "GET",
-        dataType: "json",
-        "X-Requested-With": "XMLHttpRequest",
+        url: 'https://disease.sh/v3/covid-19/historical/' + query + '?lastdays=all',
+        type: 'GET',
+        dataType: 'json',
+        'X-Requested-With': 'XMLHttpRequest',
         success: async (data) => {
             //----------------------------------------------------------------
             //* Chart
             //- chart section
             // casecharting.destroy();
-            $("#country-cases").remove();
-            $("#cases").remove();
-            $("#lineChart").prepend(
+            $('#country-cases').remove();
+            $('#cases').remove();
+            $('#lineChart').prepend(
                 '<canvas id="country-cases" style="display: block; width: 90rem; height: 45rem"><canvas>'
             );
             const result = await data;
@@ -62,8 +62,8 @@ $(".js-data-filter").on("select2:select", function (data) {
             const deaths = await Object.values(result.timeline.deaths);
             const recovered = await Object.values(result.timeline.recovered);
             const dates = await Object.keys(result.timeline.cases);
-            const countryChart = document.querySelector("#country-cases").getContext("2d");
-            Chart.defaults.global.defaultFontColor = "#737373";
+            const countryChart = document.querySelector('#country-cases').getContext('2d');
+            Chart.defaults.global.defaultFontColor = '#737373';
 
             const engData = {
                 //- Labels
@@ -74,25 +74,25 @@ $(".js-data-filter").on("select2:select", function (data) {
                 datasets: [
                     {
                         data: cases,
-                        label: "Cases",
-                        backgroundColor: "rgba(54, 162, 235, 0.2)",
-                        pointBackgroundColor: "rgba(54, 162, 235, 1)",
-                        borderColor: "rgba(54, 162, 235, 1)",
+                        label: 'Cases',
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        pointBackgroundColor: 'rgba(54, 162, 235, 1)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
                         borderWidth: 1,
                     },
                     {
                         data: deaths,
-                        label: "Deaths",
-                        backgroundColor: "rgba(214, 102, 121, 0.3)",
-                        borderColor: "rgba(214, 102, 121, 1)",
+                        label: 'Deaths',
+                        backgroundColor: 'rgba(214, 102, 121, 0.3)',
+                        borderColor: 'rgba(214, 102, 121, 1)',
                         borderWidth: 1,
                         order: 2,
                     },
                     {
                         data: recovered,
-                        label: "Recovered",
-                        backgroundColor: "rgba(113, 255, 47, 0.2)",
-                        borderColor: "rgba(113, 255, 47, 1)",
+                        label: 'Recovered',
+                        backgroundColor: 'rgba(113, 255, 47, 0.2)',
+                        borderColor: 'rgba(113, 255, 47, 1)',
                         borderWidth: 1,
                         order: 3,
                     },
@@ -106,25 +106,25 @@ $(".js-data-filter").on("select2:select", function (data) {
                 datasets: [
                     {
                         data: cases,
-                        label: "تــوشـبـووان",
-                        backgroundColor: "rgba(54, 162, 235, 0.2)",
-                        borderColor: "rgba(54, 162, 235, 1)",
+                        label: 'تــوشـبـووان',
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
                         borderWidth: 1,
                         order: 1,
                     },
                     {
                         data: deaths,
-                        label: "قـوربـانـیـان",
-                        backgroundColor: "rgba(214, 102, 121, 0.3)",
-                        borderColor: "rgba(214, 102, 121, 1)",
+                        label: 'قـوربـانـیـان',
+                        backgroundColor: 'rgba(214, 102, 121, 0.3)',
+                        borderColor: 'rgba(214, 102, 121, 1)',
                         borderWidth: 1,
                         order: 3,
                     },
                     {
                         data: recovered,
-                        label: "چـاكـبـوونـەوە",
-                        backgroundColor: "rgba(113, 255, 47, 0.2)",
-                        borderColor: "rgba(113, 255, 47, 1)",
+                        label: 'چـاكـبـوونـەوە',
+                        backgroundColor: 'rgba(113, 255, 47, 0.2)',
+                        borderColor: 'rgba(113, 255, 47, 1)',
                         borderWidth: 1,
                         order: 2,
                     },
@@ -138,25 +138,25 @@ $(".js-data-filter").on("select2:select", function (data) {
                 datasets: [
                     {
                         data: arCases,
-                        label: "حالات",
-                        backgroundColor: "rgba(54, 162, 235, 0.2)",
-                        borderColor: "rgba(54, 162, 235, 1)",
+                        label: 'حالات',
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
                         borderWidth: 1,
                         order: 1,
                     },
                     {
                         data: deaths,
-                        label: "حالات الوفاة",
-                        backgroundColor: "rgba(214, 102, 121, 0.3)",
-                        borderColor: "rgba(214, 102, 121, 1)",
+                        label: 'حالات الوفاة',
+                        backgroundColor: 'rgba(214, 102, 121, 0.3)',
+                        borderColor: 'rgba(214, 102, 121, 1)',
                         borderWidth: 1,
                         order: 3,
                     },
                     {
                         data: recovered,
-                        label: "تعافى",
-                        backgroundColor: "rgba(113, 255, 47, 0.2)",
-                        borderColor: "rgba(113, 255, 47, 1)",
+                        label: 'تعافى',
+                        backgroundColor: 'rgba(113, 255, 47, 0.2)',
+                        borderColor: 'rgba(113, 255, 47, 1)',
                         borderWidth: 1,
                         order: 2,
                     },
@@ -164,7 +164,7 @@ $(".js-data-filter").on("select2:select", function (data) {
             };
 
             const countryCasesChart = new Chart(countryChart, {
-                type: "line",
+                type: 'line',
                 responsive: true,
 
                 //- Data layer start
@@ -210,7 +210,7 @@ $(".js-data-filter").on("select2:select", function (data) {
                         xAxes: [
                             {
                                 gridLines: {
-                                    color: "rgba(0, 0, 0, 0)",
+                                    color: 'rgba(0, 0, 0, 0)',
                                 },
                             },
                         ],
@@ -221,9 +221,9 @@ $(".js-data-filter").on("select2:select", function (data) {
                                     callback: function (value) {
                                         if (value >= 0 && value < 1000) return value;
                                         if (value >= 1000 && value < 1000000)
-                                            return value / 1000 + "k";
+                                            return value / 1000 + 'k';
                                         if (value >= 1000000 && value < 1000000000)
-                                            return value / 1000000 + "m";
+                                            return value / 1000000 + 'm';
                                         return value;
                                     },
                                 },
@@ -234,7 +234,7 @@ $(".js-data-filter").on("select2:select", function (data) {
                 //- Options end
             });
 
-            if (path == "/arabic.html") {
+            if (path == '/arabic.html') {
                 countryCasesChart.data = arData;
                 countryCasesChart.options.scales.yAxes = [];
 
@@ -245,7 +245,7 @@ $(".js-data-filter").on("select2:select", function (data) {
                 }),
                     countryCasesChart.options.scales.xAxes.push({
                         gridLines: {
-                            color: "rgba(0, 0, 0, 0)",
+                            color: 'rgba(0, 0, 0, 0)',
                         },
 
                         ticks: {
@@ -263,15 +263,15 @@ $(".js-data-filter").on("select2:select", function (data) {
                             if (value >= 0 && value < 1000)
                                 return value.toString().toArabicDigits();
                             if (value >= 1000 && value < 1000000)
-                                return (value / 1000).toString().toArabicDigits() + "الف";
+                                return (value / 1000).toString().toArabicDigits() + 'الف';
                             if (value >= 1000000 && value < 1000000000)
-                                return (value / 1000000).toString().toArabicDigits() + "م";
+                                return (value / 1000000).toString().toArabicDigits() + 'م';
                             return value.toString().toArabicDigits();
                         },
                     },
                 });
                 countryCasesChart.update();
-            } else if (path == "/kurdish.html") {
+            } else if (path == '/kurdish.html') {
                 countryCasesChart.data = kurdData;
                 countryCasesChart.options.scales.yAxes = [];
                 countryCasesChart.options.scales.xAxes = [];
@@ -281,7 +281,7 @@ $(".js-data-filter").on("select2:select", function (data) {
                 }),
                     countryCasesChart.options.scales.xAxes.push({
                         gridLines: {
-                            color: "rgba(0, 0, 0, 0)",
+                            color: 'rgba(0, 0, 0, 0)',
                         },
 
                         ticks: {
@@ -299,9 +299,9 @@ $(".js-data-filter").on("select2:select", function (data) {
                             if (value >= 0 && value < 1000)
                                 return value.toString().toArabicDigits();
                             if (value >= 1000 && value < 1000000)
-                                return (value / 1000).toString().toArabicDigits() + "ھـەزار";
+                                return (value / 1000).toString().toArabicDigits() + 'ھـەزار';
                             if (value >= 1000000 && value < 1000000000)
-                                return (value / 1000000).toString().toArabicDigits() + "م";
+                                return (value / 1000000).toString().toArabicDigits() + 'م';
                             return value.toString().toArabicDigits();
                         },
                     },
